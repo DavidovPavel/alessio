@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+/public
 /tmp
 /out-tsc
 # Only exists if Bazel was run
@@ -22,6 +23,7 @@ speed-measure-plugin*.json
 *.launch
 .settings/
 *.sublime-workspace
+*.log
 
 # IDE - VSCode
 .vscode/*

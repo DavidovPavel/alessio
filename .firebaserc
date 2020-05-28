@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "alessio-c2369": {
+      "hosting": {
+        "alessio": [
+          "alessio-c2369"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "alessio-c2369"
+  }
+}
