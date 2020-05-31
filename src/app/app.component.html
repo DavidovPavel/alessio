@@ -1,10 +1,17 @@
-<div style="height: 400px; flex-basis: 400px;">
+<header>
   <div>
-    <a routerLink="en">en</a>
-    &nbsp;|&nbsp;
-    <a routerLink="it">it</a>
+    <span>
+      <a routerLink="/">subscribe for our newsletter</a>
+      <a routerLink="/">sign up</a>
+    </span>
+    <span></span>
+    <span>
+      <a routerLink="/">login</a>
+      <a>&copy; Alessio Romano. All right reserved. {{ currentYear }}</a>
+    </span>
   </div>
-  <div style="text-transform: uppercase;display: flex; justify-content: space-around;">
+  <div class="logo"><a href="/"><img src="assets/logo.png"></a></div>
+  <div class="main-menu">
     <span>meta data</span>
     <span>projects</span>
     <span>Exhibitions</span>
@@ -13,8 +20,16 @@
     <span>Video</span>
     <span>Contacts</span>
   </div>
-</div>
+  <div class="sub-menu">
+    <button><img src="assets/sandwich.svg"></button>
+    <ul>
+      <li><a routerLink="/">art</a></li>
+      <li><a routerLink="/">instalation</a></li>
+      <li><a routerLink="/">print</a></li>
+    </ul>
+  </div>
+</header>
 
-<div style="flex: 1; overflow: auto;"> 
+<main>
   <router-outlet></router-outlet>
-</div>
+</main>

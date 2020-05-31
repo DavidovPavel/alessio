@@ -1,6 +1,72 @@
 :host {
-    max-width: 1600px;
-    display: flex;
-    flex-direction: column;
-    flex: auto;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  text-transform: uppercase;
+
+  & header {
+    height: 315px;
+    flex-basis: 315px;
+    width: 853px;
+    margin: 0 auto;
+
+    &>div:first-child {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 24px;
+
+      & span {
+        display: flex;
+        justify-content: space-between;
+        flex: 1 0 33%;
+      }
+    }
+
+    & .logo {
+      margin: 26px auto 54px;
+      text-align: center;
+    }
+
+    & .main-menu {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1em;
+      font-weight: lighter;
+    }
+
+    & .sub-menu {
+      position: relative;
+
+      & button {
+        position: absolute;
+        padding: 0;
+        border: 0;
+        background: none;
+        left: -68px;
+        top: -15px;
+      }
+
+      & ul {
+          position: absolute;
+          left: -88px;
+          top: 0;
+          width: 200px;
+          padding: 55px 20px;
+          margin: 0;
+          background-color: #000;
+          opacity: .77;
+
+          & li {
+              list-style: none;
+              line-height: 24px;
+          }
+      }
+    }
+  }
+
+  & main {
+    flex: 1;
+    overflow: auto;
+    background-color: #222222;
+  }
 }

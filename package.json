@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run alessio:serve-ssr",
+    "dev:ssr": "ng run alessio:serve-ssr --port 4300",
     "serve:ssr": "node dist/alessio/server/main.js",
     "build:ssr": "ng build --prod && ng run alessio:server:production",
     "prerender": "ng run alessio:prerender"
