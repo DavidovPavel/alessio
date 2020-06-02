@@ -1,27 +1,29 @@
 <header>
   <div>
     <span>
-      <a routerLink="/">subscribe for our newsletter</a>
-      <a routerLink="/">sign up</a>
+      <a routerLink="/subscribe">subscribe for our newsletter</a>
+      <a routerLink="/login">sign up</a>
     </span>
     <span></span>
     <span>
-      <a routerLink="/">login</a>
+      <a routerLink="/login">login</a>
       <a>&copy; Alessio Romano. All right reserved. {{ currentYear }}</a>
     </span>
   </div>
-  <div class="logo"><a href="/"><img src="assets/logo.png"></a></div>
+  <div class="logo"><a href="/"><img src="assets/logo.png" alt="Alessio Romano"></a></div>
   <div class="main-menu">
-    <span>meta data</span>
-    <span>projects</span>
-    <span>Exhibitions</span>
-    <span>Exhibitions</span>
-    <span>Publications</span>
-    <span>Video</span>
-    <span>Contacts</span>
+    <a routerLink="/metadata">META DATA</a>
+    <a routerLink="/exhibitions">EXHIBITIONS</a>
+    <a routerLink="/projects">PROJECTS</a>
+    <a routerLink="/collaborations">COLLABORATIONS</a>
+    <a routerLink="/buy">BUY</a>
+    <a routerLink="/legalterms">LEGAL TERMS</a>
+    <a routerLink="/contacts">CONTACTS</a>
+    <a routerLink="/publications">PUBLICATIONS</a>
+    <a routerLink="/video">VIDEO</a>
   </div>
   <div class="sub-menu">
-    <button><img src="assets/sandwich.svg"></button>
+    <button><img src="assets/sandwich.svg" alt="Show sub menu" /></button>
     <ul>
       <li><a routerLink="/">art</a></li>
       <li><a routerLink="/">instalation</a></li>

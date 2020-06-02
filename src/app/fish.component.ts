@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div style="text-align: right;margin: 25px 0 20px;"><a routerLink="en">ENG</a>/<a routerLink="it">IT</a></div>
     <div style="width: 860px;">
-      <div style="float:left;"><img src="assets/photo1.png" /></div>
+      <div style="float:left;"><img src="assets/photo1.png" alt="Alessio Romano. Metadata" /></div>
       <p>
         Alessio Romano, artist. Originally from Roma, Italy. For some reasons his mother moved to Russia when hi was so young. In Moscow he
         have got a russian name. He never mentioned his original ancestry until the end of carrier in marketing and advertising. Stroganov
@@ -23,13 +23,13 @@ import { Component, OnInit } from '@angular/core';
       </p>
     </div>
     <div class="ss">
-      <a href="/"><img src="assets/in.png" /></a>
-      <a href="/"><img src="assets/f.png" /></a>
-      <a href="/"><img src="assets/o.png" /></a>
-      <a href="/"><img src="assets/p.png" /></a>
-      <a href="/"><img src="assets/z.png" /></a>
-      <a href="/"><img src="assets/b.png" /></a>
-      <a href="/"><img src="assets/t.png" /></a>
+      <a href="/"><img src="assets/in.png" alt="instagram" /></a>
+      <a href="/"><img src="assets/f.png" alt="facebook" /></a>
+      <a href="/"><img src="assets/o.png" alt="" /></a>
+      <a href="/"><img src="assets/p.png" alt="" /></a>
+      <a href="/"><img src="assets/z.png" alt="" /></a>
+      <a href="/"><img src="assets/b.png" alt="" /></a>
+      <a href="/"><img src="assets/t.png" alt="" /></a>
     </div>
   `,
   styles: [
