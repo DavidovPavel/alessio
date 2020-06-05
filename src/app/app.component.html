@@ -1,17 +1,17 @@
-<header>
-  <div>
-    <span>
+<header class="container">
+  <div class="row">
+    <span class="col d-flex justify-content-between">
       <a routerLink="/subscribe">subscribe for our newsletter</a>
       <a routerLink="/login">sign up</a>
     </span>
-    <span></span>
-    <span>
+    <span class="col"></span>
+    <span class="col d-flex justify-content-between">
       <a routerLink="/login">login</a>
-      <a>&copy; Alessio Romano. All right reserved. {{ currentYear }}</a>
+      <span>&copy; Alessio Romano. All right reserved.{{ currentYear }}</span>
     </span>
   </div>
-  <div class="logo"><a href="/"><img src="assets/logo.png" alt="Alessio Romano"></a></div>
-  <div class="main-menu">
+  <div class="logo"><a routerLink="/"><img src="assets/logo.png" alt="Alessio Romano"></a></div>
+  <div class="main-menu d-flex justify-content-between">
     <a routerLink="/metadata">META DATA</a>
     <a routerLink="/exhibitions">EXHIBITIONS</a>
     <a routerLink="/projects">PROJECTS</a>
@@ -33,5 +33,19 @@
 </header>
 
 <main>
-  <router-outlet></router-outlet>
+  <div class="container">
+    <div class="d-flex justify-content-end s-lang"><a routerLink="en">ENG</a>/<a routerLink="it">IT</a></div>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+    <div class="ss pt-3">
+      <a href="/"><img src="assets/in.png" alt="instagram" /></a>
+      <a href="/"><img src="assets/f.png" alt="facebook" /></a>
+      <a href="/"><img src="assets/o.png" alt="" /></a>
+      <a href="/"><img src="assets/p.png" alt="" /></a>
+      <a href="/"><img src="assets/z.png" alt="" /></a>
+      <a href="/"><img src="assets/b.png" alt="" /></a>
+      <a href="/"><img src="assets/t.png" alt="" /></a>
+    </div>
+  </div>
 </main>

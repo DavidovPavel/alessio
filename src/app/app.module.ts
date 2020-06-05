@@ -15,6 +15,7 @@ import { LegaltermsComponent } from './legalterms/legalterms.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { VideoComponent } from './video/video.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { VideoComponent } from './video/video.component';
     LegaltermsComponent,
     ContactsComponent,
     PublicationsComponent,
-    VideoComponent
+    VideoComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
