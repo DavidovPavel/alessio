@@ -1,26 +1,26 @@
 <header class="container">
   <div class="row">
     <span class="col d-flex justify-content-between">
-      <a routerLink="/subscribe">subscribe for our newsletter</a>
-      <a routerLink="/login">sign up</a>
+      <a routerLink="/subscribe" i18n>subscribe for our newsletter</a>
+      <a routerLink="/login" i18n>sign up</a>
     </span>
     <span class="col"></span>
     <span class="col d-flex justify-content-between">
-      <a routerLink="/login">login</a>
-      <span>&copy; Alessio Romano. All right reserved.{{ currentYear }}</span>
+      <a routerLink="/login" i18n>login</a>
+      <span>&copy; Alessio Romano. <span i18n>All right reserved</span>.{{ currentYear }}</span>
     </span>
   </div>
   <div class="logo"><a routerLink="/"><img src="assets/logo.png" alt="Alessio Romano"></a></div>
   <div class="main-menu d-flex justify-content-between">
-    <a routerLink="/metadata">META DATA</a>
-    <a routerLink="/exhibitions">EXHIBITIONS</a>
-    <a routerLink="/projects">PROJECTS</a>
-    <a routerLink="/collaborations">COLLABORATIONS</a>
-    <a routerLink="/buy">BUY</a>
-    <a routerLink="/legalterms">LEGAL TERMS</a>
-    <a routerLink="/contacts">CONTACTS</a>
-    <a routerLink="/publications">PUBLICATIONS</a>
-    <a routerLink="/video">VIDEO</a>
+    <a routerLink="/metadata" i18n>META DATA</a>
+    <a routerLink="/exhibitions" i18n>EXHIBITIONS</a>
+    <a routerLink="/projects" i18n>PROJECTS</a>
+    <a routerLink="/collaborations" i18n>COLLABORATIONS</a>
+    <a routerLink="/buy" i18n>BUY</a>
+    <a routerLink="/legalterms" i18n>LEGAL TERMS</a>
+    <a routerLink="/contacts" i18n>CONTACTS</a>
+    <a routerLink="/publications" i18n>PUBLICATIONS</a>
+    <a routerLink="/video" i18n>VIDEO</a>
   </div>
   <div class="sub-menu">
     <button><img src="assets/sandwich.svg" alt="Show sub menu" /></button>
@@ -34,7 +34,7 @@
 
 <main>
   <div class="container">
-    <div class="d-flex justify-content-end s-lang"><a routerLink="en">ENG</a>/<a routerLink="it">IT</a></div>
+    <div class="d-flex justify-content-end s-lang"><a href="../en">ENG</a>/<a href="../it">IT</a></div>
     <div>
       <router-outlet></router-outlet>
     </div>

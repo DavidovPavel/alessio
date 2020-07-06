@@ -16,9 +16,7 @@ import { SubscribeComponent } from './subscribe/subscribe.component';
 import { VideoComponent } from './video/video.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'en', pathMatch: 'full' },
-  { path: 'en', component: FishComponent },
-  { path: 'it', component: FishComponent },
+  { path: '', component: FishComponent },
   { path: 'login', component: LoginComponent },
   { path: 'subscribe', component: SubscribeComponent },
   { path: 'metadata', component: MetadataComponent },

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="8468b5817ac0d076e49f7f2e8e08c029989d3ecd" datatype="html">
+        <source>subscribe for our newsletter</source>
+        <target>iscriviti alla nostra newsletter</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="48e2a791517207a15918ad024fe4884635c64a51" datatype="html">
+        <source>sign up</source>
+        <target>Iscriviti</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="801c464dfaabb8eb2c16f2cc0bf81435030174dd" datatype="html">
+        <source>login</source>
+        <target>accesso</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e9c5e62fe468dec0ae7a6d22e25940b501cd157e" datatype="html">
+        <source>All right reserved</source>
+        <target>Tutti i diritti riservati</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="637ff7352c5d31c965f1eca4c54a356b1ef1f830" datatype="html">
+        <source>META DATA</source>
+        <target>DATI META</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e5e9ec8ad25aa3eac88c71d1aca814eb163052ed" datatype="html">
+        <source>EXHIBITIONS</source>
+        <target>MOSTRE</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f0274af6c76ea3f99ceae371d3be887e4db4cf3a" datatype="html">
+        <source>PROJECTS</source>
+        <target>PROGETTI</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f43dbc6355dc5bd27f679b28dd25bdcda1b59100" datatype="html">
+        <source>COLLABORATIONS</source>
+        <target>COLLABORAZIONI</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ed4df708b0da9af32f3ba7174729749f6c36f29a" datatype="html">
+        <source>BUY</source>
+        <target>ACQUISTARE</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6e551f824e0c630b0c4689fc843a4fa75a4e533a" datatype="html">
+        <source>LEGAL TERMS</source>
+        <target>TERMINI LEGALI</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7c7ded8c508f4e75800b9f1ee8a41ff1a58089fb" datatype="html">
+        <source>CONTACTS</source>
+        <target>CONTATTI</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="db7c191278c7df8203acd892cefe777850f5233d" datatype="html">
+        <source>PUBLICATIONS</source>
+        <target>PUBBLICAZIONI</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e39dc511b235b7c1d534d1f2439ca37e8e4b43d8" datatype="html">
+        <source>VIDEO</source>
+        <target>VIDEO</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
