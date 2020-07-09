@@ -2,49 +2,58 @@
   display: flex;
   flex-direction: column;
   flex: auto;
-  text-transform: uppercase;
 
   & header {
-    height: 291px;
-    flex-basis: 291px;
-    margin: 24px auto 0;
+    background-color: #000000;
+    color: #ffffff;
+    text-transform: uppercase;
 
-    & .logo {
-      margin: 26px auto 54px;
-      text-align: center;
+    & a {
+      color: #ffffff;
     }
 
-    & .main-menu {
-      font-weight: lighter;
-    }
+    & .container {
+      height: 291px;
+      flex-basis: 291px;
+      margin: 24px auto 0;
 
-    & .sub-menu {
-      position: relative;
-
-      & button {
-        cursor: pointer;
-        position: absolute;
-        padding: 0;
-        border: 0;
-        background: none;
-        left: -68px;
-        top: -15px;
+      & .logo {
+        margin: 26px auto 54px;
+        text-align: center;
       }
 
-      & ul {
-        position: absolute;
-        display: none;
-        left: -88px;
-        top: 0;
-        width: 200px;
-        padding: 55px 20px;
-        margin: 0;
-        background-color: #000;
-        opacity: .77;
+      & .main-menu {
+        font-weight: lighter;
+      }
 
-        & li {
-          list-style: none;
-          line-height: 24px;
+      & .sub-menu {
+        position: relative;
+
+        & button {
+          cursor: pointer;
+          position: absolute;
+          padding: 0;
+          border: 0;
+          background: none;
+          left: -68px;
+          top: -15px;
+        }
+
+        & ul {
+          position: absolute;
+          display: none;
+          left: -88px;
+          top: 0;
+          width: 200px;
+          padding: 55px 20px;
+          margin: 0;
+          background-color: #000;
+          opacity: .77;
+
+          & li {
+            list-style: none;
+            line-height: 24px;
+          }
         }
       }
     }
@@ -53,18 +62,11 @@
   & main {
     flex: 1;
     overflow: auto;
-    background-color: #222222;
+    /*background-color: #222222;*/
 
     & .s-lang {
       margin: 25px 0 20px;
     }
 
-    & .ss {
-      clear: both;
-
-      & a {
-        margin-right: 5px;
-      }
-    }
   }
 }

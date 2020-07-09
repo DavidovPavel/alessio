@@ -1,0 +1,11 @@
+.items {
+    & a {
+        width: 175px;
+        height: 175px;
+        background-color: #000000;
+        margin-bottom: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

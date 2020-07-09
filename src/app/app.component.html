@@ -1,34 +1,36 @@
-<header class="container">
-  <div class="row">
-    <span class="col d-flex justify-content-between">
-      <a routerLink="/subscribe" i18n>subscribe for our newsletter</a>
-      <a routerLink="/login" i18n>sign up</a>
-    </span>
-    <span class="col"></span>
-    <span class="col d-flex justify-content-between">
-      <a routerLink="/login" i18n>login</a>
-      <span>&copy; Alessio Romano. <span i18n>All right reserved</span>.{{ currentYear }}</span>
-    </span>
-  </div>
-  <div class="logo"><a routerLink="/"><img src="assets/logo.png" alt="Alessio Romano"></a></div>
-  <div class="main-menu d-flex justify-content-between">
-    <a routerLink="/metadata" i18n>META DATA</a>
-    <a routerLink="/exhibitions" i18n>EXHIBITIONS</a>
-    <a routerLink="/projects" i18n>PROJECTS</a>
-    <a routerLink="/collaborations" i18n>COLLABORATIONS</a>
-    <a routerLink="/buy" i18n>BUY</a>
-    <a routerLink="/legalterms" i18n>LEGAL TERMS</a>
-    <a routerLink="/contacts" i18n>CONTACTS</a>
-    <a routerLink="/publications" i18n>PUBLICATIONS</a>
-    <a routerLink="/video" i18n>VIDEO</a>
-  </div>
-  <div class="sub-menu">
-    <button><img src="assets/sandwich.svg" alt="Show sub menu" /></button>
-    <ul>
-      <li><a routerLink="/">art</a></li>
-      <li><a routerLink="/">instalation</a></li>
-      <li><a routerLink="/">print</a></li>
-    </ul>
+<header>
+  <div class="container">
+    <div class="row">
+      <span class="col d-flex justify-content-between">
+        <a routerLink="/subscribe" i18n>subscribe for our newsletter</a>
+        <a routerLink="/login" i18n>sign up</a>
+      </span>
+      <span class="col"></span>
+      <span class="col d-flex justify-content-between">
+        <a routerLink="/login" i18n>login</a>
+        <span>&copy; Alessio Romano. <span i18n>All right reserved</span>.{{ currentYear }}</span>
+      </span>
+    </div>
+    <div class="logo"><a routerLink="/"><img src="assets/logo.png" alt="Alessio Romano"></a></div>
+    <div class="main-menu d-flex justify-content-between">
+      <a routerLink="/metadata" i18n>META DATA</a>
+      <a routerLink="/exhibitions" i18n>EXHIBITIONS</a>
+      <a routerLink="/projects" i18n>PROJECTS</a>
+      <a routerLink="/collaborations" i18n>COLLABORATIONS</a>
+      <a routerLink="/buy" i18n>BUY</a>
+      <a routerLink="/legalterms" i18n>LEGAL TERMS</a>
+      <a routerLink="/contacts" i18n>CONTACTS</a>
+      <a routerLink="/publications" i18n>PUBLICATIONS</a>
+      <a routerLink="/video" i18n>VIDEO</a>
+    </div>
+    <div class="sub-menu">
+      <button><img src="assets/sandwich.svg" alt="Show sub menu" /></button>
+      <ul>
+        <li><a routerLink="/">art</a></li>
+        <li><a routerLink="/">instalation</a></li>
+        <li><a routerLink="/">print</a></li>
+      </ul>
+    </div>
   </div>
 </header>
 
@@ -38,7 +40,7 @@
     <div>
       <router-outlet></router-outlet>
     </div>
-    <div class="ss pt-3">
+    <div fxLayout fxLayoutAlign="center" fxLayoutGap="5px">
       <a href="/"><img src="assets/in.png" alt="instagram" /></a>
       <a href="/"><img src="assets/f.png" alt="facebook" /></a>
       <a href="/"><img src="assets/o.png" alt="" /></a>
