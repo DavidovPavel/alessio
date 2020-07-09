@@ -13,7 +13,6 @@ import { LegaltermsComponent } from './legalterms/legalterms.component';
 import { LoginComponent } from './login/login.component';
 import { MetadataComponent } from './metadata/metadata.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ProjectsComponent } from './projects/projects.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { VideoComponent } from './video/video.component';
@@ -26,7 +25,6 @@ import { VideoComponent } from './video/video.component';
     LoginComponent,
     MetadataComponent,
     ExhibitionsComponent,
-    ProjectsComponent,
     CollaborationsComponent,
     BuyComponent,
     LegaltermsComponent,
