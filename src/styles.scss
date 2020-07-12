@@ -21,7 +21,7 @@ body {
   display: flex;
   justify-content: center;
   font-size: 10px;
-  letter-spacing: -.1px;
+  letter-spacing: -.15px;
 }
 
 a {
@@ -41,7 +41,15 @@ h1 {
 @font-face {
   font-family: 'Trajan Pro';
   src: url("assets/Trajan Pro Regular.ttf");
-  src: local("assets/Trajan Pro Regular"), url("assets/Trajan Pro Regular.ttf") format("truetype");
+  src: local("assets/Trajan Pro Regular"), url("assets/Trajan Pro Regular.ttf") format("truetype"), url("assets/TrajanPro-Regular.otf") format("otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TrajanPro-Bold';
+  src: url("assets/TrajanPro-Regular.otf");
+  src: local("assets/TrajanPro-Regular.otf"), url("assets/TrajanPro-Regular.otf") format("otf");
   font-weight: normal;
   font-style: normal;
 }

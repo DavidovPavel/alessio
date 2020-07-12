@@ -1,12 +1,11 @@
 <header>
   <div class="container">
-    <div class="row">
-      <span class="col d-flex justify-content-between">
+    <div fxLayout fxLayoutAlign="space-between">
+      <span class="left" fxLayout fxLayoutAlign="space-between">
         <a routerLink="/subscribe" i18n>subscribe for our newsletter</a>
         <a routerLink="/login" i18n>sign up</a>
       </span>
-      <span class="col"></span>
-      <span class="col d-flex justify-content-between">
+      <span class="right" fxLayout fxLayoutAlign="space-between">
         <a routerLink="/login" i18n>login</a>
         <span>&copy; Alessio Romano. <span i18n>All right reserved</span>.{{ currentYear }}</span>
       </span>
@@ -30,24 +29,20 @@
         <li><a routerLink="/">instalation</a></li>
         <li><a routerLink="/">print</a></li>
       </ul>
-    </div>
+    </div>   
   </div>
 </header>
 
 <main>
-  <div class="container">
-    <div class="d-flex justify-content-end s-lang"><a href="../en">ENG</a>/<a href="../it">IT</a></div>
-    <div>
-      <router-outlet></router-outlet>
-    </div>
-    <div fxLayout fxLayoutAlign="center" fxLayoutGap="5px">
-      <a href="/"><img src="assets/in.png" alt="instagram" /></a>
-      <a href="/"><img src="assets/f.png" alt="facebook" /></a>
-      <a href="/"><img src="assets/o.png" alt="" /></a>
-      <a href="/"><img src="assets/p.png" alt="" /></a>
-      <a href="/"><img src="assets/z.png" alt="" /></a>
-      <a href="/"><img src="assets/b.png" alt="" /></a>
-      <a href="/"><img src="assets/t.png" alt="" /></a>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
 </main>
+
+<footer fxLayout fxLayoutAlign="center" fxLayoutGap="5px">
+  <a href="/"><img src="assets/in.png" alt="instagram" /></a>
+  <a href="/"><img src="assets/f.png" alt="facebook" /></a>
+  <a href="/"><img src="assets/o.png" alt="" /></a>
+  <a href="/"><img src="assets/p.png" alt="" /></a>
+  <a href="/"><img src="assets/z.png" alt="" /></a>
+  <a href="/"><img src="assets/b.png" alt="" /></a>
+  <a href="/"><img src="assets/t.png" alt="" /></a>
+</footer>

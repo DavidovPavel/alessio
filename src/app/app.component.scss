@@ -16,6 +16,17 @@
       height: 291px;
       flex-basis: 291px;
       margin: 24px auto 0;
+      max-width: 851px;
+
+      &>div {
+        & .left>a {
+          margin-right: 40px;
+        }
+
+        & .right>span {
+          margin-left: 20px;
+        }
+      }
 
       & .logo {
         margin: 26px auto 54px;
@@ -62,11 +73,13 @@
   & main {
     flex: 1;
     overflow: auto;
-    /*background-color: #222222;*/
+    display: flex;
+  }
 
-    & .s-lang {
-      margin: 25px 0 20px;
-    }
-
+  & footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 }

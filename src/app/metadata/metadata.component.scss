@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  background-color: #222222;
+  flex: 1;
+
+  & .container {
+    width: 851px;
+    color: white;
+
+    .choose-lang {
+        height: 58px;
+        a {
+            color: white;
+        }
+    }
+    
+    & p {
+      margin: 0 0 0 268px;
+    }
+  }
+}
