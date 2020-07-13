@@ -11,10 +11,10 @@
       </span>
     </div>
     <div class="logo"><a routerLink="/"><img src="assets/logo.png" alt="Alessio Romano"></a></div>
-    <div class="main-menu d-flex justify-content-between">
+    <div class="main-menu" fxLayout fxLayoutAlign="space-between">
       <a routerLink="/metadata" i18n>META DATA</a>
       <a routerLink="/exhibitions" i18n>EXHIBITIONS</a>
-      <a routerLink="/projects" i18n>PROJECTS</a>
+      <a routerLink="/projects" i18n="main|menu">Projects</a>
       <a routerLink="/collaborations" i18n>COLLABORATIONS</a>
       <a routerLink="/buy" i18n>BUY</a>
       <a routerLink="/legalterms" i18n>LEGAL TERMS</a>
@@ -33,16 +33,8 @@
   </div>
 </header>
 
-<main>
+<main fxLayout fxLayoutAlign="center">
   <router-outlet></router-outlet>
 </main>
 
-<footer fxLayout fxLayoutAlign="center" fxLayoutGap="5px">
-  <a href="/"><img src="assets/in.png" alt="instagram" /></a>
-  <a href="/"><img src="assets/f.png" alt="facebook" /></a>
-  <a href="/"><img src="assets/o.png" alt="" /></a>
-  <a href="/"><img src="assets/p.png" alt="" /></a>
-  <a href="/"><img src="assets/z.png" alt="" /></a>
-  <a href="/"><img src="assets/b.png" alt="" /></a>
-  <a href="/"><img src="assets/t.png" alt="" /></a>
-</footer>
+<footer></footer>

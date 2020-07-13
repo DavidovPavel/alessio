@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { MetadataComponent } from './metadata/metadata.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PublicationsComponent } from './publications/publications.component';
+import { SharedModule } from './shared/shared.module';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { VideoComponent } from './video/video.component';
 
@@ -33,7 +34,7 @@ import { VideoComponent } from './video/video.component';
     VideoComponent,
     PageNotFoundComponent,
   ],
-  imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }), AppRoutingModule, FlexLayoutModule],
+  imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }), AppRoutingModule, FlexLayoutModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent],
 })
