@@ -1,29 +1,40 @@
-<h1><span i18n>Type</span>|<a routerLink="../projects" i18n>Project</a>: <a routerLink="../">Synchronicity Singularity Apophenia</a>|<span i18n>Black</span></h1>
-<div fxLayout="row wrap" fxLayoutAlign="space-around" fxLayoutGap="40px" class="items">
-<a routerLink="art"><img src="assets/images/art.png" alt="" />
-    <div i18n>ART</div>
-  </a>
-  <a routerLink="installation"><img src="assets/images/install.png" alt="" />
-    <div i18n>INSTALLATION</div>
-  </a>
-  <a routerLink="print"><img src="assets/images/print.png" alt="" />
-    <div i18n>PRINT</div>
-  </a>
-  <a routerLink="home"><img src="assets/images/home.png" alt="" />
-    <div i18n>COLLECTION 4 HOME</div>
-  </a>
-  <a routerLink="man"><img src="assets/images/man.png" alt="" />
-    <div i18n>COLLECTION 4 MAN</div>
-  </a>
-  <a routerLink="souvenirs"><img src="assets/images/souve.png" alt="" />
-    <div i18n>SOUVENIRS</div>
-  </a>
-  <a routerLink="accessory"><img src="assets/images/acce.png" alt="" />
-    <div i18n>ACCESSORY</div>
-  </a>
-  <a routerLink="woman"><img src="assets/images/woman.png" alt="" />
-    <div i18n>COLLECTION 4 WOMAN</div>
-  </a>
+<div class="container">
+  <div class="title">
+    <h1>
+      <span i18n="main|">Type</span>|
+      <a routerLink="../projects" i18n="main|">Project</a>:
+      <a routerLink="../">Synchronicity Singularity Apophenia</a>|
+      <span i18n="main|">Black</span>
+    </h1>
+    <app-lang-switch></app-lang-switch>
+  </div>
+  <div fxLayout fxLayoutAlign="space-between" class="items">
+    <a routerLink="art"><img src="assets/images/art.png" alt="" />
+      <div i18n>ART</div>
+    </a>
+    <a routerLink="installation"><img src="assets/images/install.png" alt="" />
+      <div i18n>INSTALLATION</div>
+    </a>
+    <a routerLink="print"><img src="assets/images/print.png" alt="" />
+      <div i18n>PRINT</div>
+    </a>
+    <a routerLink="home"><img src="assets/images/home.png" alt="" />
+      <div i18n>COLLECTION 4 HOME</div>
+    </a>
+  </div>
+  <div fxLayout fxLayoutAlign="space-between" class="items">
+    <a routerLink="man"><img src="assets/images/man.png" alt="" />
+      <div i18n>COLLECTION 4 MAN</div>
+    </a>
+    <a routerLink="souvenirs"><img src="assets/images/souve.png" alt="" />
+      <div i18n>SOUVENIRS</div>
+    </a>
+    <a routerLink="accessory"><img src="assets/images/acce.png" alt="" />
+      <div i18n>ACCESSORY</div>
+    </a>
+    <a routerLink="woman"><img src="assets/images/woman.png" alt="" />
+      <div i18n>COLLECTION 4 WOMAN</div>
+    </a>
+  </div>
 </div>
-
-
+<app-social></app-social>
