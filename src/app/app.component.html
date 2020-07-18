@@ -23,20 +23,20 @@
       <a routerLink="/video" i18n>VIDEO</a>
     </div>
     <div class="sub-menu">
-      <button type="menu"><img src="assets/sandwich.svg" alt="Show sub menu" /></button>
-      <div>
+      <button (click)="isOpen=!isOpen"><img src="assets/sandwich.svg" alt="Show sub menu" /></button>
+      <div [@openClose]="isOpen">
         <ul>
           <li><a routerLink="/">ENG/IT</a></li>
-          <li><a routerLink="/">Buy</a></li>
+          <li><a routerLink="/">Buy</a><span class="arrow"></span></li>
           <ul>
-            <li><a routerLink="/">art</a></li>
-            <li><a routerLink="/">instalation</a></li>
-            <li><a routerLink="/">print</a></li>
-            <li><a routerLink="/">COLLECTION FOR HOME</a></li>
-            <li><a routerLink="/">COLLECTION 4 MAN</a></li>
-            <li><a routerLink="/">COLLECTION 4 WOMAN</a></li>
-            <li><a routerLink="/">ACCESSORY</a></li>
-            <li><a routerLink="/">SOUVENIRS</a></li>
+            <li><a routerLink="/" i18n="main|">art</a></li>
+            <li><a routerLink="/" i18n="main|">instalation</a></li>
+            <li><a routerLink="/" i18n="main|">print</a></li>
+            <li><a routerLink="/" i18n="main|">collection for home</a></li>
+            <li><a routerLink="/" i18n="main|">collection 4 man</a></li>
+            <li><a routerLink="/" i18n="main|">collection 4 woman</a></li>
+            <li><a routerLink="/" i18n="main|">accessory</a></li>
+            <li><a routerLink="/" i18n="main|">souvenirs</a></li>
           </ul>
           <li><a routerLink="/">EXHIBITIONS</a></li>
           <li><a routerLink="/">PROJECTS</a></li>
@@ -54,6 +54,13 @@
 
 <main fxLayout fxLayoutAlign="center">
   <router-outlet></router-outlet>
+
+  <!-- <ul>
+    <li class="text" *ngFor="let item of items | async">
+      {{item.name}}
+    </li>
+  </ul> -->
 </main>
 
-<footer></footer>
+<footer>
+</footer>

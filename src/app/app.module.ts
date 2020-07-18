@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BuyComponent } from './buy/buy.component';
 import { CollaborationsComponent } from './collaborations/collaborations.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { ExhibitionsComponent } from './exhibitions/exhibitions.component';
-import { FishComponent } from './fish.component';
 import { LegaltermsComponent } from './legalterms/legalterms.component';
 import { LoginComponent } from './login/login.component';
 import { MetadataComponent } from './metadata/metadata.component';
@@ -21,20 +24,27 @@ import { VideoComponent } from './video/video.component';
 @NgModule({
   declarations: [
     AppComponent,
-    FishComponent,
     SubscribeComponent,
     LoginComponent,
     MetadataComponent,
     ExhibitionsComponent,
     CollaborationsComponent,
-    BuyComponent,
     LegaltermsComponent,
     ContactsComponent,
     PublicationsComponent,
     VideoComponent,
     PageNotFoundComponent,
   ],
-  imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }), AppRoutingModule, FlexLayoutModule, SharedModule],
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule,
+    AppRoutingModule,
+    FlexLayoutModule,
+    SharedModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

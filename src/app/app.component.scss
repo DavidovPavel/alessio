@@ -55,20 +55,26 @@
           left: -145px;
           top: 28px;
           bottom: 0;
-          width: 165px;
+          width: 243px;
           height: 100vh;
-          padding-left: 55px;          
-          background-color: #3b3b3b;
+          background-color: #000000;
           opacity: .77;
           padding-top: 19px;
+          overflow: hidden;
 
           & ul {
-            margin: 0;
+            margin: 0 0 0 55px;
             padding: 0 0 0 20px;
+            min-width: 200px;
+
             & li {
               list-style: none;
               line-height: 20px;
               letter-spacing: -.1px;
+            }
+
+            & ul {
+              margin: 0;
             }
           }
         }

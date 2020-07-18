@@ -1,8 +1,7 @@
-
 body {
   font-family: 'Trajan Pro';
   background-color: #ffffff;
-  color: #000000;  
+  color: #000000;
   position: fixed;
   top: 0;
   left: 0;
@@ -23,7 +22,7 @@ a {
 
 p {
   font-size: 1.2em;
-  line-height: 2em;  
+  line-height: 2em;
 }
 
 h1 {
@@ -33,6 +32,25 @@ h1 {
 
 button:focus {
   outline-width: 0;
+}
+
+.arrow {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-left: 6px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border: 3px solid;
+    border-color:
+      transparent #ffffff #ffffff transparent;
+    transform: rotate(45deg);
+  }
 }
 
 .container {
