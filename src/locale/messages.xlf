@@ -131,14 +131,6 @@
         </context-group>
         <note priority="1" from="meaning">main</note>
       </trans-unit>
-      <trans-unit id="7cc06270d22fe0a164b7afdf2b562b069660f402" datatype="html">
-        <source>collection for home</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">35</context>
-        </context-group>
-        <note priority="1" from="meaning">main</note>
-      </trans-unit>
       <trans-unit id="0a547a147a89c14ed51b378c4206fdbc823b87cf" datatype="html">
         <source>collection 4 man</source>
         <context-group purpose="location">
