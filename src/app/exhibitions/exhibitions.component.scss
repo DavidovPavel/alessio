@@ -1,0 +1,13 @@
+:host {
+  background-color: #1c1c1c;
+  flex: 1;
+
+  & .container {
+    color: white;
+    text-align: center;
+
+    & a {
+      display: inline-block;
+    }
+  }
+}

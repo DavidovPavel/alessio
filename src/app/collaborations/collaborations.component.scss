@@ -1,0 +1,22 @@
+:host {
+  background-color: #1c1c1c;
+  flex: 1;
+
+  & .container {
+    color: white;
+
+    & div {
+      margin-bottom: 18px;
+
+      & img {
+        width: 250px;
+      }
+
+      & p a {
+        color: #ed1c24;
+      }
+    }
+
+
+  }
+}

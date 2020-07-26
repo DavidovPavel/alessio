@@ -1,9 +1,11 @@
 .prev-items {
-    width: 114px;
-    & img {
-        cursor: pointer;
-        &.active {
-            border: solid 1px #e48179;
-        }
+  width: 114px;
+
+  & img {
+    cursor: pointer;
+
+    &.active {
+      border: solid 1px #e48179;
     }
+  }
 }
