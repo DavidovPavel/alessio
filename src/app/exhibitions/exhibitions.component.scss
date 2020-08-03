@@ -6,8 +6,15 @@
     color: white;
     text-align: center;
 
-    & a {
-      display: inline-block;
+    & .items {
+      img {
+        cursor: pointer;
+      }
+
+      div {
+        overflow: hidden;
+        p {text-align: justify;}
+      }
     }
   }
 }

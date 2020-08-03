@@ -1,8 +1,9 @@
 <div class="container">
-  <a routerLink=""><img src="assets/images/exibition/apophenia.png" alt=""></a>
-  <a routerLink=""><img src="assets/images/exibition/manipolazione.png" alt=""></a>
-  <a routerLink=""><img src="assets/images/exibition/evasivemeaning.png" alt=""></a>
-  <a routerLink=""><img src="assets/images/exibition/gravity.png" alt=""></a>
-  <a routerLink=""><img src="assets/images/exibition/dream.png" alt=""></a>
-  <a routerLink=""><img src="assets/images/exibition/hallucinatio.png" alt=""></a>
+  <div *ngFor="let item of items$ | async" class="items">
+    <img src="assets/images/exibition/{{item.name}}.png" alt="" (click)="item.expand=true">
+    <div [@expand]="!!item.expand">
+      <p *ngFor="let p of item.text">{{p}}</p>
+    </div>
+  </div>
 </div>
+<app-social [bg]="'dark'"></app-social>

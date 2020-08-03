@@ -5,18 +5,41 @@
   & .container {
     color: white;
 
-    & div {
+    & div.item {
       margin-bottom: 18px;
 
-      & img {
-        width: 250px;
+      & div.left {
+        margin-top: 6px;
+
+        img {
+          width: 250px;
+        }
       }
 
-      & p a {
-        color: #ed1c24;
+      & div {
+        position: relative;
+        & .text {          
+          overflow: hidden;
+
+          p {
+            margin: 0;
+            text-align: justify;
+          }
+        }
+
+        span {
+          position: absolute;
+          bottom: 0px;
+          right: 0px;
+          cursor: pointer;
+          color: #ed1c24;
+          background-color: #1c1c1c;
+          font-size: 1.2em;
+          line-height: 2em;
+          padding-left: 8px;
+        }
       }
     }
-
 
   }
 }

@@ -1,0 +1,45 @@
+:host {
+  flex: 1;
+
+  & .container {
+    color: black;
+
+    & div.item {
+      margin-bottom: 18px;
+
+      & div.left {
+        margin-top: 6px;
+
+        img {
+          width: 250px;
+        }
+      }
+
+      & div {
+        position: relative;
+
+        & .text {
+          overflow: hidden;
+
+          p {
+            margin: 0;
+            text-align: justify;
+          }
+        }
+
+        span {
+          position: absolute;
+          bottom: 0px;
+          right: 0px;
+          cursor: pointer;
+          color: #ed1c24;
+          background-color: white;
+          font-size: 1.2em;
+          line-height: 2em;
+          padding-left: 8px;
+        }
+      }
+    }
+
+  }
+}
