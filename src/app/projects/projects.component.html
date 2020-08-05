@@ -22,6 +22,8 @@
     <div class="left"><img src="assets/images/projects/{{item.name}}.png" alt=""></div>
     <div>
       <div [@expand]="!!item.expand" class="text">
+        <h1>{{ item.title }}</h1>
+        <blockquote>{{item.quote}}</blockquote>
         <p *ngFor="let p of item.text">{{p}}</p>
       </div>
       <span [@opacity]="!!item.expand" (click)="item.expand = true">see more</span>

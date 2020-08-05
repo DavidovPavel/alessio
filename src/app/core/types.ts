@@ -10,7 +10,10 @@ export interface IExhibition {
 
 export interface IProject {
     name: string;
+    title: string;
+    quote: string;
     text: string[];
+    expand?: boolean;
 }
 
 export interface IPublication {

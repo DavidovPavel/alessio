@@ -13,13 +13,13 @@ import { Component } from '@angular/core';
 
     <h2>contact</h2>
     <p>
-      If you have any questions, please contact us. Dr. Max Bauer, head of care.<br />
+      If you have any questions, please contact us. Max Bauer, head of care.<br />
       Phone number +7 (909) 159 9999 or send us an email.
     </p>
 
     <h2>art</h2>
     <p>
-      For Art requests, please contact Dr. Max Bauer (Curator)<br />
+      For Art requests, please contact Max Bauer (Curator)<br />
       max@alessioromano.com
     </p>
 
