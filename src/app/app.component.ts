@@ -1,30 +1,30 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Meta } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
+
+import { expand, headOnScroll, show2left } from './core/animations';
+import { WorkerService } from './worker.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [
-    trigger('openClose', [
-      state('true', style({ width: '*' })),
-      state('false', style({ width: '0px' })),
-      transition('true <=> false', [animate('0.5s')]),
-    ]),
-  ],
+  animations: [show2left, headOnScroll, expand()],
 })
-export class AppComponent {
-  title = 'alessio';
+export class AppComponent implements OnInit {
   currentYear = new Date().getFullYear();
   isOpen = false;
+  isScroll = false;
+  isExpand = true;
 
   items: Observable<any[]>;
 
-  constructor(private meta: Meta, firestore: AngularFirestore) {
+  constructor(private worker: WorkerService, private meta: Meta, firestore: AngularFirestore) {
     this.meta.addTags([{ name: 'description', content: 'Alessio Romano, artist. Originally from Roma, Italy.' }]);
     this.items = firestore.collection('items').valueChanges();
   }
+
+  ngOnInit(): void {}
+
 }

@@ -1,17 +1,47 @@
-<header>
-  <div class="container">
-    <div fxLayout fxLayoutAlign="space-between">
+<header [@headOnScroll]="isScroll">
+  <div id="left">
+    <button (click)="isOpen=!isOpen"><img src="assets/sw.png" alt="Show sub menu" /></button>
+    <div [@show2left]="isOpen">
+      <ul>
+        <li>
+          <app-lang-switch [color]="'white'"></app-lang-switch>
+        </li>
+        <li [style.cursor]="'pointer'" (click)="isExpand=!isExpand"><span>Buy</span><span class="arrow"
+            [ngClass]="{open: isExpand}"><span></span></span></li>
+        <ul [@expand]="isExpand">
+          <li><a routerLink="art" i18n="main|">art</a></li>
+          <li><a routerLink="instalation" i18n="main|">instalation</a></li>
+          <li><a routerLink="print" i18n="main|">print</a></li>
+          <li><a routerLink="home" i18n="main|">collection 4 home</a></li>
+          <li><a routerLink="man" i18n="main|">collection 4 man</a></li>
+          <li><a routerLink="woman" i18n="main|">collection 4 woman</a></li>
+          <li><a routerLink="accessory" i18n="main|">accessory</a></li>
+          <li><a routerLink="souvenirs" i18n="main|">souvenirs</a></li>
+        </ul>
+        <li><a routerLink="/exhibitions">EXHIBITIONS</a></li>
+        <li><a routerLink="/projects">PROJECTS</a></li>
+        <li><a routerLink="/collaborations">COLLABORATIONS</a></li>
+        <li><a routerLink="/metadata">META DATA</a></li>
+        <li><a routerLink="/legalterms">LEGAL TERMS</a></li>
+        <li><a routerLink="/contacts">CONTACTS</a></li>
+        <li><a routerLink="/publications">PUBLICATIONS</a></li>
+        <li><a routerLink="/video">VIDEO</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="corp">
+    <div class="top" fxLayout fxLayoutAlign="space-between">
       <span class="left" fxLayout fxLayoutAlign="space-between">
         <a routerLink="/subscribe" i18n>subscribe for our newsletter</a>
         <a routerLink="/login" i18n>sign up</a>
       </span>
       <span class="right" fxLayout fxLayoutAlign="space-between">
         <a routerLink="/login" i18n>login</a>
-        <span>&copy; Alessio Romano. <span i18n>All right reserved</span>.{{ currentYear }}</span>
+        <span>&copy;&nbsp;Alessio Romano.&nbsp;<span i18n>All right reserved</span>.&nbsp;{{ currentYear }}</span>
       </span>
     </div>
     <div class="logo"><a routerLink="/"><img src="assets/logo.png" alt="Alessio Romano"></a></div>
-    <div class="main-menu" fxLayout fxLayoutAlign="space-between">
+    <div class="menu" fxLayout fxLayoutAlign="space-between">
       <a routerLink="/metadata" i18n>META DATA</a>
       <a routerLink="/exhibitions" i18n>EXHIBITIONS</a>
       <a routerLink="/projects" i18n="main|menu">Projects</a>
@@ -22,45 +52,14 @@
       <a routerLink="/publications" i18n>PUBLICATIONS</a>
       <a routerLink="/video" i18n>VIDEO</a>
     </div>
-    <div class="sub-menu">
-      <button (click)="isOpen=!isOpen"><img src="assets/sandwich.svg" alt="Show sub menu" /></button>
-      <div [@openClose]="isOpen">
-        <ul>
-          <li><a routerLink="/">ENG/IT</a></li>
-          <li><a routerLink="/">Buy</a><span class="arrow"></span></li>
-          <ul>
-            <li><a routerLink="/" i18n="main|">art</a></li>
-            <li><a routerLink="/" i18n="main|">instalation</a></li>
-            <li><a routerLink="/" i18n="main|">print</a></li>
-            <li><a routerLink="/" i18n="main|">collection 4 home</a></li>
-            <li><a routerLink="/" i18n="main|">collection 4 man</a></li>
-            <li><a routerLink="/" i18n="main|">collection 4 woman</a></li>
-            <li><a routerLink="/" i18n="main|">accessory</a></li>
-            <li><a routerLink="/" i18n="main|">souvenirs</a></li>
-          </ul>
-          <li><a routerLink="/">EXHIBITIONS</a></li>
-          <li><a routerLink="/">PROJECTS</a></li>
-          <li><a routerLink="/">COLLABORATIONS</a></li>
-          <li><a routerLink="/">META DATA</a></li>
-          <li><a routerLink="/">LEGAL TERMS</a></li>
-          <li><a routerLink="/">CONTACTS</a></li>
-          <li><a routerLink="/">PUBLICATIONS</a></li>
-          <li><a routerLink="/">VIDEO</a></li>
-        </ul>
-      </div>
-    </div>
   </div>
+  <div id="right"></div>
 </header>
-
-<main fxLayout="column">
+<main appScroll (read)="isScroll = $event.scrollTop > 100">
   <router-outlet></router-outlet>
-
   <!-- <ul>
     <li class="text" *ngFor="let item of items | async">
       {{item.name}}
     </li>
   </ul> -->
 </main>
-
-<footer>
-</footer>

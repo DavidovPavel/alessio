@@ -1,33 +1,19 @@
+html {
+  font-size: 18px;
+}
+
 body {
   font-family: 'Trajan Pro';
   background-color: #ffffff;
   color: #000000;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  font-size: 10px;
-  letter-spacing: -.15px;
+  margin: 0;
+  overflow: hidden;
 }
 
 a {
   text-decoration: none;
   color: #000000;
-}
-
-p {
-  font-size: 1.2em;
-  line-height: 2em;
-}
-
-h1 {
-  font-size: 1.6em;
-  letter-spacing: -.1px;
 }
 
 button:focus {
@@ -37,25 +23,24 @@ button:focus {
 .arrow {
   position: relative;
   display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-left: 6px;
 
-  &::after {
-    content: '';
+  &.open>span {
+    transform: rotate(45deg);
+    top: -.7vw;
+  }
+
+  & span {   
     position: absolute;
     width: 0px;
     height: 0px;
-    border: 3px solid;
+    border: .25vw solid;
     border-color:
       transparent #ffffff #ffffff transparent;
-    transform: rotate(45deg);
+    transform: rotate(-45deg);
+    left: .6vw;
+    top: -.5vw;
+    transition: all .5s;
   }
-}
-
-.container {
-  width: 850px;
-  margin: auto;
 }
 
 .title {

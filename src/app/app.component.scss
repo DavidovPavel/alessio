@@ -1,89 +1,109 @@
 :host {
   display: flex;
   flex-direction: column;
-  flex: auto;
+  height: 100vh;
+  width: 100vw;
 
   & header {
-    background-color: #000000;
     color: #ffffff;
     text-transform: uppercase;
+    font-size: .8vw;
+    font-weight: lighter;
+    height: 19.1vw;
+    background-color: #000000;
+    display: flex;
+
+    #left {
+      flex-basis: 13vw;
+      position: relative;
+
+      & button {
+        cursor: pointer;
+        position: absolute;
+        padding: 0;
+        border: 0;
+        background: none;
+        //right: 3.8vw;
+        left: 6.6vw;
+        bottom: 1.6vw;
+
+        &>img {
+          height: 0.7vw;
+        }
+      }
+
+      & div {
+        position: absolute;
+        z-index: 1000;
+        top: 19.1vw;
+        height: 100vh;
+        background-color: #000000;
+        opacity: .77;
+        padding-top: 1.6vw;
+        overflow: hidden;
+        width: 21.3vw;
+
+        & ul {
+          padding: 0;
+          margin: 0 0 0 6.6vw;
+
+          & li {
+            white-space: nowrap;
+            list-style: none;
+            letter-spacing: -.008vw;
+            margin-bottom: 0.8vw;
+          }
+
+          &>ul {
+            margin: 0;
+            padding-left: 1.6vw;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+
+    #corp {
+      flex: 1;
+      padding-top: 1.8vw;
+      box-sizing: border-box;
+    }
+
+    #right {
+      flex-basis: 12vw;
+    }
 
     & a {
       color: #ffffff;
     }
 
-    & .container {
-      height: 291px;
-      flex-basis: 291px;
-      margin: 24px auto 0;
+    & .top {
+      letter-spacing: -.012vw;
 
-      &>div {
-        & .left>a {
-          margin-right: 40px;
-        }
-
-        & .right>span {
-          margin-left: 20px;
-        }
+      & .left>a {
+        margin-right: 3.4vw;
       }
 
-      & .logo {
-        margin: 26px auto 54px;
-        text-align: center;
+      & .right>span {
+        margin-left: 2.2vw;
       }
+    }
 
-      & .main-menu {
-        font-weight: lighter;
+    & .logo {
+      height: 13.5vw;
+      text-align: center;
+
+      &>a>img {
+        height: 11.3vw;
       }
+    }
 
-      & .sub-menu {
-        position: relative;
-
-        & button {
-          cursor: pointer;
-          position: absolute;
-          padding: 0;
-          border: 0;
-          background: none;
-          left: -68px;
-          top: -15px;
-        }
-
-        & div {
-          position: absolute;
-          z-index: 1000;
-          left: -145px;
-          top: 28px;
-          bottom: 0;
-          width: 243px;
-          height: 100vh;
-          background-color: #000000;
-          opacity: .77;
-          padding-top: 19px;
-          overflow: hidden;
-
-          & ul {
-            margin: 0 0 0 55px;
-            padding: 0 0 0 20px;
-            min-width: 200px;
-
-            & li {
-              list-style: none;
-              line-height: 20px;
-              letter-spacing: -.1px;
-            }
-
-            & ul {
-              margin: 0;
-            }
-          }
-        }
-      }
+    & .menu {
+      letter-spacing: -.008vw;
     }
   }
 
   & main {
-    flex: 1;
     overflow: auto;
   }
 }
