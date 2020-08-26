@@ -1,45 +1,46 @@
 :host {
-  flex: 1;
+  display: block;
+  padding: 0 12% 0 13%;
+  font-size: 0.95vw;
+  letter-spacing: -.008vw;
+  line-height: 2.2vw;
 
-  & .container {
-    color: black;
+  & div.item {
+    margin-bottom: .9vw;
 
-    & div.item {
-      margin-bottom: 18px;
+    & div.left {
 
-      & div.left {
-        margin-top: 6px;
-
-        img {
-          width: 250px;
-        }
-      }
-
-      & div {
-        position: relative;
-
-        & .text {
-          overflow: hidden;
-
-          p {
-            margin: 0;
-            text-align: justify;
-          }
-        }
-
-        span {
-          position: absolute;
-          bottom: 0px;
-          right: 0px;
-          cursor: pointer;
-          color: #ed1c24;
-          background-color: white;
-          font-size: 1.2em;
-          line-height: 2em;
-          padding-left: 8px;
-        }
+      img {
+        width: 22vw;
       }
     }
 
+    & div {
+      position: relative;
+
+      & .text {
+        overflow: hidden;
+
+        p {
+          margin: 0;
+          text-align: justify;
+        }
+      }
+
+      span {
+        position: absolute;
+        right: 0;
+        margin-top: -2.2vw;
+        background-color: white;
+        cursor: pointer;
+        color: #ed1c24;
+
+        & span {
+          position: static;
+          color: black;
+        }
+      }
+    }
   }
+
 }

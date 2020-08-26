@@ -9,7 +9,7 @@ import { ICollaboration } from '../core/types';
   selector: 'app-collaborations',
   templateUrl: './collaborations.component.html',
   styleUrls: ['./collaborations.component.scss'],
-  animations: [expand('144px'), opacity],
+  animations: [expand('10.96vw')],
 })
 export class CollaborationsComponent implements OnInit {
   items$: Observable<ICollaboration[]>;

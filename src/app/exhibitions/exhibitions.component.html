@@ -1,9 +1,8 @@
-<div class="container">
-  <div *ngFor="let item of items$ | async" class="items">
-    <img src="assets/images/exibition/{{item.name}}.png" alt="" (click)="item.expand=true">
-    <div [@expand]="!!item.expand">
-      <p *ngFor="let p of item.text">{{p}}</p>
-    </div>
+<div *ngFor="let item of items$ | async" class="items">
+  <img src="assets/images/exibition/{{item.name}}.png" alt="" (click)="item.expand=true">
+  <div [@expand]="!!item.expand">
+    <p *ngFor="let p of item.text">{{p}}</p>
   </div>
 </div>
+
 <app-social [bg]="'dark'"></app-social>

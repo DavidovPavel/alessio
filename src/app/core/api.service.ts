@@ -25,7 +25,7 @@ he have got a russian name. He never mentioned his  inal ancestry until the end 
 University o inal ancestry until the end of carrier in marketing and advertising. Stroganov University o & Design /Graphic &
 Alessio Romano, artist. Originally from Roma, Italy. For some reasons his mother moved to jg Russia when hi was so young. In Moscow
 he have got a russian name. He never mentioned his  inal ancestry until the end of carrier in marketing and advertising. Stroganov
-University o inal ancestry until the end of carrier in marketing and advertising. Stroganov University o & Design /Graphic
+University o inal ancestry until the end of carrier in marketing and advertising. Stroganov University o & Design /Graphic Stroganov University o & Design /Graphic
 `,
 ];
 
@@ -36,8 +36,8 @@ export class ApiService {
   constructor() {}
   getCollaborations(): Observable<ICollaboration[]> {
     return of([
-      { name: 'dream', pars: textStub },
-      { name: 'meaning', pars: textStub },
+      { name: 'dream', text: textStub },
+      { name: 'meaning', text: textStub },
     ]);
   }
 
@@ -78,7 +78,7 @@ export class ApiService {
           'The phenomenon of the art project consists in the fact that everyone, literally everyone, is part of it, its "moment" at the face of infinity. After all, everyone daily contacts the already familiar, but in fact unique phenomenon in his routine life. Everyone physically and emotionally reacts to it, to the very fact of its existence, interacts with it and participates in the process of forming the newest reality remaining unaware of it.',
           'There is no need to describe in detail the project itself, when it is possible to touch it or even own a part of it, realizing your belonging.',
           'This text is not yet another ode or a libel on the theme of contemporary art. It is a spontaneous reaction or rather a suggestion to immerse yourself in the glow of the White Light, dazzling brightly blazing on the background of the dark matter of existence in the infinitely expanding universe of delusions and revelations. A call to experience the power of the Light of Consciousness beyond the framework of scientific theories and postulates of world religions. An opportunity to feel the elusive radiance of the Truth. After all, each of us, whether we want it or not, is a part of the approaching technological singularity! That is not a myth! This is reality! Digitalism.',
-          "Turn to the AI if it hasn't been turned off again. Look at your gadget screen.",
+          'Turn to the AI if it hasn\'t been turned off again. Look at your gadget screen.',
         ],
       },
       {
@@ -134,15 +134,6 @@ Before me - passion … and the power of thought.`,
         title: 'Manipolazione Sociale',
         quote: ' ',
         text: [
-          'По краю бездны скольжу без цели',
-          'Шелест стали под кожей в теле.',
-          'Срываясь вниз, меж губ скользя',
-          'Я капля яда для тебя!',
-          'Along the abyss edge aimlessly shuffling',
-          'Feeling steel under my skin, rustling,',
-          'Falling down, sliding between the lips –',
-          'I am your drop of poison that kills.',
-              'Alessio Romano',
           'Ah! How out of fashion it is -  to model volumes, to convey the heat of skin, the shine of silk, the gloss of varnish, the moisture of eyes and exact portrait similarity. Or, maybe, the secrets of craftsmanship are irrevocably lost and the words "I am an artist, I see it that way" hide laziness, mediocrity, buffoonery and professional deficiency? Michail Vrubel used to say: "Draw this box of matches! You cannot, can you? How can you draw a woman\'s eye then?"',
           "Alessio Romano's lines cited above reveal his view on relationships. Perhaps this is the key to the motives he was guided by in creating the project. Or, is it the imprint of his personal life experience? Perhaps that is the essence of this series of his works. ",
           'I want to share my first impressions.',

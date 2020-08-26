@@ -1,35 +1,14 @@
-<div class="container">
-  <!-- <div class="title">
-    <h1 i18n="main|">Projects</h1>
-    <app-lang-switch></app-lang-switch>
-  </div>
-  <div fxLayout fxLayoutAlign="space-between" class="items">
-    <a routerLink="1"><img src="assets/images/pro1.png" alt="" /></a>
-    <a routerLink="2"><img src="assets/images/pro2.png" alt="" /></a>
-    <a routerLink="3"><img src="assets/images/pro3.png" alt="" /></a>
-    <a routerLink="4"><img src="assets/images/pro4.png" alt="" /></a>
-  </div>
-  <div fxLayout fxLayoutAlign="center" fxLayoutGap="45px" class="items">
-    <a routerLink="5"><img src="assets/images/pro5.png" alt="" /></a>
-    <a routerLink="6"><img src="assets/images/pro6.png" alt="" /></a>
-  </div> -->
-
   <div class="title">
     <h1>&nbsp;</h1>
     <app-lang-switch [color]="'white'"></app-lang-switch>
   </div>
-  <div *ngFor="let item of items$ | async" fxLayout fxLayoutGap="20px" class="item">
+  <div *ngFor="let item of items$ | async" fxLayout fxLayoutGap="1.7vw" class="item">
     <div class="left"><img src="assets/images/projects/{{item.name}}.png" alt=""></div>
     <div>
       <div [@expand]="!!item.expand" class="text">
-        <h1>{{ item.title }}</h1>
-        <blockquote>{{item.quote}}</blockquote>
         <p *ngFor="let p of item.text">{{p}}</p>
       </div>
-      <span [@opacity]="!!item.expand" (click)="item.expand = true">see more</span>
+      <span (click)="item.expand = !item.expand"><span *ngIf="!item.expand">...</span>&nbsp;&nbsp;&nbsp;{{ item.expand ? 'see less' : 'see more' }}</span>
     </div>
   </div>
-
-
-</div>
 <app-social></app-social>

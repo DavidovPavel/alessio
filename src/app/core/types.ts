@@ -1,11 +1,13 @@
 export interface ICollaboration {
   name: string;
-  pars: string[];
+  text: string[];
+  expand?: boolean;
 }
 
 export interface IExhibition {
   name: string;
   text: string[];
+  expand?: boolean;
 }
 
 export interface IProject {
@@ -19,4 +21,5 @@ export interface IProject {
 export interface IPublication {
     name: string;
     text: string[];
+    expand?: boolean;
 }

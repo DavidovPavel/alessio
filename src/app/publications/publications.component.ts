@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { expand, opacity } from '../core/animations';
+import { expand } from '../core/animations';
 import { ApiService } from '../core/api.service';
 import { IPublication } from '../core/types';
 
@@ -9,7 +9,7 @@ import { IPublication } from '../core/types';
   selector: 'app-publications',
   templateUrl: './publications.component.html',
   styleUrls: ['./publications.component.scss'],
-  animations: [expand('144px'), opacity],
+  animations: [expand('10.96vw')],
 })
 export class PublicationsComponent implements OnInit {
   items$: Observable<IPublication[]>;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { expand, opacity } from '../core/animations';
+import { expand } from '../core/animations';
 import { ApiService } from '../core/api.service';
 import { IProject } from '../core/types';
 
@@ -9,7 +9,7 @@ import { IProject } from '../core/types';
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
-  animations: [expand('150px'), opacity],
+  animations: [expand('10.96vw')],
 })
 export class ProjectsComponent implements OnInit {
   items$: Observable<IProject[]>;

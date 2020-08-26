@@ -1,5 +1,6 @@
 import { state, style, transition, trigger, animate } from '@angular/animations';
 
+/**  height - expand height */
 export const expand = (height = '0') =>
   trigger('expand', [
     state('true', style({ height: '*' })),

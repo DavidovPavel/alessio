@@ -1,4 +1,4 @@
-import { Directive, Output, EventEmitter, HostListener } from '@angular/core';
+import { Directive, Output, EventEmitter, HostListener, ElementRef, Renderer2 } from '@angular/core';
 export interface IScroll {
   direct: -1 | 1 | 0;
   scrollTop: number;
@@ -8,11 +8,16 @@ export interface IScroll {
 })
 export class ScrollDirective {
   private scrollTop = 0;
+  constructor(private el: ElementRef, private re: Renderer2) {}
 
   @Output() read = new EventEmitter<IScroll>();
 
   @HostListener('scroll', ['$event.target']) onscroll(e: Element) {
+
+    const he = this.re.parentNode(this.el.nativeElement).querySelector('header');
     const { scrollHeight, scrollTop, clientHeight } = e;
+
+    if (scrollHeight < he.clientHeight + clientHeight)  return;
 
     if (scrollTop < this.scrollTop) {
       this.read.emit({ direct: -1, scrollTop });
@@ -20,7 +25,7 @@ export class ScrollDirective {
       this.read.emit({ direct: 1, scrollTop });
     }
 
-    if (scrollHeight <= scrollTop + clientHeight) {
+    if (scrollHeight === scrollTop + clientHeight) {
       this.read.emit({ direct: 0, scrollTop });
     }
 
