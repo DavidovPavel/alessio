@@ -8,7 +8,7 @@ import { ICollaboration } from '../core/types';
 @Component({
   selector: 'app-collaborations',
   templateUrl: './collaborations.component.html',
-  styleUrls: ['./collaborations.component.scss'],
+  styleUrls: ['../css/black.scss', './collaborations.component.scss'],
   animations: [expand('10.96vw')],
 })
 export class CollaborationsComponent implements OnInit {

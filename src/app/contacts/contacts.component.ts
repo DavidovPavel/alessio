@@ -32,7 +32,7 @@ import { Component } from '@angular/core';
     </p>
     <h2>follow</h2>
     <div [style.marginTop.vw]="0.43"><app-social></app-social></div>
-    <p>&nbsp;</p>`,
+    <p [style.height.vw]="3.8">&nbsp;</p>`,
   styles: [
     `
       :host {

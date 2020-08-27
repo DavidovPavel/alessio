@@ -8,7 +8,7 @@ import { IProject } from '../core/types';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss'],
+  styleUrls: ['../css/black.scss', './projects.component.scss'],
   animations: [expand('10.96vw')],
 })
 export class ProjectsComponent implements OnInit {

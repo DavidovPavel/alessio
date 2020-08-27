@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   currentYear = new Date().getFullYear();
   isOpen = false;
   isScroll = false;
-  isExpand = true;
+  isExpand = false;
 
   items: Observable<any[]>;
 

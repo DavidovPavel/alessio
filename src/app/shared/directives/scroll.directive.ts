@@ -25,7 +25,7 @@ export class ScrollDirective {
       this.read.emit({ direct: 1, scrollTop });
     }
 
-    if (scrollHeight === scrollTop + clientHeight) {
+    if (scrollHeight === scrollTop + clientHeight || scrollHeight === 0) {
       this.read.emit({ direct: 0, scrollTop });
     }
 

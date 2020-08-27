@@ -8,7 +8,7 @@ import { IExhibition } from '../core/types';
 @Component({
   selector: 'app-exhibitions',
   templateUrl: './exhibitions.component.html',
-  styleUrls: ['./exhibitions.component.scss'],
+  styleUrls: ['../css/black.scss', './exhibitions.component.scss'],
   animations: [expand()],
 })
 export class ExhibitionsComponent implements OnInit {

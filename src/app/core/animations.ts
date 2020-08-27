@@ -27,7 +27,7 @@ export const show2left = trigger('show2left', [
 ]);
 
 export const headOnScroll = trigger('headOnScroll', [
-  state('true', style({ 'margin-top': '-14.9vw' })),
+  state('true', style({ 'margin-top': '-15vw' })),
   state('false', style({ 'margin-top': 0 })),
   transition('true <=> false', [animate('0.5s')]),
 ]);
