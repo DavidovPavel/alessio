@@ -9,6 +9,8 @@ body {
   padding: 0;
   margin: 0;
   overflow: hidden;
+  font-size: 0.95vw;
+  letter-spacing: -.008vw;
 }
 
 a {
@@ -47,7 +49,7 @@ button:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 55px;
+  height: 4.2vw;
 }
 
 @font-face {

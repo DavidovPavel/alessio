@@ -9,6 +9,6 @@ import { ScrollDirective } from './directives/scroll.directive';
 @NgModule({
   declarations: [LangSwitchComponent, SocialComponent, ScrollDirective],
   imports: [CommonModule, FlexLayoutModule],
-  exports: [LangSwitchComponent, SocialComponent, ScrollDirective],
+  exports: [FlexLayoutModule, LangSwitchComponent, SocialComponent, ScrollDirective],
 })
 export class SharedModule {}

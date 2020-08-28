@@ -17,8 +17,15 @@ h1 {
     background-color: #000000;
   }
 
-  & a>img, span>img {
+  & a>img,
+  span>img,
+  span>span {
     width: 14.3vw;
+  }
+
+  & a>div {
+    text-align: center;
+    font-size: .6vw;
   }
 
 }
