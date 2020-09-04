@@ -1,39 +1,39 @@
 :host {
 
   & div.item {
+    position: relative;
     margin-bottom: .9vw;
+    overflow: hidden;
 
     & div.left {
+      margin-right: 1.8vw;
 
       img {
         width: 22vw;
+        display: block;
+        margin-bottom: 4vw;
       }
     }
 
-    & div {
-      position: relative;
-
-      & .text {
-        overflow: hidden;
-
-        p {
-          margin: 0;
-          text-align: justify;
-        }
+    & .text {
+      margin-top: -.6vw;
+      p {
+        margin: 0;
+        text-align: justify;
       }
+    }
 
-      span {
-        position: absolute;
-        right: 0;
-        margin-top: -2.2vw;
-        background-color: #1c1c1c;
-        cursor: pointer;
-        color: #ed1c24;
+    span.more {
+      position: absolute;
+      right: 0;
+      bottom: .6vw;
+      background-color: #1c1c1c;
+      cursor: pointer;
+      color: #ed1c24;
 
-        & span {
-          position: static;
-          color: white;
-        }
+      & span {
+        position: static;
+        color: white;
       }
     }
   }

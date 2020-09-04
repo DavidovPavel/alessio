@@ -8,14 +8,93 @@ h1 {
   font-weight: normal;
 }
 
+.medium {
+  position: relative;
+  margin-right: 3vw;
+
+  & img:first-child {
+    width: 30vw;
+  }
+
+  & img:last-child {
+    position: absolute;
+    bottom: .9vw;
+    right: .9vw;
+    cursor: pointer;
+  }
+}
+
 .prev-items {
-  width: 114px;
+  margin-right: 2.6vw;
 
   & img {
     cursor: pointer;
+    width: 9.4vw;
 
     &.active {
       border: solid 1px #e48179;
     }
   }
+}
+
+b {
+  display: block;
+}
+
+.h-1 {
+  font-size: 1.1vw;
+  letter-spacing: -.005vw;
+  line-height: 1.6vw;
+}
+
+.h-big {
+  font-size: 2.4vw;
+  letter-spacing: -.04px;
+  line-height: 2.7vw;
+}
+
+.h-2 {
+  font-size: 1.6vw;
+  letter-spacing: -.02vw;
+  line-height: 2.5vw;
+}
+
+.info {
+  font-size: 1.1vw;
+  line-height: 2vw;
+  letter-spacing: -.02vw;
+
+  & b {
+    display: inline;
+    font-size: 1.1vw;
+  }
+}
+
+.h-3 {
+  font-size: 1.1vw;
+  line-height: 2vw;
+  letter-spacing: .04vw;
+}
+
+button {
+  font-family: 'Trajan Pro';
+  font-size: 1.5vw;
+  letter-spacing: -.002vw;
+  font-weight: bold;
+  display: block;
+  margin-top: .8vw;
+  cursor: pointer;
+  text-transform: uppercase;
+  height: 4.5vw;
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.bottom {
+  padding: .8vw 0 1vw;
+  font-size: 1.1vw;
+  line-height: 1.6vw;
+  text-transform: uppercase;
+  font-weight: bold;
 }
