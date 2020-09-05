@@ -3,6 +3,14 @@ import { Observable, of } from 'rxjs';
 
 import { ICollaboration, IProject, IPublication } from './types';
 
+const textItem = `Alessio Romano, artist. Originally from Roma, Italy. For some reasons his mother moved to jg Russia when hi was so young. In Moscow
+he have got a russian name. He never mentioned his  inal ancestry until the end of carrier in marketing and advertising. Stroganov
+University o inal ancestry until the end of carrier in marketing and advertising. Stroganov University o & Design /Graphic &
+Alessio Romano, artist. Originally from Roma, Italy. For some reasons his mother moved to jg Russia when hi was so young. In Moscow
+he have got a russian name. He never mentioned his  inal ancestry until the end of carrier in marketing and advertising. Stroganov
+University o inal ancestry until the end of carrier in marketing and advertising. Stroganov University o & Design /Graphic
+`;
+
 const textStub = [
   `Alessio Romano, artist. Originally from Roma, Italy. For some reasons his mother moved to jg Russia when hi was so young. In Moscow
 he have got a russian name. He never mentioned his  inal ancestry until the end of carrier in marketing and advertising. Stroganov
@@ -43,12 +51,12 @@ export class ApiService {
 
   getExhibitions() {
     return of([
-      { name: 'apophenia', text: textStub },
-      { name: 'evasivemeaning', text: textStub },
-      { name: 'manipolazione', text: textStub },
-      { name: 'gravity', text: textStub },
-      { name: 'dream', text: textStub },
-      { name: 'hallucinatio', text: textStub },
+      {id: 0, text: [textItem, textItem] },
+      {id: 1, text: [textItem, textItem], margin: ['0 -2vw 0 -2vw'] },
+      {id: 2, text: [textItem, textItem] },
+      {id: 3, text: [textItem, textItem] },
+      {id: 4, text: [textItem, textItem] },
+      {id: 5, text: [textItem, textItem] },
     ]);
   }
 

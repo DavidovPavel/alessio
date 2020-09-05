@@ -4,11 +4,21 @@
     color: white;
   }
 
-
   & .items {
-    img {
+    margin: 5vw 0;
+
+    & .photos {
+      img {
+        width: 75vw;
+      }
+    }
+
+    & .prev {
       cursor: pointer;
-      width: 75vw;
+
+      img {
+        width: 100%;
+      }
     }
 
     div {

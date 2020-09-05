@@ -5,9 +5,11 @@ export interface ICollaboration {
 }
 
 export interface IExhibition {
+  id: number;
   name: string;
   text: string[];
   expand?: boolean;
+  margin?: string;
 }
 
 export interface IProject {

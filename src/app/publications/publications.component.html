@@ -2,16 +2,15 @@
    <h1>&nbsp;</h1>
    <app-lang-switch></app-lang-switch>
  </div>
- <div *ngFor="let item of items$ | async" fxLayout fxLayoutGap="1.7vw" class="item">
+ <div *ngFor="let item of items$ | async" fxLayout class="item" [@expand]="!!item.expand">
    <div class="left"><img src="assets/images/publications/{{item.name}}.png" alt=""></div>
-   <div>
-     <div [@expand]="!!item.expand" class="text">
-       <p *ngFor="let p of item.text">
-         {{p}}        
-       </p>
-     </div>
-     <span (click)="item.expand = !item.expand"><span *ngIf="!item.expand">...</span>&nbsp;&nbsp;&nbsp;{{ item.expand ? 'see less' : 'see more' }}</span>
+   <div class="text">
+     <p *ngFor="let p of item.text">
+       {{p}}
+     </p>
    </div>
+   <span (click)="item.expand = !item.expand"><span
+       *ngIf="!item.expand">...</span>&nbsp;&nbsp;&nbsp;{{ item.expand ? 'see less' : 'see more' }}</span>
  </div>
 
  <app-social></app-social>

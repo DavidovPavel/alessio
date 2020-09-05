@@ -1,7 +1,9 @@
 <div *ngFor="let item of items$ | async" class="items">
-  <img src="assets/images/exibition/{{item.name}}.png" alt="" (click)="item.expand=true">
+  <div class="prev" [ngStyle]="{margin: item.margin}"><img src="assets/images/exibition/{{item.id}}.png" alt="" (click)="item.expand=true"></div>
   <div [@expand]="!!item.expand">
-    <p *ngFor="let p of item.text">{{p}}</p>
+    <p>{{item.text[0]}}</p>
+    <div class="photos"><img src="assets/images/exibition/{{item.id}}/1.png" alt="" /></div>
+    <p>{{item.text[1]}}</p>
   </div>
 </div>
 

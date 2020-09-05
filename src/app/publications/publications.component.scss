@@ -2,43 +2,43 @@
   display: block;
   padding: 0 12% 0 13%;
   line-height: 2.2vw;
-  
+
   & div.item {
-    margin-bottom: .9vw;
+    position: relative;
+    margin-bottom: 1.6vw;
+    overflow: hidden;
 
     & div.left {
+      margin-right: 1.8vw;
 
       img {
         width: 22vw;
+        display: block;
+        margin-bottom: 4vw;
       }
     }
 
-    & div {
-      position: relative;
+    & .text {
+      margin-top: -.6vw;
 
-      & .text {
-        overflow: hidden;
-
-        p {
-          margin: 0;
-          text-align: justify;
-        }
+      p {
+        margin: 0;
+        text-align: justify;
       }
+    }
 
-      span {
-        position: absolute;
-        right: 0;
-        margin-top: -2.2vw;
-        background-color: white;
-        cursor: pointer;
-        color: #ed1c24;
+    span {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      background-color: white;
+      cursor: pointer;
+      color: #ed1c24;
 
-        & span {
-          position: static;
-          color: black;
-        }
+      & span {
+        position: static;
+        color: black;
       }
     }
   }
-
 }

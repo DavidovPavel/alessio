@@ -9,7 +9,7 @@ import { IProject } from '../core/types';
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['../css/black.scss', './projects.component.scss'],
-  animations: [expand('10.96vw')],
+  animations: [expand('12.5vw')],
 })
 export class ProjectsComponent implements OnInit {
   items$: Observable<IProject[]>;

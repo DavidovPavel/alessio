@@ -9,7 +9,7 @@ import { IPublication } from '../core/types';
   selector: 'app-publications',
   templateUrl: './publications.component.html',
   styleUrls: ['./publications.component.scss'],
-  animations: [expand('10.96vw')],
+  animations: [expand('12.5vw')],
 })
 export class PublicationsComponent implements OnInit {
   items$: Observable<IPublication[]>;

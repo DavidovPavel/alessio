@@ -39,6 +39,7 @@ import { Component } from '@angular/core';
         text-align: center;
         display: block;
         padding: 0 12% 0 13%;
+        background: url('assets/images/contacts_bg.png') top right;
       }
       p {
         font-size: 1.1vw;
