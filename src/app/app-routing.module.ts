@@ -13,7 +13,7 @@ import { SubscribeComponent } from './subscribe/subscribe.component';
 import { VideoComponent } from './video/video.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: MetadataComponent },
   { path: 'login', component: LoginComponent },
   { path: 'subscribe', component: SubscribeComponent },
   { path: 'metadata', component: MetadataComponent },

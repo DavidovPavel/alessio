@@ -52,7 +52,7 @@ export class ApiService {
   getExhibitions() {
     return of([
       {id: 0, text: [textItem, textItem] },
-      {id: 1, text: [textItem, textItem], margin: ['0 -2vw 0 -2vw'] },
+      {id: 1, text: [textItem, textItem], margin: '0 -2vw 0 -2vw' },
       {id: 2, text: [textItem, textItem] },
       {id: 3, text: [textItem, textItem] },
       {id: 4, text: [textItem, textItem] },

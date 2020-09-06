@@ -12,11 +12,11 @@ import { ItemComponent } from './item/item.component';
 
 const routes: Routes = [
   { path: '', component: BuyComponent },
-  { path: 'projects/:id', component: ColorComponent },
-  { path: 'projects/:id/colors/:id', component: CategoryComponent },
-  { path: 'projects/:id/colors/:id/category/:id', component: CollectionsComponent },
-  { path: 'projects/:id/colors/:id/category/:id/collections/:id/180', component: CollectionComponent },
-  { path: 'projects/:id/colors/:id/category/:id/collections/:id/180/:id', component: ItemComponent },
+  { path: 'projects/:id', component: CategoryComponent },
+  { path: 'projects/:id/category/:id', component: ColorComponent },
+  { path: 'projects/:id/category/:id/colors/:id', component: CollectionsComponent },
+  { path: 'projects/:id/category/:id/colors/:id/collections/:id/180', component: CollectionComponent },
+  { path: 'projects/:id/category/:id/colors/:id/collections/:id/180/:id', component: ItemComponent },
 ];
 
 @NgModule({
