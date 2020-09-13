@@ -1,0 +1,11 @@
+<app-header [lopped]=true></app-header>
+<div class="main" fxLayout="column">
+  <h1>collector's account</h1>
+  <div class="tool" fxLayout fxLayoutAlign="space-between">
+    <a routerLink="dashboard">account dashboard</a>
+    <a routerLink="order">my order</a>
+    <a routerLink="address">the address</a>
+    <a routerLink="info">account information</a>
+  </div>
+  <router-outlet></router-outlet>
+</div>

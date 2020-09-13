@@ -8,9 +8,9 @@ body {
   color: #000000;
   padding: 0;
   margin: 0;
-  overflow: hidden;
   font-size: 0.95vw;
   letter-spacing: -.008vw;
+  overflow: hidden;
 }
 
 a {
@@ -31,11 +31,11 @@ button:focus {
     top: -.7vw;
   }
 
-  & span {   
+  & span {
     position: absolute;
     width: 0px;
     height: 0px;
-    border: .25vw solid;
+    border: .27vw solid;
     border-color:
       transparent #ffffff #ffffff transparent;
     transform: rotate(-45deg);
@@ -45,11 +45,9 @@ button:focus {
   }
 }
 
-.title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 4.2vw;
+.arrow.black span {
+  border-color:
+      transparent #000000 #000000 transparent;
 }
 
 @font-face {

@@ -2,11 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-contacts',
-  template: ` <div class="title">
-      <h1>&nbsp;</h1>
-      <app-lang-switch></app-lang-switch>
-    </div>
-    <div [style.marginTop.vw]="-3.4">
+  template: `<div [style.marginTop.vw]="-3.4">
       <h1>contacts</h1>
       <h2>general information</h2>
       <p>
@@ -33,16 +29,12 @@ import { Component } from '@angular/core';
       </p>
       <h2>follow</h2>
     </div>
-    <div [style.marginTop.vw]="0.43"><app-social></app-social></div>
+    <div [style.marginTop.vw]="0.43"><app-social [style.position]="'static'"></app-social></div>
     <p [style.height.vw]="3.8">&nbsp;</p>`,
   styles: [
     `
       :host {
         text-align: center;
-        display: block;
-        padding: 0 12% 0 13%;
-        background: url('assets/images/contacts_bg.png') top right no-repeat;
-        background-size: contain;
       }
       p {
         font-size: 1.1vw;

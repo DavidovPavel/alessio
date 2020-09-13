@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { BaseComponent } from '../core/types';
+
 
 @Component({
   selector: 'app-metadata',
   templateUrl: './metadata.component.html',
-  styleUrls: ['../css/black.scss', './metadata.component.scss']
+  styleUrls: ['./metadata.component.scss'],
 })
-export class MetadataComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class MetadataComponent extends BaseComponent {}

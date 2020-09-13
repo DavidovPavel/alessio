@@ -1,3 +1,5 @@
+export abstract class BaseComponent {}
+
 export interface ICollaboration {
   name: string;
   text: string[];

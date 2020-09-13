@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { expand, opacity } from '../core/animations';
+import { expand } from '../core/animations';
 import { ApiService } from '../core/api.service';
 import { ICollaboration } from '../core/types';
 
 @Component({
   selector: 'app-collaborations',
   templateUrl: './collaborations.component.html',
-  styleUrls: ['../css/black.scss', './collaborations.component.scss'],
+  styleUrls: ['./collaborations.component.scss'],
   animations: [expand('12.5vw')],
 })
 export class CollaborationsComponent implements OnInit {

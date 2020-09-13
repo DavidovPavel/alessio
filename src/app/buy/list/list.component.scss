@@ -1,0 +1,23 @@
+.items {
+    margin-bottom: 1.4vw;
+    line-height: 1;
+  
+    span {
+      width: 14.3vw;
+      height: 14.3vw;
+      background-color: #000000;
+    }
+  
+    & a>img,
+    span>img,
+    span>span {
+      width: 14.3vw;
+    }
+  
+    & a>div {
+      text-align: center;
+      font-size: .6vw;
+      margin-top: .4vw;
+    }
+  }
+  

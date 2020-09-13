@@ -14,7 +14,7 @@ export class ScrollDirective {
 
   @HostListener('scroll', ['$event.target']) onscroll(e: Element) {
 
-    const he = this.re.parentNode(this.el.nativeElement).querySelector('header');
+    const he = this.re.parentNode(this.el.nativeElement).querySelector('app-header');
     const { scrollHeight, scrollTop, clientHeight } = e;
 
     if (scrollHeight < he.clientHeight + clientHeight)  return;

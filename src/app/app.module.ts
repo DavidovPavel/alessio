@@ -10,11 +10,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CollaborationsComponent } from './collaborations/collaborations.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { DriveModule } from './drive/drive.module';
 import { ExhibitionsComponent } from './exhibitions/exhibitions.component';
 import { LegaltermsComponent } from './legalterms/legalterms.component';
 import { LoginComponent } from './login/login.component';
 import { MetadataComponent } from './metadata/metadata.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProjectsComponent } from './projects/projects.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { SharedModule } from './shared/shared.module';
 import { SubscribeComponent } from './subscribe/subscribe.component';
@@ -33,6 +35,7 @@ import { VideoComponent } from './video/video.component';
     PublicationsComponent,
     VideoComponent,
     PageNotFoundComponent,
+    ProjectsComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -42,6 +45,7 @@ import { VideoComponent } from './video/video.component';
     AngularFirestoreModule,
     AppRoutingModule,
     SharedModule,
+    DriveModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,7 +1,3 @@
- <div class="title">
-   <h1>&nbsp;</h1>
-   <app-lang-switch></app-lang-switch>
- </div>
  <div *ngFor="let item of items$ | async" fxLayout class="item" [@expand]="!!item.expand">
    <div class="left"><img src="assets/images/publications/{{item.name}}.png" alt=""></div>
    <div class="text">
