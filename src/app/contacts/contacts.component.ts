@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-contacts',
   template: `<div [style.marginTop.vw]="-3.4">
-      <h1>contacts</h1>
       <h2>general information</h2>
       <p>
         info@alessioromano.com. All rights on this site and it’s contents reserved to Alessio Romano.<br />

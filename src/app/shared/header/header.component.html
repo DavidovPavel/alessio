@@ -4,18 +4,18 @@
 <div id="corp">
   <div class="top" [ngClass]="{white: lopped}" fxLayout fxLayoutAlign="space-between">
     <span class="left" fxLayout fxLayoutAlign="space-between">
-      <a routerLink="/account" i18n>subscribe for our newsletter</a>
-      <a routerLink="/login" i18n>sign up</a>
+      <a routerLink="/account">subscribe for our newsletter</a>
+      <a routerLink="/login">sign up</a>
     </span>
     <span class="right" fxLayout fxLayoutAlign="space-between">
-      <a routerLink="/login" i18n>login</a>
-      <span>&copy;&nbsp;Alessio Romano.&nbsp;<span i18n>All right reserved</span>.&nbsp;{{ currentYear }}</span>
+      <a routerLink="/login">login</a>
+      <span>&copy;&nbsp;Alessio Romano.&nbsp;<span>All right reserved</span>.&nbsp;{{ currentYear }}</span>
     </span>
   </div>
   <ng-container *ngIf="!lopped">
     <div class="logo"><a routerLink="/"><img src="assets/logo.png" alt="Alessio Romano"></a></div>
     <div class="menu" fxLayout fxLayoutAlign="space-between">
-      <a *ngFor="let item of menu" [routerLink]="['/', item.name]" i18n>{{ item.name }}</a>
+      <a *ngFor="let item of menu" [routerLink]="['/', item.name]">{{ item.name }}</a>
     </div>
   </ng-container>
 </div>

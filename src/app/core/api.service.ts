@@ -53,6 +53,7 @@ export class ApiService {
 
   getCollaborations(): Observable<ICollaboration[]> {
     return of([
+      { name: 'apophenia', text: textStub },
       { name: 'dream', text: textStub },
       { name: 'meaning', text: textStub },
     ]);

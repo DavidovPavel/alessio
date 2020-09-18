@@ -23,12 +23,17 @@ const routes: Routes = [
     data: { index: 11 },
   },
   {
-    path: 'projects/:project_id/category/:category_id/colors/:color_id/collections/:collection_id/180',
+    path: 'projects/:project_id/category/:category_id/colors/:color_id/collections/:collection_id',
+    redirectTo: 'projects/:project_id/category/:category_id/colors/:color_id/collections/:collection_id/0',
+    pathMatch: 'full'
+  },
+  {
+    path: 'projects/:project_id/category/:category_id/colors/:color_id/collections/:collection_id/:size_id',
     component: DriveComponent,
     data: { index: 12 },
   },
   {
-    path: 'projects/:project_id/category/:category_id/colors/:color_id/collections/:collection_id/180/:id',
+    path: 'projects/:project_id/category/:category_id/colors/:color_id/collections/:collection_id/:size_id/:id',
     component: DriveComponent,
     data: { index: 13 },
   },

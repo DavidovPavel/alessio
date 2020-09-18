@@ -1,15 +1,18 @@
-<div *ngFor="let item of items$ | async" fxLayout class="item" [@expand]="!!item.expand">
-  <div class="left">
+<div *ngFor="let item of items$ | async" class="item" [@expand]="!!item.expand">
+  <p class="vertical">
     <img src="assets/images/collaborations/{{item.name}}.png" alt="">
-    <img src="assets/images/collaborations/{{item.name}}_.png" alt="">
-  </div>
-  <div class="text">
-    <p *ngFor="let p of item.text">
-      {{p}}
-    </p>
-  </div>
+    <img src="assets/images/collaborations/{{item.name}}_.png" alt="">    
+  </p>
+  <p *ngFor="let p of item.text; let i=index">
+    {{p}}
+    <ng-container *ngIf="i===1">
+      <p>
+        <img src="assets/images/collaborations/{{item.name}}__.png" alt="" style="width: 100%;" />
+      </p>
+    </ng-container>
+  </p>
   <span class="more" (click)="item.expand = !item.expand"><span
-    *ngIf="!item.expand">...</span>&nbsp;&nbsp;&nbsp;&nbsp;{{ item.expand ? 'see less' : 'see more' }}</span>
+      *ngIf="!item.expand">...</span>&nbsp;&nbsp;&nbsp;&nbsp;{{ item.expand ? 'see less' : 'see more' }}</span>
 </div>
 
 <app-social [bg]="'dark'"></app-social>

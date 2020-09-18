@@ -1,4 +1,3 @@
-import '@angular/localize/init';
 import 'zone.js/dist/zone-node';
 
 import { APP_BASE_HREF } from '@angular/common';
@@ -14,9 +13,9 @@ import { AppServerModule } from './src/main.server';
 (global as any).XMLHttpRequest = require('xhr2');
 
 // The Express app is exported so that it can be used by serverless Functions.
-export function app(lang: string) {
+export function app() {
   const server = express();
-  const distFolder = join(process.cwd(), `dist/alessio/browser/${lang}`);
+  const distFolder = join(process.cwd(), `dist/alessio/browser`);
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
@@ -52,13 +51,8 @@ function run() {
   const port = process.env.PORT || 3000;
 
   // Start up the Node server
-  const appIt = app('it');
-  const appEn = app('en');
-
   const server = express();
-  server.use('/it', appIt);
-  server.use('/en', appEn);
-  server.use('', appEn);
+  server.use('', app());
 
   server.listen(port, () => {
     console.log(`Node Express server listening on http://localhost:${port}`);

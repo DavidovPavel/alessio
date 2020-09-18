@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'metadata', pathMatch: 'full' },
+  { path: '', redirectTo: 'buy', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'account', loadChildren: () => import('./account/account.module').then((m) => m.AccountModule) },
   { path: 'metadata', component: DriveComponent, data: { index: 0 } },

@@ -25,7 +25,7 @@ import { ApiService, IMenu } from '../core/api.service';
             </li>
             <ul [@expand]="isExpand">
               <li *ngFor="let a of item.children">
-                <a routerLink="/buy/projects/1/category/{{ a.id }}" i18n>{{ a.name }}</a>
+                <a routerLink="/buy/projects/1/category/{{ a.id }}">{{ a.name }}</a>
               </li>
             </ul>
           </ng-template>
