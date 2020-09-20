@@ -1,42 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { StoreCollections } from '../core/store';
 
 @Component({
   selector: 'app-collections',
-  template: ` <div fxLayout fxLayoutAlign="space-between" class="items">
-      <a routerLink="collections/1/0"
-        ><img src="assets/images/store/collections/1.png" alt="" />
-        <div>Сhaos code</div>
+  template: `<div fxLayout fxLayoutAlign="space-between" class="items" *ngFor="let group of groups">
+    <ng-container *ngFor="let item of group">
+      <a *ngIf="item.inActive; else dummy" routerLink="collections/{{ item.id }}/0"
+        ><img src="assets/images/store/collections/{{ item.id }}.png" alt="{{ item.title }}" />
+        <div>{{ item.title }}</div>
       </a>
-      <a routerLink="collections/2/0"
-        ><img src="assets/images/store/collections/2.png" alt="" />
-        <div>east</div>
-      </a>
-      <a routerLink="collections/3/0"
-        ><img src="assets/images/store/collections/3.png" alt="" />
-        <div>Сhaos</div>
-      </a>
-      <a routerLink="collections/4/0"
-        ><img src="assets/images/store/collections/4.png" alt="" />
-        <div>indian</div>
-      </a>
-    </div>
-    <div fxLayout fxLayoutAlign="space-between" class="items">
-      <span></span>
-      <a routerLink="collections/5/0"
-        ><img src="assets/images/store/collections/5.png" alt="" />
-        <div>europe</div>
-      </a>
-      <a routerLink="collections/6/0"
-        ><img src="assets/images/store/collections/6.png" alt="" />
-        <div>middle east</div>
-      </a>
-      <span></span>
-    </div>
-    <app-social></app-social>`,
+      <ng-template #dummy>
+        <span [appHover]="item.inActive">
+          <span><span *ngIf="!item.inActive" class="under">UNDER CONSTRACTION</span></span>
+          <div>{{ item.title }}</div>
+        </span>
+      </ng-template>
+    </ng-container>
+    <app-social></app-social>
+  </div>`,
   styleUrls: ['./list/list.component.scss'],
 })
-export class CollectionsComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+export class CollectionsComponent {
+  groups = StoreCollections;
 }

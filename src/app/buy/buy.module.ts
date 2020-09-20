@@ -11,6 +11,7 @@ import { ColorComponent } from './color.component';
 import { ItemComponent } from './item/item.component';
 import { ListComponent } from './list/list.component';
 import { ProjectsComponent } from './projects.component';
+import { HoverDirective } from './hover.directive';
 
 const routes: Routes = [
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
@@ -25,7 +26,7 @@ const routes: Routes = [
   {
     path: 'projects/:project_id/category/:category_id/colors/:color_id/collections/:collection_id',
     redirectTo: 'projects/:project_id/category/:category_id/colors/:color_id/collections/:collection_id/0',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'projects/:project_id/category/:category_id/colors/:color_id/collections/:collection_id/:size_id',
@@ -54,6 +55,7 @@ export class BuyRoutingModule {}
     CollectionsComponent,
     CollectionComponent,
     ItemComponent,
+    HoverDirective,
   ],
   imports: [CommonModule, BuyRoutingModule, SharedModule],
 })

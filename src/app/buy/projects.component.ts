@@ -1,20 +1,23 @@
 import { Component } from '@angular/core';
 
+import { StoreProjects } from '../core/store';
+
 @Component({
   selector: 'app-projects',
-  template: `<div fxLayout fxLayoutAlign="space-between start" class="items">
-      <a routerLink="1"><img src="assets/images/store/projects/1.png" alt="" /></a>
-      <a routerLink="2"><img src="assets/images/store/projects/2.png" alt="" /></a>
-      <a routerLink="3"><img src="assets/images/store/projects/3.png" alt="" /></a>
-      <a routerLink="4"><img src="assets/images/store/projects/4.png" alt="" /></a>
-    </div>
-    <div fxLayout fxLayoutAlign="space-between start" class="items">
-      <span><img src="assets/images/store/projects/x.png" alt="" /></span>
-      <a routerLink="5"><img src="assets/images/store/projects/5.png" alt="" /></a>
-      <a routerLink="6"><img src="assets/images/store/projects/6.png" alt="" /></a>
-      <span></span>
+  template: ` <div fxLayout fxLayoutAlign="space-between start" class="items" *ngFor="let group of groups">
+      <ng-container *ngFor="let item of group">
+        <a [appHover]="item.inActive" *ngIf="item.id; else dummy" routerLink="{{ item.inActive ? item.id : null }}">
+          <span *ngIf="!item.inActive" class="under">UNDER CONSTRACTION</span>
+          <img src="assets/images/store/projects/{{ item.id }}.png" alt="{{ item.title }}"
+        /></a>
+        <ng-template #dummy
+          ><span><img *ngIf="item.img" src="assets/images/store/projects/{{ item.img || item.id }}.png" alt="" /></span
+        ></ng-template>
+      </ng-container>
     </div>
     <app-social></app-social>`,
   styleUrls: ['./list/list.component.scss'],
 })
-export class ProjectsComponent {}
+export class ProjectsComponent {
+  groups = StoreProjects;
+}

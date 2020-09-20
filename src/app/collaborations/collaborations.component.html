@@ -1,16 +1,14 @@
 <div *ngFor="let item of items$ | async" class="item" [@expand]="!!item.expand">
   <p class="vertical">
     <img src="assets/images/collaborations/{{item.name}}.png" alt="">
-    <img src="assets/images/collaborations/{{item.name}}_.png" alt="">    
+    <img src="assets/images/collaborations/{{item.name}}_.png" alt="">
   </p>
-  <p *ngFor="let p of item.text; let i=index">
-    {{p}}
-    <ng-container *ngIf="i===1">
-      <p>
-        <img src="assets/images/collaborations/{{item.name}}__.png" alt="" style="width: 100%;" />
-      </p>
-    </ng-container>
-  </p>
+  <ng-container *ngFor="let p of item.text; let i=index">
+    <p>{{p}}</p>
+    <p *ngIf="i===1" style="line-height: 1;">
+      <img src="assets/images/collaborations/{{item.name}}__.png" alt="" style="width: 100%;" />
+    </p>
+  </ng-container>
   <span class="more" (click)="item.expand = !item.expand"><span
       *ngIf="!item.expand">...</span>&nbsp;&nbsp;&nbsp;&nbsp;{{ item.expand ? 'see less' : 'see more' }}</span>
 </div>

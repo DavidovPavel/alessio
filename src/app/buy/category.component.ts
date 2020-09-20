@@ -1,48 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { StoreCategory } from '../core/store';
 
 @Component({
   selector: 'app-category',
-  template: ` <div fxLayout fxLayoutAlign="space-between" class="items">
-      <a routerLink="category/1">
-        <img src="assets/images/store/category/1.png" alt="" />
-        <div>art</div>
-      </a>
-      <a routerLink="category/2">
-        <img src="assets/images/store/category/2.png" alt="" />
-        <div>installation</div>
-      </a>
-      <a routerLink="category/3">
-        <img src="assets/images/store/category/3.png" alt="" />
-        <div>print</div>
-      </a>
-      <span>
-        <span></span>
-        <div>collection 4 home</div>
-      </span>
-    </div>
-    <div fxLayout fxLayoutAlign="space-between" class="items">
-      <span>
-        <span></span>
-        <div>collection 4 man</div>
-      </span>
-      <span>
-        <span></span>
-        <div>souvenirs</div>
-      </span>
-      <span>
-        <span></span>
-        <div>accessory</div>
-      </span>
-      <span>
-        <span></span>
-        <div>collection 4 woman</div>
-      </span>
+  template: `<div fxLayout fxLayoutAlign="space-between" class="items" *ngFor="let group of groups">
+      <ng-container *ngFor="let item of group">
+        <a *ngIf="item.inActive; else dummy" routerLink="category/{{ item.id }}">
+          <img src="assets/images/store/category/{{ item.id }}.png" alt="{{ item.title }}" />
+          <div>{{ item.title }}</div>
+        </a>
+        <ng-template #dummy>
+          <span [appHover]="item.inActive">
+            <span><span *ngIf="!item.inActive" class="under">UNDER CONSTRACTION</span></span>
+            <div>{{ item.title }}</div>
+          </span>
+        </ng-template>
+      </ng-container>
     </div>
     <app-social></app-social>`,
   styleUrls: ['./list/list.component.scss'],
 })
-export class CategoryComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+export class CategoryComponent {
+  groups = StoreCategory;
 }
