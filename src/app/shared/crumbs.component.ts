@@ -5,63 +5,63 @@ import { ParamMap } from '@angular/router';
   selector: 'app-crumbs',
   template: `
     <h1>
-      <ng-container *ngIf="params.keys.includes('category_id') || params.keys.includes('project_id')">
+      <ng-container
+        *ngIf="
+          params.keys.includes('category') || params.keys.includes('project')
+        "
+      >
         <span>Type</span> | <a routerLink="/buy/projects">Project</a> |
         <a
-          [routerLink]="['/buy/projects/', params.get('project_id')]"
+          [routerLink]="['/buy/projects/', params.get('project')]"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
-          >{{ projects[params.get('project_id')] }}</a
+          >{{ current.project }}</a
         >
       </ng-container>
-      <ng-container *ngIf="params.keys.includes('color_id')">
+      <ng-container *ngIf="params.keys.includes('color')">
         |
         <a
           [routerLink]="[
             '/buy/projects/',
-            params.get('project_id'),
-            'category',
-            params.get('category_id'),
-            'colors',
-            params.get('color_id')
+            params.get('project'),
+            params.get('category'),
+            params.get('color')
           ]"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
-          >{{ colors[params.get('color_id')] }}</a
+          >{{ current.color }}</a
         >
       </ng-container>
-      <ng-container *ngIf="params.keys.includes('size_id') || params.keys.includes('collection_id')">
+      <ng-container
+        *ngIf="
+          params.keys.includes('size') || params.keys.includes('collection')
+        "
+      >
         |
         <a
           [routerLink]="[
             '/buy/projects/',
-            params.get('project_id'),
-            'category',
-            params.get('category_id'),
-            'colors',
-            params.get('color_id'),
-            'collections',
-            params.get('collection_id')
+            params.get('project'),
+            params.get('category'),
+            params.get('color'),
+            params.get('collection')
           ]"
-          >{{ collections[params.get('collection_id')] }}</a
+          >{{ current.collection }}</a
         >
         |
-        <ng-container *ngFor="let size of sizes; let i = index; let last = last">
+        <ng-container *ngFor="let size of collectionSize; let last = last">
           <a
             [routerLink]="[
               '/buy/projects/',
-              params.get('project_id'),
-              'category',
-              params.get('category_id'),
-              'colors',
-              params.get('color_id'),
-              'collections',
-              params.get('collection_id'),
-              i
+              params.get('project'),
+              params.get('category'),
+              params.get('color'),
+              params.get('collection'),
+              size.id
             ]"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
-            >{{ size }}</a
+            >{{ size.title }}</a
           >
           <ng-container *ngIf="!last"> | </ng-container>
         </ng-container>
@@ -81,36 +81,28 @@ import { ParamMap } from '@angular/router';
 })
 export class CrumbsComponent implements OnInit {
   @Input() params: ParamMap;
-
-  projects = [
-    '',
-    'Singularity Synchronicity Apophenia',
-    'Evasive Elusive Meaning',
-    'Gravitation Singularity',
-    'Dream Pressure',
-    'Hallucinatio',
-    'Sociale',
-  ];
-
-  colors = [
-    '',
-    'black',
-    'oro',
-    'sacro',
-    'grigio',
-    'zaffiro',
-    'ametista',
-    'topazio',
-    'smeraldo',
-    'commedia dell’arte',
-    'sole',
-  ];
-
-  collections = ['', 'Сhaos code', 'east', 'Сhaos', 'indian', 'europe', 'middle east'];
-
-  sizes = ['180x180', '150x150', '100x100', '50x50'];
-
+  current = { project: '', collection: '', color: '' };
+  collectionSize = [];
+  // store = this.storage.store;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const points = ['project', 'category', 'color', 'collection'];
+
+    // this.current.project =
+    //   this.store.project.find((a) => a.id === +this.params.get('project'))
+    //     ?.title || '';
+    // this.current.color =
+    //   this.store.color.find((a) => a.id === +this.params.get('color'))?.title ||
+    //   '';
+    // const currentCollection = this.store.сollection.find(
+    //   (a) => a.id === +this.params.get('collection'),
+    // );
+    // this.current.collection = currentCollection?.title || '';
+    // this.collectionSize =
+    //   currentCollection?.size.map((id) => ({
+    //     id,
+    //     title: this.store.size.find((b) => b.id === id).title,
+    //   })) || [];
+  }
 }

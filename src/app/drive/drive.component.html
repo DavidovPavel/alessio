@@ -7,5 +7,5 @@
     </ng-template>
     <app-lang-switch [color]="!isWhite ? 'white': ''"></app-lang-switch>
   </div>
-  <ng-container *ngComponentOutlet="CurrentComponent"></ng-container>
+  <ng-container *ngComponentOutlet="currentComponent; injector: injector"></ng-container>
 </main>

@@ -23,7 +23,8 @@
               "@firebase/firestore",
               "@firebase/auth",
               "@firebase/component",
-              "@firebase/util"
+              "@firebase/util",
+              "@angular/fire/firestore"
             ],
             "outputPath": "dist/alessio/browser",
             "index": "src/index.html",
@@ -43,10 +44,12 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [{
-                "replace": "src/environments/environment.ts",
-                "with": "src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -55,7 +58,8 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [{
+              "budgets": [
+                {
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
@@ -146,10 +150,12 @@
           "configurations": {
             "production": {
               "outputHashing": "media",
-              "fileReplacements": [{
-                "replace": "src/environments/environment.ts",
-                "with": "src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "sourceMap": false,
               "optimization": true
             }
@@ -179,6 +185,15 @@
           },
           "configurations": {
             "production": {}
+          }
+        },
+        "eslint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.component.html"
+            ]
           }
         }
       }

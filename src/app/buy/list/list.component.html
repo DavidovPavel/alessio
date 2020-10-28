@@ -1,1 +1,5 @@
-<p>list works!</p>
+<div fxLayout fxLayoutAlign="space-between" class="items" *ngFor="let items of groups$ | async">
+  <ng-container *ngFor="let item of items">
+    <app-list-item [item]="item" [storeName]="storeName" [hideTitle]="hideTitle"></app-list-item>
+  </ng-container>
+</div>

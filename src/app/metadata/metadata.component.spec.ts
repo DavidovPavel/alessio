@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MetadataComponent } from './metadata.component';
 
@@ -6,12 +6,11 @@ describe('MetadataComponent', () => {
   let component: MetadataComponent;
   let fixture: ComponentFixture<MetadataComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [ MetadataComponent ]
-    })
-    .compileComponents();
-  }));
+      declarations: [MetadataComponent],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MetadataComponent);

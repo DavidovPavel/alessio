@@ -8,8 +8,8 @@ export interface IMenu {
   children?: { id: number; name: string }[];
 }
 
-const textItem = `Alessio Romano, artist. Originally from Roma, Italy. For some reasons his mother moved to jg Russia when hi was so young. In Moscow
-he have got a russian name. He never mentioned his  inal ancestry until the end of carrier in marketing and advertising. Stroganov
+const textItem = `Alessio Romano, artist. Originally from Roma, Italy. For some reasons his mother moved to jg Russia when hi was so young.
+In Moscow he have got a russian name. He never mentioned his  inal ancestry until the end of carrier in marketing and advertising. Stroganov
 University o inal ancestry until the end of carrier in marketing and advertising. Stroganov University o & Design /Graphic &
 Alessio Romano, artist. Originally from Roma, Italy. For some reasons his mother moved to jg Russia when hi was so young. In Moscow
 he have got a russian name. He never mentioned his  inal ancestry until the end of carrier in marketing and advertising. Stroganov

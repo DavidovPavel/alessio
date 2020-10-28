@@ -4,58 +4,69 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DriveComponent } from '../drive/drive.component';
 import { SharedModule } from '../shared/shared.module';
-import { CategoryComponent } from './category.component';
 import { CollectionComponent } from './collection.component';
-import { CollectionsComponent } from './collections.component';
-import { ColorComponent } from './color.component';
 import { ItemComponent } from './item/item.component';
+import { ListItemComponent } from './list/list-item/list-item.component';
 import { ListComponent } from './list/list.component';
-import { ProjectsComponent } from './projects.component';
-import { HoverDirective } from './hover.directive';
+import { UnderDirective } from './under.directive';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'projects', pathMatch: 'full' },
-  { path: 'projects', component: DriveComponent, data: { index: 8, title: 'Projects' } },
-  { path: 'projects/:project_id', component: DriveComponent, data: { index: 9 } },
-  { path: 'projects/:project_id/category/:category_id', component: DriveComponent, data: { index: 10 } },
+  { path: '', redirectTo: 'catalog', pathMatch: 'full' },
   {
-    path: 'projects/:project_id/category/:category_id/colors/:color_id',
+    path: 'catalog',
     component: DriveComponent,
-    data: { index: 11 },
+    data: { index: 8, title: 'Projects', name: 'project' },
   },
   {
-    path: 'projects/:project_id/category/:category_id/colors/:color_id/collections/:collection_id',
-    redirectTo: 'projects/:project_id/category/:category_id/colors/:color_id/collections/:collection_id/0',
+    path: 'catalog/:project',
+    component: DriveComponent,
+    data: { index: 8, name: 'category' },
+  },
+  {
+    path: 'catalog/:project/:category',
+    component: DriveComponent,
+    data: { index: 8, name: 'color' },
+  },
+
+  {
+    path: 'catalog/:project/:category/:color',
+    component: DriveComponent,
+    data: { index: 8, name: 'collection' },
+  },
+
+  {
+    path: 'catalog/:project/:category/:color/:collection',
+    redirectTo: 'catalog/:project/:category/:color/:collection/:size',
     pathMatch: 'full',
   },
+
   {
-    path: 'projects/:project_id/category/:category_id/colors/:color_id/collections/:collection_id/:size_id',
+    path: 'catalog/:project/:category/:color/:collection/:size',
     component: DriveComponent,
-    data: { index: 12 },
+    data: { index: 9 },
   },
+
+
   {
-    path: 'projects/:project_id/category/:category_id/colors/:color_id/collections/:collection_id/:size_id/:id',
+    path: 'catalog/:category/:color/:collection/:size/:id',
     component: DriveComponent,
-    data: { index: 13 },
+    data: { index: 10 },
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  declarations: [ListComponent],
 })
 export class BuyRoutingModule {}
 
 @NgModule({
   declarations: [
-    ProjectsComponent,
-    ColorComponent,
-    CategoryComponent,
-    CollectionsComponent,
     CollectionComponent,
     ItemComponent,
-    HoverDirective,
+    UnderDirective,
+    ListComponent,
+    ListItemComponent,
   ],
   imports: [CommonModule, BuyRoutingModule, SharedModule],
 })

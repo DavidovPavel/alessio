@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import {
+  AngularFirestoreModule,
+  SETTINGS as FIRESTORE_SETTINGS,
+} from '@angular/fire/firestore';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
@@ -21,6 +24,8 @@ import { PublicationsComponent } from './publications/publications.component';
 import { SharedModule } from './shared/shared.module';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { VideoComponent } from './video/video.component';
+
+const shouldUseEmulator = () => true;
 
 @NgModule({
   declarations: [
@@ -47,7 +52,13 @@ import { VideoComponent } from './video/video.component';
     SharedModule,
     DriveModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: FIRESTORE_SETTINGS,
+      useFactory: () =>
+        shouldUseEmulator() ? { host: 'localhost:8080', ssl: false } : {},
+    },
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
