@@ -1,7 +1,7 @@
 import { Component, Injector, OnInit, Type } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 import { CollectionComponent } from '../buy/collection.component';
 import { ItemComponent } from '../buy/item/item.component';
@@ -46,7 +46,7 @@ export class DriveComponent implements OnInit {
   currentComponent: Type<BaseComponent>;
   injector: Injector;
 
-  crumbs$: Observable<ParamMap>;
+  url$: Observable<string[]>;
 
   constructor(
     private route: ActivatedRoute,
@@ -59,13 +59,13 @@ export class DriveComponent implements OnInit {
     this.currentComponent = kit[index];
     this.isWhite = [5, 6, 8, 9, 10, 11, 12, 13].includes(index);
     this.className = `in-${this.route.snapshot.data.index}`;
-    this.crumbs$ = this.route.paramMap.pipe(filter((p) => !!p.keys.length));
+    this.url$ = this.route.url.pipe(map((s) => s.map(a => a.path)));
 
     this.injector = Injector.create({
       providers: [
         {
           provide: Driver,
-          useValue: { data: this.route.snapshot.data, crumbs: this.crumbs$ },
+          useValue: { data: this.route.snapshot.data, crumbs: this.route.paramMap.pipe(filter(a => !!a.keys.length)) },
         },
       ],
       parent: this.parentInjector,

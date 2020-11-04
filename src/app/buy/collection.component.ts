@@ -36,22 +36,27 @@ export class CollectionComponent implements OnInit {
 
   ngOnInit(): void {
     const queryFn = (a: number[]) => (ref: CollectionReference) => {
-      return ref
-        .where('project', '==', a[0])
-        .where('category', '==', a[1])
-        .orderBy('id');
-      // .where('color', '==', a[2])
-      // .where('collection', '==', a[3]);
+      return (
+        ref
+          .where('project', '==', a[0])
+          .where('category', '==', a[1])
+          // .where('color', '==', a[2])
+          // .where('collection', '==', a[3]);
+          .orderBy('id')
+      );
     };
 
     this.groups$ = this.route.url.pipe(
       map((a) => a.filter((b) => b.path !== 'catalog').map((b) => +b.path)),
       tap((a) => (this.path = `product/${a[a.length - 1]}`)),
-      tap((a) => console.log(a)),
       switchMap((a) =>
         this.fs.collection<IProduct>('products', queryFn(a)).valueChanges(),
       ),
-      map((c) => c.reduce(groupByFour, [] as IProduct[][])),
+      map((c) =>
+        c
+          .map((a) => ({ ...a, link: a.id, isActive: true }))
+          .reduce(groupByFour, [] as IProduct[][]),
+      ),
     );
   }
 }

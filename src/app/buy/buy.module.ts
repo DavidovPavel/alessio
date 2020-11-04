@@ -35,6 +35,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'catalog/1/3/5/:id',
+    component: DriveComponent,
+    data: { index: 10 },
+  },
+
+  {
     path: 'catalog/:project/:category/:color',
     component: DriveComponent,
     data: { index: 8, name: 'collection' },
@@ -54,7 +60,7 @@ const routes: Routes = [
 
 
   {
-    path: 'catalog/:category/:color/:collection/:size/:id',
+    path: 'catalog/:project/:category/:color/:collection/:size/:id',
     component: DriveComponent,
     data: { index: 10 },
   },

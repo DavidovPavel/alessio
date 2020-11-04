@@ -51,5 +51,8 @@ export class AdminComponent implements OnInit {
       const data = { ...a, position: a.id };
       products.add(data);
     });
+
+    // const catalog = this.fs.collection('catalog');
+
   }
 }

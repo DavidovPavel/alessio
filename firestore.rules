@@ -26,19 +26,19 @@ service cloud.firestore {
     }
 
     match /catalog/{document} {
-      allow read: if true;
+      allow read, write: if true;
 
       match /project/{project} {
-       allow read: if true;
+       allow read, write: if true;
 
         match /category/{category} {
-          allow read: if true;
+          allow read, write: if true;
 
           match /color/{color} {
-            allow read: if true;
+            allow read, write: if true;
 
             match /collection/{collection} {
-              allow read: if true;
+              allow read, write: if true;
             }
           }
         }

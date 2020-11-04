@@ -1,7 +1,7 @@
 <app-header [@headOnScroll]="isScroll"></app-header>
 <main appScroll (read)="isScroll = $event.scrollTop > 1" [ngClass]="{white: isWhite}" [class]="className">
   <div class="title">
-    <app-crumbs *ngIf="crumbs$ | async as params else h1" [params]="params"></app-crumbs>
+    <app-crumbs *ngIf="url$ | async as params else h1" [params]="params"></app-crumbs>
     <ng-template #h1>
       <h1>{{ title }}</h1>
     </ng-template>
