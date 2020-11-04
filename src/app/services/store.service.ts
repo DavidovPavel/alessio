@@ -1,18 +1,60 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { forkJoin } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { IStoreItem } from '../core/types';
+import { forkJoin, Observable, of, combineLatest, merge } from 'rxjs';
+import {
+  combineAll,
+  map,
+  tap,
+  switchMap,
+  concatMap,
+  share,
+} from 'rxjs/operators';
+import { IBaseProduct, IProduct, IStoreItem } from '../core/types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StoreService {
-  points = ['project', 'category', 'color', 'collection', 'size'];
   store = new Map<string, IStoreItem[]>();
 
   constructor(private fs: AngularFirestore, private router: Router) {}
+
+  getStoreByIds(name: string, ids: number[]): Observable<IStoreItem[]> {
+    if (this.store.has(name)) {
+      const item = this.store.get(name).filter((a) => ids.includes(a.id));
+      return of(item);
+    } else {
+      return this.getCollection(name).pipe(
+        map((a) => a.filter((b) => ids.includes(b.id))),
+      );
+    }
+  }
+
+  getProductById(id: number): Observable<IProduct> {
+    const projects = (pid: number[]) => this.getStoreByIds('project', pid);
+    const sizes = (sid: number[]) => this.getStoreByIds('size', sid);
+
+    const product = this.fs
+      .collection<IBaseProduct>('products', (ref) => ref.where('id', '==', id))
+      .valueChanges()
+      .pipe(
+        map((a) => a[0]),
+        concatMap((a) =>
+          projects([a.project]).pipe(map((b) => ({ ...a, project: b[0] }))),
+        ),
+        concatMap((a) =>
+          sizes(a.size).pipe(
+            map((size: IStoreItem[]) => ({
+              ...a,
+              size,
+            })),
+          ),
+        ),
+      );
+
+    return product;
+  }
 
   // if (this.colSize)
   //   this.fs
@@ -24,27 +66,26 @@ export class StoreService {
   //     )
   //     .subscribe((a) => (this.sizes = a));
 
-  getCollection(value: number, index: number) {
+  getCollection(name: string) {
     return this.fs
-      .collection<IStoreItem>(this.points[index], (ref) =>
-        ref.where('id', '==', value).orderBy('id'),
-      )
+      .collection<IStoreItem>(name, (ref) => ref.orderBy('id'))
       .get()
       .pipe(
-        tap((a) =>
-          this.store.set(
-            this.points[index],
-            a.docs.map((b) => b.data() as IStoreItem),
-          ),
-        ),
-        map((a) => a.docs[0].data() as IStoreItem),
-        // tap((a) => (this.currentSizes = this.currentSizes || a.size)),
+        map((a) => a.docs.map((b) => b.data() as IStoreItem)),
+        share(),
       );
   }
 
   getPoints(params: string[]) {
-    if (params[1] === '3') this.points = ['project', 'category', 'size'];
-    const stores = params.map((v, i) => this.getCollection(+v, i));
+    let points = ['project', 'category', 'color', 'collection', 'size'];
+    if (params[1] === '3') points = ['project', 'category', 'size'];
+    const stores = params
+      .filter((_, i) => i < points.length)
+      .map((v, i) =>
+        this.getCollection(points[i]).pipe(
+          map((a) => a.find((b) => b.id === +v)),
+        ),
+      );
     return forkJoin(stores);
   }
 

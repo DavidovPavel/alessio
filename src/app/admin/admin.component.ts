@@ -41,18 +41,26 @@ export class AdminComponent implements OnInit {
   import(): void {
     Object.keys(store).forEach((k) => {
       const c = this.fs.collection<IStoreItem>(k);
-      store[k].forEach((e) => {
+      store[k].forEach((e: IStoreItem) => {
         c.add(e);
       });
     });
 
     const products = this.fs.collection<IProduct>('products');
     Products.forEach((a) => {
-      const data = { ...a, position: a.id };
-      products.add(data);
+      const data = {
+        ...a,
+        position: a.id,
+        artist: '',
+        rendering: '',
+        authorship: '',
+        edition: '',
+        roma_code: '',
+        price: 0,
+      };
+      // products.add(data);
     });
 
     // const catalog = this.fs.collection('catalog');
-
   }
 }

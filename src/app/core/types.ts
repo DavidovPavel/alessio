@@ -47,7 +47,7 @@ export class Driver {
   crumbs: Observable<ParamMap>;
 }
 
-export interface IProduct {
+export interface IBaseProduct {
   id: number;
   position: number;
   project: number;
@@ -56,6 +56,26 @@ export interface IProduct {
   size: number[];
   color?: number;
   title: string;
+  artist: string;
+  rendering: string;
+  authorship: string;
+  edition: string;
+  roma_code: string;
+  price: number;
+}
+
+export interface IProduct {
+  id: number;
+  position: number;
+  project: IStoreItem;
+  size: IStoreItem[];
+  title: string;
+  artist: string;
+  rendering: string;
+  authorship: string;
+  edition: string;
+  roma_code: string;
+  price: number;
 }
 
 export interface ICollaboration {

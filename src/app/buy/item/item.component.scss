@@ -2,6 +2,9 @@
 .medium {
   position: relative;
   margin-right: 3vw;
+  width: 30vw;
+  height: 30vw;
+  overflow: hidden;
 
   & img:first-child {
     width: 30vw;

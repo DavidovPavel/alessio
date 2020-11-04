@@ -1,36 +1,40 @@
-<div fxLayout>
-  <div class="medium">
-    <img src="assets/images/store/collections/1/Сhaos_999.png" alt="" />
-    <img src="assets/images/inlarg.png" alt="" />
-  </div>
-  <div class="prev-items" fxLayout="column" fxLayoutAlign="space-between center">
-    <img class="active" src="assets/images/store/collection/1/999_1.png" alt="" />
-    <img src="assets/images/store/collection/1/999_2.png" alt="" />
-    <img src="assets/images/store/collection/1/999_3.png" alt="" />
-  </div>
-  <div>
-    <b class="h-1">Project: Synchronicity Singularity Apophenia</b>
-    <b class="h-big">Chaos 999</b>
-    <b class="h-2">Alessio Romano</b>
-    <div class="info">
-      <div>Overprint on Dibond</div>
-      <div>Signed by the artist</div>
-      <div><span style="color:#cc2229">180x180</span>|150x150|100x100|50x50 cm</div>
-      <div>Limited Edition</div>
-      <div>roma code <b>ARSSABW180CH999008777</b></div>
+<ng-container *ngIf="doc$ | async as doc">
+  <div fxLayout>
+    <div class="medium">
+      <img src="assets/store/product/{{ currentSize }}/{{ doc.id }}.png" alt="" />
+      <img src="assets/images/inlarg.png" alt="" />
     </div>
-    <b class="h-2">Price Euro 6,666</b>
-    <div class="h-3">plus VAT. import duties (if applicable)</div>
-    <div fxLayout fxLayoutAlign="space-between" class="info">estimated shipping cost <b>customized</b></div>
-    <div fxLayout fxLayoutAlign="space-between" class="info">art shipping insurance <b>customized</b></div>
+    <div class="prev-items" fxLayout="column" fxLayoutAlign="space-between center">
+      <img class="active" src="assets/store/product/{{ currentSize }}/{{ doc.id }}/1.png" alt="" />
+      <img src="assets/store/product/{{ currentSize }}/{{ doc.id }}/2.png" alt="" />
+      <img src="assets/store/product/{{ currentSize }}/{{ doc.id }}/3.png" alt="" />
+    </div>
+    <div>
+      <b class="h-1">Project: {{ doc.project.title }}</b>
+      <b class="h-big">{{ doc.title }}</b>
+      <b class="h-2">{{ doc.artist }}</b>
+      <div class="info">
+        <div>{{ doc.rendering }}</div>
+        <div>{{ doc.authorship }}</div>
+        <div><span *ngFor="let size of doc.size" [ngClass]="{active: size.id === currentSize}">
+            {{ size.title }}
+          </span> cm</div>
+        <div>{{ doc.edition }}</div>
+        <div>Roma code <b>{{ doc.roma_code }}</b></div>
+      </div>
+      <b class="h-2">Price {{ doc.price | currency : 'Euro ' : 'code'  }}</b>
+      <div class="h-3">plus VAT. import duties (if applicable)</div>
+      <div fxLayout fxLayoutAlign="space-between" class="info">estimated shipping cost <b>customized</b></div>
+      <div fxLayout fxLayoutAlign="space-between" class="info">art shipping insurance <b>customized</b></div>
 
-    <button type="button">own now</button>
+      <button type="button">own now</button>
+    </div>
   </div>
-</div>
-<div fxLayout fxLayoutAlign="space-between" class="bottom">
-  <span>price on request</span>
-  <span>roma code <span style="line-height: 1.1vw;">ARSSABW180CH888008777</span></span>
-  <span>edition 8 out of 777</span>
-  <span>request the price</span>
-</div>
+  <div fxLayout fxLayoutAlign="space-between" class="bottom">
+    <span>price on request</span>
+    <span>roma code <span [style.lineHeight.vw]="1.1">{{ doc.roma_code }}</span></span>
+    <span>edition 8 out of 777</span>
+    <span>request the price</span>
+  </div>
+</ng-container>
 <app-social></app-social>

@@ -17,7 +17,7 @@ import { StoreService } from './../services/store.service';
             [routerLink]="getLink(i)"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
-            >{{ point.title }}</a
+            >{{ point?.title }}</a
           >
         </ng-container>
       </ng-container>
@@ -36,16 +36,7 @@ import { StoreService } from './../services/store.service';
       </ng-container>
     </h1>
   `,
-  styles: [
-    `
-      h1 {
-        font-size: 1.1vw;
-      }
-      .active {
-        color: #cc2229;
-      }
-    `,
-  ],
+  styles: ['h1 { font-size: 1.1vw; }'],
 })
 export class CrumbsComponent implements OnInit {
   @Input() params: string[];

@@ -16,8 +16,11 @@ export class ListComponent implements OnInit {
   exclude = ['project'];
   storeName: string;
 
-  constructor(private params: Driver, afs: AngularFirestore) {
-    const { name } = this.params.data;
+  constructor(private params: Driver, private afs: AngularFirestore) {}
+
+  ngOnInit(): void {
+    const { name } = this.params?.data;
+    this.hideTitle = this.exclude.includes(name);
     this.storeName = name;
 
     const crumbs$ =
@@ -31,13 +34,13 @@ export class ListComponent implements OnInit {
             ),
           );
 
-    const all$ = afs
+    const all$ = this.afs
       .collection<IStoreItem>(name, (ref) => ref.orderBy('pos'))
       .valueChanges();
 
     const incatalog$ = crumbs$.pipe(
       tap((p) => console.log(p)),
-      switchMap((p) => afs.collection<IStoreItem>(p).valueChanges()),
+      switchMap((p) => this.afs.collection<IStoreItem>(p).valueChanges()),
     );
 
     this.groups$ = combineLatest([all$, incatalog$]).pipe(
@@ -57,10 +60,5 @@ export class ListComponent implements OnInit {
       ),
       tap((x) => console.log(x)),
     );
-  }
-
-  ngOnInit(): void {
-    const { name } = this.params.data;
-    this.hideTitle = this.exclude.includes(name);
   }
 }
