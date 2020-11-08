@@ -13,4 +13,4 @@ const Matetial = [MatButtonModule, MatToolbarModule, MatDividerModule];
   declarations: [AdminComponent],
   imports: [CommonModule, AdminRoutingModule, ...Matetial],
 })
-export class AdminModule {}
+export class CmModule {}

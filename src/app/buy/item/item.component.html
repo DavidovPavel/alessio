@@ -1,33 +1,34 @@
 <ng-container *ngIf="doc$ | async as doc">
   <div fxLayout>
     <div class="medium">
-      <img src="assets/store/product/{{ currentSize }}/{{ doc.id }}.png" alt="" />
-      <img src="assets/images/inlarg.png" alt="" />
+      <img src="assets/store/product/{{ path }}/{{ currentPrev }}.png" alt="" />
+      <img src="assets/images/inlarg.png" alt="" (click)="showBig()" />
     </div>
     <div class="prev-items" fxLayout="column" fxLayoutAlign="space-between center">
-      <img class="active" src="assets/store/product/{{ currentSize }}/{{ doc.id }}/1.png" alt="" />
-      <img src="assets/store/product/{{ currentSize }}/{{ doc.id }}/2.png" alt="" />
-      <img src="assets/store/product/{{ currentSize }}/{{ doc.id }}/3.png" alt="" />
+      <app-img *ngFor="let prev of previews" path="{{ path }}/{{ prev }}" (click)="currentPrev=prev"
+        [ngClass]="{active: prev===currentPrev}">
+      </app-img>
     </div>
-    <div>
-      <b class="h-1">Project: {{ doc.project.title }}</b>
-      <b class="h-big">{{ doc.title }}</b>
-      <b class="h-2">{{ doc.artist }}</b>
-      <div class="info">
-        <div>{{ doc.rendering }}</div>
-        <div>{{ doc.authorship }}</div>
-        <div><span *ngFor="let size of doc.size" [ngClass]="{active: size.id === currentSize}">
-            {{ size.title }}
-          </span> cm</div>
-        <div>{{ doc.edition }}</div>
-        <div>Roma code <b>{{ doc.roma_code }}</b></div>
+    <div fxLayout="column" fxLayoutAlign="space-between center">
+      <div>
+        <b class="h-1">Project: {{ doc.project.title }}</b>
+        <b class="h-big">{{ doc.title }}</b>
+        <b class="h-2">{{ doc.artist }}</b>
+        <div class="info">
+          <div>{{ doc.rendering }}</div>
+          <div>{{ doc.authorship }}</div>
+          <div><span *ngFor="let size of doc.size" [ngClass]="{active: size.id === currentSize}">
+              {{ size.title }}
+            </span> cm</div>
+          <div>{{ doc.edition }}</div>
+          <div>Roma code <b>{{ doc.roma_code }}</b></div>
+        </div>
+        <b class="h-2">Price {{ doc.price | currency : 'Euro ' : 'code'  }}</b>
+        <div class="h-3">plus VAT. import duties (if applicable)</div>
+        <div fxLayout fxLayoutAlign="space-between" class="info">estimated shipping cost <b>customized</b></div>
+        <div fxLayout fxLayoutAlign="space-between" class="info">art shipping insurance <b>customized</b></div>
       </div>
-      <b class="h-2">Price {{ doc.price | currency : 'Euro ' : 'code'  }}</b>
-      <div class="h-3">plus VAT. import duties (if applicable)</div>
-      <div fxLayout fxLayoutAlign="space-between" class="info">estimated shipping cost <b>customized</b></div>
-      <div fxLayout fxLayoutAlign="space-between" class="info">art shipping insurance <b>customized</b></div>
-
-      <button type="button">own now</button>
+      <div class="control"><button type="button" (click)="showCheck()">own now</button></div>
     </div>
   </div>
   <div fxLayout fxLayoutAlign="space-between" class="bottom">
@@ -37,4 +38,4 @@
     <span>request the price</span>
   </div>
 </ng-container>
-<app-social></app-social>
+<!-- <app-social></app-social> -->

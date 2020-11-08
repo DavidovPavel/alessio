@@ -1,15 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { forkJoin, Observable, of, combineLatest, merge } from 'rxjs';
-import {
-  combineAll,
-  map,
-  tap,
-  switchMap,
-  concatMap,
-  share,
-} from 'rxjs/operators';
+import { forkJoin, Observable, of } from 'rxjs';
+import { concatMap, map, share } from 'rxjs/operators';
+
 import { IBaseProduct, IProduct, IStoreItem } from '../core/types';
 
 @Injectable({

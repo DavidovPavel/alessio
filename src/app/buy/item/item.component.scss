@@ -1,34 +1,26 @@
-
 .medium {
   position: relative;
-  margin-right: 3vw;
   width: 30vw;
-  height: 30vw;
-  overflow: hidden;
 
-  & img:first-child {
-    width: 30vw;
+  & img {
+
+    &:first-child {
+      width: 30vw;
+      display: block;
+    }
+
+    &:last-child {
+      bottom: .9vw;
+      right: .9vw;
+      cursor: pointer;
+      position: absolute;
+    }
   }
 
-  & img:last-child {
-    position: absolute;
-    bottom: .9vw;
-    right: .9vw;
-    cursor: pointer;
-  }
 }
 
 .prev-items {
-  margin-right: 2.6vw;
-
-  & img {
-    cursor: pointer;
-    width: 9.4vw;
-
-    &.active {
-      border: solid 1px #e48179;
-    }
-  }
+  margin: 0 2.6vw 0 3vw;
 }
 
 b {
@@ -38,7 +30,8 @@ b {
 .h-1 {
   font-size: 1.1vw;
   letter-spacing: -.005vw;
-  line-height: 1.6vw;
+  line-height: 1.1vw;
+  padding-bottom: .3vw;
 }
 
 .h-big {
@@ -70,19 +63,22 @@ b {
   letter-spacing: .04vw;
 }
 
-button {
-  font-family: 'Trajan Pro';
-  font-size: 1.5vw;
-  letter-spacing: -.002vw;
-  font-weight: bold;
-  display: block;
-  margin-top: .8vw;
-  cursor: pointer;
-  text-transform: uppercase;
-  height: 4.5vw;
+div.control {
   width: 100%;
-  background-color: #000000;
-  color: #ffffff;
+
+  button {
+    font-family: 'Trajan Pro';
+    font-size: 1.5vw;
+    letter-spacing: -.002vw;
+    font-weight: bold;
+    display: block;
+    cursor: pointer;
+    text-transform: uppercase;
+    height: 4.5vw;
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+  }
 }
 
 .bottom {

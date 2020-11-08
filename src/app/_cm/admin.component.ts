@@ -7,7 +7,7 @@ import {
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IProduct, IStoreItem } from './../core/types';
+import { IBaseProduct, IProduct, IStoreItem } from './../core/types';
 
 @Component({
   selector: 'app-admin',
@@ -46,19 +46,15 @@ export class AdminComponent implements OnInit {
       });
     });
 
-    const products = this.fs.collection<IProduct>('products');
+    const products = this.fs.collection<IBaseProduct>('products');
     Products.forEach((a) => {
       const data = {
         ...a,
         position: a.id,
-        artist: '',
-        rendering: '',
-        authorship: '',
-        edition: '',
-        roma_code: '',
-        price: 0,
+        artist: 'Alessio Romano',
+        authorship: 'Signed by the artist',
       };
-      // products.add(data);
+      products.add(data);
     });
 
     // const catalog = this.fs.collection('catalog');

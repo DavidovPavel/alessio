@@ -57,11 +57,11 @@ export interface IBaseProduct {
   color?: number;
   title: string;
   artist: string;
-  rendering: string;
-  authorship: string;
-  edition: string;
-  roma_code: string;
-  price: number;
+  rendering?: string;
+  authorship?: string;
+  edition?: string;
+  roma_code?: string;
+  price?: number;
 }
 
 export interface IProduct {
@@ -69,13 +69,15 @@ export interface IProduct {
   position: number;
   project: IStoreItem;
   size: IStoreItem[];
+  category: number;
+  color?: number;
   title: string;
   artist: string;
-  rendering: string;
-  authorship: string;
-  edition: string;
-  roma_code: string;
-  price: number;
+  rendering?: string;
+  authorship?: string;
+  edition?: string;
+  roma_code?: string;
+  price?: number;
 }
 
 export interface ICollaboration {

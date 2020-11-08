@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'contacts', component: DriveComponent, data: { index: 5 } },
   { path: 'publications', component: DriveComponent, data: { index: 6 } },
   { path: 'video', component: DriveComponent, data: { index: 7 } },
-  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+  { path: 'cm', loadChildren: () => import('./_cm/cm.module').then(m => m.CmModule) },
   { path: '**', component: PageNotFoundComponent },
 ];
 
