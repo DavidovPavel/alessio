@@ -20,7 +20,7 @@ export class OpenBigImgComponent {
 
 @Component({
   selector: 'app-check',
-  template: 'check this',
+  template: 'check here',
 })
 export class CheckComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
@@ -59,8 +59,8 @@ export class ItemComponent implements OnInit {
   showBig() {
     this.dialog.open(OpenBigImgComponent, {
       height: '100%',
-      width: '100%',
       panelClass: 'big-img-dialog',
+      backdropClass: 'big-img-overlay',
       data: {
         path: `${this.path}/big/${this.currentPrev}`,
       },

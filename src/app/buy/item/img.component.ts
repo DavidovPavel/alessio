@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   template: `<img src="assets/store/product/{{ path }}.png" alt="" />`,
   styles: [
     ':host.active {border: solid .02vw #e48179;}',
-    ':host.big img {width: 100%;cursor: default;}',
+    ':host.big img {width: auto;height: 100vh;cursor: default;}',
     'img {cursor: pointer;width: 9.4vw;display: flex;}',
   ],
 })
