@@ -1,13 +1,13 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyDw_rYXE66GejnvedboUrOR7R8SmBgRivw',
-    authDomain: 'alessio-c2369.firebaseapp.com',
-    databaseURL: 'https://alessio-c2369.firebaseio.com',
-    projectId: 'alessio-c2369',
-    storageBucket: 'alessio-c2369.appspot.com',
-    messagingSenderId: '17297367010',
-    appId: '1:17297367010:web:cf0789069c68d926ff63bb',
-    measurementId: 'G-STQP26G392',
+    apiKey: 'AIzaSyD8gPzXSujJYu_NKhsLHyZ2vBVLjjd94a0',
+    authDomain: 'alessio-376fd.firebaseapp.com',
+    databaseURL: 'https://alessio-376fd.firebaseio.com',
+    projectId: 'alessio-376fd',
+    storageBucket: 'alessio-376fd.appspot.com',
+    messagingSenderId: '769892412834',
+    appId: '1:769892412834:web:bb0b5f0dc005283a4c16fb',
+    measurementId: 'G-LMJMV7SZMG',
   },
 };

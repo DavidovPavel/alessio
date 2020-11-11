@@ -13,7 +13,8 @@
     "serve:ssr": "node dist/alessio/server/main.js",
     "build:ssr": "ng build --prod && ng run alessio:server:production",
     "prerender": "ng run alessio:prerender",
-    "emulators": "firebase emulators:start --only firestore --import=./data --export-on-exit"
+    "emulators": "firebase emulators:start --only firestore --import=./data --export-on-exit",
+    "deploy": "firebase deploy --only hosting"
   },
   "private": true,
   "dependencies": {
