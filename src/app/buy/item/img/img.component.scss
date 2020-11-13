@@ -1,0 +1,32 @@
+:host.active {
+  border: solid .02vw #e48179;
+}
+
+.big {
+  &>div {
+    &:first-child {
+      padding-right: 2.9vw;
+    }
+
+    &:last-child {
+      padding-left: 2.9vw;
+    }
+
+    &>img {
+      width: 1.9vw;
+      cursor: pointer;
+    }
+  }
+
+  &>.pic>img {
+    width: auto;
+    height: 100vh;
+    cursor: default;
+  }
+}
+
+img {
+  cursor: pointer;
+  width: 9.4vw;
+  display: flex;
+}

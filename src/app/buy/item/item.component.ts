@@ -9,10 +9,12 @@ import { StoreService } from './../../services/store.service';
 
 export interface DialogData {
   path: string;
+  currentId: number;
 }
 @Component({
   selector: 'app-big-img',
-  template: '<app-img [path]="data.path" class="big"></app-img>',
+  template:
+    '<app-img [path]="data.path" [currentId]="data.currentId" [isBig]="true"></app-img>',
 })
 export class OpenBigImgComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
@@ -50,7 +52,7 @@ export class ItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.doc$ = this.route.paramMap.pipe(
-      tap((a) => (this.currentSize = 5) /*+a.get('size')*/),
+      tap((_) => (this.currentSize = 5) /*+a.get('size')*/),
       tap((a) => (this.currentId = +a.get('id'))),
       switchMap((a) => this.ss.getProductById(+a.get('id'))),
     );
@@ -62,7 +64,8 @@ export class ItemComponent implements OnInit {
       panelClass: 'big-img-dialog',
       backdropClass: 'big-img-overlay',
       data: {
-        path: `${this.path}/big/${this.currentPrev}`,
+        path: `${this.path}/big/`,
+        currentId: this.currentPrev,
       },
     });
   }

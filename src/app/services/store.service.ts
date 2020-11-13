@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { forkJoin, Observable, of } from 'rxjs';
-import { concatMap, map, share } from 'rxjs/operators';
+import { concatMap, filter, map, share } from 'rxjs/operators';
 
 import { IBaseProduct, IProduct, IStoreItem } from '../core/types';
 
@@ -34,6 +34,7 @@ export class StoreService {
       .valueChanges()
       .pipe(
         map((a) => a[0]),
+        filter(a => !!a),
         concatMap((a) =>
           projects([a.project]).pipe(map((b) => ({ ...a, project: b[0] }))),
         ),

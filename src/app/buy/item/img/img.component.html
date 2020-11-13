@@ -1,0 +1,10 @@
+<div fxLayout *ngIf="isBig; else pic" class="big">
+  <div fxLayout="column" fxLayoutAlign="center"><img src="assets/images/left-arrow.png" alt="" (click)="left()" /></div>
+  <div class="pic">
+    <img src="{{ src }}" alt="" />
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center"><img src="assets/images/right-arrow.png" alt="" (click)="right()" /></div>
+</div>
+<ng-template #pic>
+  <img src="assets/store/product/{{ path }}.png" alt="" />
+</ng-template>
