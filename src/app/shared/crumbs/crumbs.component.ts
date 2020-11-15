@@ -6,7 +6,6 @@ import { switchMap, tap } from 'rxjs/operators';
 import { IStoreItem, ITitleId } from './../../core/types';
 import { StoreService } from './../../services/store.service';
 
-
 @Component({
   selector: 'app-crumbs',
   templateUrl: './crumbs.component.html',
@@ -23,14 +22,14 @@ export class CrumbsComponent implements OnInit {
     this.points$ = this.route.paramMap.pipe(
       tap((param) => (this.param = param)),
       switchMap((param) => this.service.getPoints(param)),
-      tap((a) => (this.sizes = a.find((b) => b?.size)?.size as ITitleId[])),
+      tap((a) => (this.sizes = a.find((b) => b?.size)?.size as ITitleId[]))
     );
   }
 
-  link(n: number, d: number = null) {
+  link(n: number, d: number = null, goto: string[] = []) {
     const a = this.param.keys
       .filter((_, i) => i <= n)
       .map((point, i) => (i === n && d ? d : this.param.get(point)));
-    return ['/buy/project', ...a];
+    return ['/buy/project', ...a, ...goto];
   }
 }

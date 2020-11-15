@@ -30,34 +30,14 @@ const routes: Routes = [
   },
 
   {
-    path: 'project/:project/:category/:color/:collection',
-    redirectTo: 'catalog/:project/:category/:color/:collection/:size',
-    pathMatch: 'full',
-  },
-
-  {
     path: 'project/:project/:category/:color/:collection/:size',
     component: CollectionComponent,
-    data: {},
   },
 
   {
     path: 'project/:project/:category/:color/:collection/:size/:id',
     component: ItemComponent,
-    data: {},
-  },
-
-  // {
-  //   path: 'project/:project/:category/:size',
-  //   component: ListComponent,
-  //   data: {},
-  // },
-
-  // {
-  //   path: 'project/:project/:category/:size/:id',
-  //   component: ItemComponent,
-  //   data: {},
-  // },
+  }
 ];
 
 @NgModule({

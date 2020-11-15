@@ -12,13 +12,13 @@
           </ng-container>
         </ng-container>
         <ng-template #simple>
-          <ng-container *ngTemplateOutlet="arl; context: { index: i, title: point?.title }"></ng-container>
+          <ng-container *ngTemplateOutlet="arl; context: { index: i, title: point?.title, goto: point.goto }"></ng-container>
         </ng-template>
       </ng-container>
     </ng-container>
   </ng-container>
 </h1>
-<ng-template #arl let-index="index" let-dup="dup" let-title="title">
-  <a [routerLink]="link(index, dup)" routerLinkActive="active"
+<ng-template #arl let-index="index" let-dup="dup" let-title="title" let-goto="goto">
+  <a [routerLink]="link(index, dup, goto)" routerLinkActive="active"
     [routerLinkActiveOptions]="{ exact: true }">{{ title }}</a>
 </ng-template>

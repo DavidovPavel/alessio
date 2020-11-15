@@ -20,6 +20,16 @@ export class StoreService {
       : this.getCollection(name);
   }
 
+  getCollection(name: string) {
+    return this.fs
+      .collection<IStoreItem>(name, (ref) => ref.orderBy('pos'))
+      .get()
+      .pipe(
+        map((a) => a.docs.map((b) => b.data() as IStoreItem)),
+        tap((a) => this.store.set(name, a)),
+      );
+  }
+
   getProductById(id: number): Observable<IProduct> {
     const projects = (pid: number[]) =>
       this.getStoreByName('project').pipe(
@@ -50,16 +60,6 @@ export class StoreService {
       );
 
     return product;
-  }
-
-  getCollection(name: string) {
-    return this.fs
-      .collection<IStoreItem>(name, (ref) => ref.orderBy('id'))
-      .get()
-      .pipe(
-        map((a) => a.docs.map((b) => b.data() as IStoreItem)),
-        tap((a) => this.store.set(name, a)),
-      );
   }
 
   getPoints(param: ParamMap): Observable<IStoreItem[]> {

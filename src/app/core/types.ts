@@ -39,6 +39,8 @@ export interface IStoreItem {
   readonly title: string;
   readonly link?: string | any[];
   readonly size?: (number | { title: string; id: number })[];
+  readonly goto?: string[];
+  readonly isActive: boolean;
   readonly pos: number;
 }
 
