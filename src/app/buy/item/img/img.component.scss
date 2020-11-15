@@ -18,10 +18,15 @@
     }
   }
 
-  &>.pic>img {
-    width: auto;
-    height: 100vh;
-    cursor: default;
+  &>.pic {
+    overflow: hidden;
+    width: 100vh;
+
+    &>img {
+      width: auto;
+      height: 100vh;
+      cursor: default;
+    }
   }
 }
 

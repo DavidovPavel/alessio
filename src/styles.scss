@@ -49,6 +49,13 @@ body {
   overflow: hidden;
 }
 
+main {
+  overflow: auto;
+  flex: 1;
+  padding: 0 12% 0 13%;
+  line-height: 2.2vw;
+}
+
 a {
   text-decoration: none;
   color: #000000;
@@ -59,8 +66,9 @@ button:focus {
 }
 
 .big-img-dialog>mat-dialog-container {
-  background-color: #000000;
+  background-color: transparent;
   padding: 0;
+  box-shadow: none;
 }
 
 .big-img-overlay {

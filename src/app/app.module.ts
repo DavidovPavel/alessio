@@ -25,7 +25,7 @@ import { SharedModule } from './shared/shared.module';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { VideoComponent } from './video/video.component';
 
-const shouldUseEmulator = () => true;
+const shouldUseEmulator = () => false;
 @NgModule({
   declarations: [
     AppComponent,

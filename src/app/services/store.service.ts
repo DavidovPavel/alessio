@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
+import { ParamMap } from '@angular/router';
 import { forkJoin, Observable, of } from 'rxjs';
-import { concatMap, filter, map, share } from 'rxjs/operators';
+import { concatMap, filter, map, mergeMap, tap } from 'rxjs/operators';
 
 import { IBaseProduct, IProduct, IStoreItem } from '../core/types';
 
@@ -12,29 +12,30 @@ import { IBaseProduct, IProduct, IStoreItem } from '../core/types';
 export class StoreService {
   store = new Map<string, IStoreItem[]>();
 
-  constructor(private fs: AngularFirestore, private router: Router) {}
+  constructor(private fs: AngularFirestore) {}
 
-  getStoreByIds(name: string, ids: number[]): Observable<IStoreItem[]> {
-    if (this.store.has(name)) {
-      const item = this.store.get(name).filter((a) => ids.includes(a.id));
-      return of(item);
-    } else {
-      return this.getCollection(name).pipe(
-        map((a) => a.filter((b) => ids.includes(b.id))),
-      );
-    }
+  getStoreByName(name: string): Observable<IStoreItem[]> {
+    return this.store.has(name)
+      ? of(this.store.get(name))
+      : this.getCollection(name);
   }
 
   getProductById(id: number): Observable<IProduct> {
-    const projects = (pid: number[]) => this.getStoreByIds('project', pid);
-    const sizes = (sid: number[]) => this.getStoreByIds('size', sid);
+    const projects = (pid: number[]) =>
+      this.getStoreByName('project').pipe(
+        map((a) => a.filter((b) => pid.includes(b.id))),
+      );
+    const sizes = (sid: number[]) =>
+      this.getStoreByName('size').pipe(
+        map((a) => a.filter((b) => sid.includes(b.id))),
+      );
 
     const product = this.fs
       .collection<IBaseProduct>('products', (ref) => ref.where('id', '==', id))
       .valueChanges()
       .pipe(
         map((a) => a[0]),
-        filter(a => !!a),
+        filter((a) => !!a),
         concatMap((a) =>
           projects([a.project]).pipe(map((b) => ({ ...a, project: b[0] }))),
         ),
@@ -51,40 +52,36 @@ export class StoreService {
     return product;
   }
 
-  // if (this.colSize)
-  //   this.fs
-  //     .collection<IStoreItem>('size', (ref) => ref.orderBy('id'))
-  //     .get()
-  //     .pipe(
-  //       map((a) => a.docs.map((b) => b.data() as IStoreItem)),
-  //       map((a) => a.filter((s) => this.colSize.includes(s.id))),
-  //     )
-  //     .subscribe((a) => (this.sizes = a));
-
   getCollection(name: string) {
     return this.fs
       .collection<IStoreItem>(name, (ref) => ref.orderBy('id'))
       .get()
       .pipe(
         map((a) => a.docs.map((b) => b.data() as IStoreItem)),
-        share(),
+        tap((a) => this.store.set(name, a)),
       );
   }
 
-  getPoints(params: string[]) {
-    let points = ['project', 'category', 'color', 'collection', 'size'];
-    if (params[1] === '3') points = ['project', 'category', 'size'];
-    const stores = params
-      .filter((_, i) => i < points.length)
-      .map((v, i) =>
-        this.getCollection(points[i]).pipe(
-          map((a) => a.find((b) => b.id === +v)),
+  getPoints(param: ParamMap): Observable<IStoreItem[]> {
+    const size = this.getCollection('size');
+    const stores = param.keys
+      .filter((k) => k !== 'id')
+      .map((point) =>
+        this.getStoreByName(point).pipe(
+          map((a) => a.find((b) => b.id === +param.get(point))),
         ),
       );
-    return forkJoin(stores);
-  }
+    const mutSize = (a: IStoreItem, s: IStoreItem[]): IStoreItem => ({
+      ...a,
+      size: a.size.map((b) => ({ ...s.find((e) => e.id === b) })),
+    });
 
-  getLink(param: string[]) {
-    return this.router.createUrlTree(['/buy/catalog', ...param]).toString();
+    return size.pipe(
+      mergeMap((s) =>
+        forkJoin(stores).pipe(
+          map((st) => st.map((a) => (a?.size ? mutSize(a, s) : a))),
+        ),
+      ),
+    );
   }
 }

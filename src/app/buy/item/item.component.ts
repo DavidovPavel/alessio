@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
+import { headOnScroll } from 'src/app/core/animations';
 import { IProduct } from 'src/app/core/types';
 
 import { StoreService } from './../../services/store.service';
@@ -32,6 +33,7 @@ export class CheckComponent {
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss'],
+  animations: [headOnScroll],
 })
 export class ItemComponent implements OnInit {
   doc$: Observable<IProduct>;
@@ -39,6 +41,7 @@ export class ItemComponent implements OnInit {
   currentSize: number;
   currentPrev = 1;
   previews = [1, 2, 3];
+  isScroll = false;
 
   get path() {
     return `${this.currentSize}/${this.currentId}`;
@@ -52,7 +55,7 @@ export class ItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.doc$ = this.route.paramMap.pipe(
-      tap((_) => (this.currentSize = 5) /*+a.get('size')*/),
+      tap((a) => (this.currentSize = +a.get('size'))),
       tap((a) => (this.currentId = +a.get('id'))),
       switchMap((a) => this.ss.getProductById(+a.get('id'))),
     );

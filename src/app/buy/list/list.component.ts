@@ -1,32 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ActivatedRoute } from '@angular/router';
 import { combineLatest, Observable, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
+import { headOnScroll } from 'src/app/core/animations';
 import { groupByFour, IStoreItem } from 'src/app/core/types';
-import { Driver } from 'src/app/core/types';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
+  animations: [headOnScroll],
 })
 export class ListComponent implements OnInit {
+  isScroll = false;
   groups$: Observable<any>;
   hideTitle = false;
   exclude = ['project'];
   storeName: string;
 
-  constructor(private params: Driver, private afs: AngularFirestore) {}
+  constructor(private afs: AngularFirestore, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const { name } = this.params?.data;
+    const { name } = this.route.snapshot.data;
+
+    const crumbs = this.route.paramMap; // .pipe(filter((a) => !!a.keys.length));
+
     this.hideTitle = this.exclude.includes(name);
     this.storeName = name;
 
     const crumbs$ =
       name === 'project'
         ? of('catalog')
-        : this.params.crumbs.pipe(
+        : crumbs.pipe(
             map((a) =>
               a.keys
                 .reduce((p, c) => [...p, ...[a.get(c), c]], ['catalog'])

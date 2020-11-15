@@ -5,6 +5,7 @@ import { Meta } from '@angular/platform-browser';
 @Component({
   selector: 'app-root',
   template: '<router-outlet></router-outlet>',
+  styles: [':host {display: block; height: 100vh;}'],
 })
 export class AppComponent implements OnInit {
   constructor(private meta: Meta, private auth: AngularFireAuth) {

@@ -5,6 +5,11 @@ import { Observable } from 'rxjs';
 
 export abstract class BaseComponent {}
 
+export interface ITitleId {
+  title: string;
+  id: number;
+}
+
 export const groupByFour = <T>(p: T[][], c: T, i: number): T[][] => {
   const n = Math.floor(i / 4);
   p[n] = [...(p[n] || []), c];
@@ -33,7 +38,7 @@ export interface IStoreItem {
   readonly id: number;
   readonly title: string;
   readonly link?: string | any[];
-  readonly size?: number[];
+  readonly size?: (number | { title: string; id: number })[];
   readonly pos: number;
 }
 

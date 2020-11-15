@@ -1,61 +1,63 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DriveComponent } from './../drive/drive.component';
+import { CollectionComponent } from './collection.component';
+import { ItemComponent } from './item/item.component';
+import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'catalog', pathMatch: 'full' },
+  { path: '', redirectTo: 'project', pathMatch: 'full' },
   {
-    path: 'catalog',
-    component: DriveComponent,
-    data: { index: 8, title: 'Projects', name: 'project' },
+    path: 'project',
+    component: ListComponent,
+    data: { name: 'project' },
   },
   {
-    path: 'catalog/:project',
-    component: DriveComponent,
-    data: { index: 8, name: 'category' },
+    path: 'project/:project',
+    component: ListComponent,
+    data: { name: 'category' },
   },
   {
-    path: 'catalog/:project/:category',
-    component: DriveComponent,
-    data: { index: 8, name: 'color' },
-  },
-
-  {
-    path: 'catalog/1/3/5',
-    component: DriveComponent,
-    data: { index: 9 },
+    path: 'project/:project/:category',
+    component: ListComponent,
+    data: { name: 'color' },
   },
 
   {
-    path: 'catalog/1/3/5/:id',
-    component: DriveComponent,
-    data: { index: 10 },
+    path: 'project/:project/:category/:color',
+    component: ListComponent,
+    data: { name: 'collection' },
   },
 
   {
-    path: 'catalog/:project/:category/:color',
-    component: DriveComponent,
-    data: { index: 8, name: 'collection' },
-  },
-
-  {
-    path: 'catalog/:project/:category/:color/:collection',
+    path: 'project/:project/:category/:color/:collection',
     redirectTo: 'catalog/:project/:category/:color/:collection/:size',
     pathMatch: 'full',
   },
 
   {
-    path: 'catalog/:project/:category/:color/:collection/:size',
-    component: DriveComponent,
-    data: { index: 9 },
+    path: 'project/:project/:category/:color/:collection/:size',
+    component: CollectionComponent,
+    data: {},
   },
 
   {
-    path: 'catalog/:project/:category/:color/:collection/:size/:id',
-    component: DriveComponent,
-    data: { index: 10 },
+    path: 'project/:project/:category/:color/:collection/:size/:id',
+    component: ItemComponent,
+    data: {},
   },
+
+  // {
+  //   path: 'project/:project/:category/:size',
+  //   component: ListComponent,
+  //   data: {},
+  // },
+
+  // {
+  //   path: 'project/:project/:category/:size/:id',
+  //   component: ItemComponent,
+  //   data: {},
+  // },
 ];
 
 @NgModule({

@@ -1,6 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .medium {
   position: relative;
   width: 30vw;
+  cursor: pointer;
 
   & img {
 
