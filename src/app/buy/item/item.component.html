@@ -15,8 +15,8 @@
           [ngClass]="{active: prev===currentPrev}">
         </app-img>
       </div>
-      <div fxLayout="column" fxLayoutAlign="space-between center">
-        <div>
+      <div fxLayout="column" fxFlex fxLayoutAlign="space-between">
+        <div [style.width.%]="100">
           <b class="h-1">Project: {{ doc?.project.title }}</b>
           <b class="h-big">{{ doc.title }}</b>
           <b class="h-2">{{ doc.artist }}</b>
@@ -31,8 +31,14 @@
           </div>
           <b class="h-2">Price {{ doc.price | currency : 'Euro ' : 'code'  }}</b>
           <div class="h-3">plus VAT. import duties (if applicable)</div>
-          <div fxLayout fxLayoutAlign="space-between" class="info">estimated shipping cost <b>customized</b></div>
-          <div fxLayout fxLayoutAlign="space-between" class="info">art shipping insurance <b>customized</b></div>
+          <div fxLayout fxLayoutAlign="space-between" class="info">
+            <span>estimated shipping cost</span>
+            <b>customized</b>
+          </div>
+          <div fxLayout fxLayoutAlign="space-between" class="info">
+            <span>art shipping insurance</span>
+            <b>customized</b>
+          </div>
         </div>
         <div class="control"><button type="button" (click)="showCheck()">own now</button></div>
       </div>
