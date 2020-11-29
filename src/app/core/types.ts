@@ -34,16 +34,6 @@ export const toItemFromPayload = <T>(path: string) => (
   return { id, link, ...data } as T;
 };
 
-export interface IStoreItem {
-  readonly id: number;
-  readonly title: string;
-  readonly link?: string | any[];
-  readonly size?: (number | { title: string; id: number })[];
-  readonly goto?: string[];
-  readonly isActive: boolean;
-  readonly pos: number;
-}
-
 @Injectable({ providedIn: 'root' })
 export class Driver {
   data: {
@@ -52,39 +42,6 @@ export class Driver {
     name: string;
   };
   crumbs: Observable<ParamMap>;
-}
-
-export interface IBaseProduct {
-  id: number;
-  position: number;
-  project: number;
-  category: number;
-  collection?: number;
-  size: number[];
-  color?: number;
-  title: string;
-  artist: string;
-  rendering?: string;
-  authorship?: string;
-  edition?: string;
-  roma_code?: string;
-  price?: number;
-}
-
-export interface IProduct {
-  id: number;
-  position: number;
-  project: IStoreItem;
-  size: IStoreItem[];
-  category: number;
-  color?: number;
-  title: string;
-  artist: string;
-  rendering?: string;
-  authorship?: string;
-  edition?: string;
-  roma_code?: string;
-  price?: number;
 }
 
 export interface ICollaboration {

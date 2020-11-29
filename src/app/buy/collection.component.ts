@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 
 import { headOnScroll } from '../core/animations';
-import { IProduct } from '../core/types';
+import { IProduct } from '../core/models/product';
 import { groupByFour } from './../core/types';
 
 @Component({
@@ -16,18 +16,8 @@ import { groupByFour } from './../core/types';
         <app-crumbs></app-crumbs>
         <app-lang-switch></app-lang-switch>
       </div>
-      <div
-        fxLayout
-        fxLayoutAlign="space-between"
-        class="items"
-        *ngFor="let group of groups$ | async"
-      >
-        <app-list-item
-          *ngFor="let item of group"
-          [item]="item"
-          [storeName]="path"
-        >
-        </app-list-item>
+      <div fxLayout fxLayoutAlign="space-between" class="items" *ngFor="let group of groups$ | async">
+        <app-list-item *ngFor="let item of group" [item]="item" [storeName]="path"> </app-list-item>
         <app-social></app-social>
       </div>
     </main>`,
@@ -67,14 +57,8 @@ export class CollectionComponent implements OnInit {
 
     this.groups$ = this.route.paramMap.pipe(
       tap((a) => (this.path = `product/${+a.get('size')}`)),
-      switchMap((a) =>
-        this.fs.collection<IProduct>('products', queryFn(a)).valueChanges(),
-      ),
-      map((c) =>
-        c
-          .map((a) => ({ ...a, link: a.id, isActive: true }))
-          .reduce(groupByFour, [] as IProduct[][]),
-      ),
+      switchMap((a) => this.fs.collection<IProduct>('products', queryFn(a)).valueChanges()),
+      map((c) => c.map((a) => ({ ...a, link: a.id, isActive: true })).reduce(groupByFour, [] as IProduct[][]))
     );
   }
 }

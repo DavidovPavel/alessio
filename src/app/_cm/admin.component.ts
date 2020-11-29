@@ -1,13 +1,11 @@
-import { Products, store } from './../core/import';
 import { Component, OnInit } from '@angular/core';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-} from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IBaseProduct, IProduct, IStoreItem } from './../core/types';
+import { IBaseProduct, IProduct } from '../core/models/product';
+import { IStoreItem } from '../core/models/store-item';
+import { Products, store } from './../core/import';
 
 @Component({
   selector: 'app-admin',
@@ -32,8 +30,8 @@ export class AdminComponent implements OnInit {
             const data = a.data() as IProduct;
             const doc = c.doc(a.id);
             doc.update({ ...data, project: 1 });
-          }),
-        ),
+          })
+        )
       )
       .subscribe();
   }

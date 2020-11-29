@@ -37,7 +37,7 @@ const routes: Routes = [
   {
     path: 'project/:project/:category/:color/:collection/:size/:id',
     component: ItemComponent,
-  }
+  },
 ];
 
 @NgModule({

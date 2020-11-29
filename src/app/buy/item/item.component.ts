@@ -4,8 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { headOnScroll } from 'src/app/core/animations';
-import { IProduct } from 'src/app/core/types';
 
+import { ICurrentItem } from './../../core/models/current-item';
 import { StoreService } from './../../services/store.service';
 
 export interface DialogData {
@@ -14,8 +14,7 @@ export interface DialogData {
 }
 @Component({
   selector: 'app-big-img',
-  template:
-    '<app-img [path]="data.path" [currentId]="data.currentId" [isBig]="true"></app-img>',
+  template: '<app-img [path]="data.path" [currentId]="data.currentId" [isBig]="true"></app-img>',
 })
 export class OpenBigImgComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
@@ -36,7 +35,7 @@ export class CheckComponent {
   animations: [headOnScroll],
 })
 export class ItemComponent implements OnInit {
-  doc$: Observable<IProduct>;
+  doc$: Observable<ICurrentItem>;
   currentId: number;
   currentSize: number;
   currentPrev = 1;
@@ -47,17 +46,13 @@ export class ItemComponent implements OnInit {
     return `${this.currentSize}/${this.currentId}`;
   }
 
-  constructor(
-    private route: ActivatedRoute,
-    private ss: StoreService,
-    private dialog: MatDialog,
-  ) {}
+  constructor(private route: ActivatedRoute, private service: StoreService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.doc$ = this.route.paramMap.pipe(
       tap((a) => (this.currentSize = +a.get('size'))),
       tap((a) => (this.currentId = +a.get('id'))),
-      switchMap((a) => this.ss.getProductById(+a.get('id'))),
+      switchMap((a) => this.service.getCurrentItem(a))
     );
   }
 

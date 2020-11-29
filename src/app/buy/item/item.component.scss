@@ -4,6 +4,27 @@
   height: 100vh;
 }
 
+.main {
+  position: relative;
+
+  &>a {
+    position: absolute;
+    top: 15vw;
+
+    &>img {
+      width: 1.9vw;
+    }
+
+    &.prev {
+      left: -3vw;
+    }
+
+    &.next {
+      right: -3vw;
+    }
+  }
+}
+
 .medium {
   position: relative;
   width: 30vw;

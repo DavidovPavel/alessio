@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { headOnScroll } from 'src/app/core/animations';
-import { groupByFour, IStoreItem } from 'src/app/core/types';
+import { IStoreItem } from 'src/app/core/models/store-item';
+import { groupByFour } from 'src/app/core/types';
 
 import { StoreService } from './../../services/store.service';
 
@@ -36,8 +37,8 @@ export class ListComponent implements OnInit {
             link: `${a.id}${a?.goto ? `/${a.goto.join('/')}` : ''}`,
           }))
           .reduce(groupByFour, [])
-          .map((a) => (a.length === 2 ? [{}, ...a, {}] : a)),
-      ),
+          .map((a) => (a.length === 2 ? [{}, ...a, {}] : a))
+      )
     );
   }
 }

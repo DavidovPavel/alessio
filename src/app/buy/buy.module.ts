@@ -10,6 +10,7 @@ import { CheckComponent, ItemComponent, OpenBigImgComponent } from './item/item.
 import { ListItemComponent } from './list/list-item/list-item.component';
 import { ListComponent } from './list/list.component';
 import { UnderDirective } from './under.directive';
+import { LinkPipe } from './item/link.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { UnderDirective } from './under.directive';
     ListItemComponent,
     ImgComponent,
     OpenBigImgComponent,
-    CheckComponent
+    CheckComponent,
+    LinkPipe
   ],
   imports: [CommonModule, BuyRoutingModule, SharedModule, MatDialogModule],
 })
