@@ -23,13 +23,17 @@ export class AdminComponent implements OnInit {
   change(): void {
     const c = this.fs.collection<IStoreItem>('products');
 
+    const item = (id: number) => Products.find((a) => a.id === id);
+
     c.get()
       .pipe(
         map((q) =>
           q.forEach((a) => {
             const data = a.data() as IProduct;
             const doc = c.doc(a.id);
-            doc.update({ ...data, project: 1 });
+            const source = item(data.id);
+            const { artist = 'Alessio Romano', authorship = 'Signed by the artist', price, edition, rendering, roma_code } = source;
+            doc.update({ ...data, artist, authorship, price, edition, rendering, roma_code });
           })
         )
       )
