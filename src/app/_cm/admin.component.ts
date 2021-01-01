@@ -25,19 +25,19 @@ export class AdminComponent implements OnInit {
 
     const item = (id: number) => Products.find((a) => a.id === id);
 
-    c.get()
-      .pipe(
-        map((q) =>
-          q.forEach((a) => {
-            const data = a.data() as IProduct;
-            const doc = c.doc(a.id);
-            const source = item(data.id);
-            const { artist = 'Alessio Romano', authorship = 'Signed by the artist', price, edition, rendering, roma_code } = source;
-            doc.update({ ...data, artist, authorship, price, edition, rendering, roma_code });
-          })
-        )
-      )
-      .subscribe();
+    // c.get()
+    //   .pipe(
+    //     map((q) =>
+    //       q.forEach((a) => {
+    //         const data = a.data() as IProduct;
+    //         const doc = c.doc(a.id);
+    //         const source = item(data.id);
+    //         const { artist = 'Alessio Romano', authorship = 'Signed by the artist', price, edition, rendering, roma_code } = source;
+    //         doc.update({ ...data, artist, authorship, price, edition, rendering, roma_code });
+    //       })
+    //     )
+    //   )
+    //  .subscribe();
   }
 
   import(): void {
