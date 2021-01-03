@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ParamMap } from '@angular/router';
-import { combineLatest, forkJoin, Observable, of } from 'rxjs';
+import { forkJoin, Observable, of } from 'rxjs';
 import { concatMap, filter, map, mergeMap, tap } from 'rxjs/operators';
 
 import { IBaseProduct, IProduct } from '../core/models/product';
 import { IStoreItem } from '../core/models/store-item';
 import { ICurrentItem, ILinkParams } from './../core/models/current-item';
+import { Video } from './video.service';
 
 @Injectable({
   providedIn: 'root',

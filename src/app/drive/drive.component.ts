@@ -12,7 +12,6 @@ import { LegaltermsComponent } from '../legalterms/legalterms.component';
 import { MetadataComponent } from '../metadata/metadata.component';
 import { ProjectsComponent } from '../projects/projects.component';
 import { PublicationsComponent } from '../publications/publications.component';
-import { VideoComponent } from '../video/video.component';
 
 export const kit = [
   MetadataComponent,
@@ -22,7 +21,6 @@ export const kit = [
   LegaltermsComponent,
   ContactsComponent,
   PublicationsComponent,
-  VideoComponent,
 ];
 
 @Component({
@@ -33,9 +31,8 @@ export const kit = [
 })
 export class DriveComponent implements OnInit {
   isScroll = false;
-  isWhite = false;
   title = '';
-  className = '';
+  mainClass = { white: false };
   currentComponent: Type<BaseComponent>;
   injector: Injector;
 
@@ -47,15 +44,18 @@ export class DriveComponent implements OnInit {
     const { index, title } = this.route.snapshot.data;
     this.title = title || '';
     this.currentComponent = kit[index];
-    this.isWhite = [5, 6].includes(index);
-    this.className = `in-${this.route.snapshot.data.index}`;
+    this.mainClass.white = [5, 6].includes(index);
+    this.mainClass[`in-${this.route.snapshot.data.index}`] = true;
     this.url$ = this.route.url.pipe(map((s) => s.map((a) => a.path)));
 
     this.injector = Injector.create({
       providers: [
         {
           provide: Driver,
-          useValue: { data: this.route.snapshot.data, crumbs: this.route.paramMap.pipe(filter(a => !!a.keys.length)) },
+          useValue: {
+            data: this.route.snapshot.data,
+            crumbs: this.route.paramMap.pipe(filter((a) => !!a.keys.length)),
+          },
         },
       ],
       parent: this.parentInjector,

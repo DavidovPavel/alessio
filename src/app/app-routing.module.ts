@@ -15,8 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'account',
-    loadChildren: () =>
-      import('./account/account.module').then((m) => m.AccountModule),
+    loadChildren: () => import('./account/account.module').then((m) => m.AccountModule),
   },
   {
     path: 'buy',
@@ -34,7 +33,10 @@ const routes: Routes = [
   { path: 'legalterms', component: DriveComponent, data: { index: 4 } },
   { path: 'contacts', component: DriveComponent, data: { index: 5 } },
   { path: 'publications', component: DriveComponent, data: { index: 6 } },
-  { path: 'video', component: DriveComponent, data: { index: 7 } },
+  {
+    path: 'video',
+    loadChildren: () => import('./video/video.module').then((m) => m.VideoModule),
+  },
 
   { path: '**', component: PageNotFoundComponent },
 ];
@@ -42,9 +44,9 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled',
-    relativeLinkResolution: 'legacy'
-}),
+      initialNavigation: 'enabled',
+      relativeLinkResolution: 'legacy',
+    }),
   ],
   exports: [RouterModule],
 })

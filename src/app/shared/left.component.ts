@@ -12,7 +12,7 @@ import { ApiService, IMenu } from '../core/api.service';
     <div [@show2left]="isOpen" [ngClass]="{ black: isWhite }">
       <ul>
         <li>
-          <app-lang-switch [color]="isWhite ? 'black' : 'white'"></app-lang-switch>
+          <app-lang-switch [isLight]="isWhite"></app-lang-switch>
         </li>
         <ng-container *ngFor="let item of menu">
           <li *ngIf="!item.children?.length; else child">

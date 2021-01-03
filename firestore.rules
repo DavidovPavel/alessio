@@ -5,6 +5,10 @@ service cloud.firestore {
     	allow read, write: if false;
     }
 
+    match /video/{document} {
+      allow read, write: if true
+    }
+
     match /project/{project} {
     	allow read, write: if true;
     }

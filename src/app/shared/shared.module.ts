@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 
-import { CrumbsComponent } from './crumbs/crumbs.component';
+import { CrumbsComponent } from './components/crumbs/crumbs.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ShellComponent } from './components/shell/shell.component';
 import { ScrollDirective } from './directives/scroll.directive';
-import { HeaderComponent } from './header/header.component';
 import { LangSwitchComponent } from './lang-switch.component';
 import { LeftComponent } from './left.component';
 import { SocialComponent } from './social.component';
@@ -20,6 +21,7 @@ import { TitlePipe } from './title.pipe';
     HeaderComponent,
     CrumbsComponent,
     TitlePipe,
+    ShellComponent,
   ],
   imports: [CommonModule, FlexLayoutModule, RouterModule],
   exports: [
@@ -31,6 +33,7 @@ import { TitlePipe } from './title.pipe';
     HeaderComponent,
     CrumbsComponent,
     TitlePipe,
+    ShellComponent,
   ],
 })
 export class SharedModule {}

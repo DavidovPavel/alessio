@@ -14,7 +14,7 @@ import { groupByFour } from './../core/types';
     <main appScroll (read)="isScroll = $event.scrollTop > 1">
       <div fxLayout fxLayoutAlign="space-between center" class="top-tools">
         <app-crumbs></app-crumbs>
-        <app-lang-switch></app-lang-switch>
+        <app-lang-switch [isLight]="true"></app-lang-switch>
       </div>
       <div fxLayout fxLayoutAlign="space-between" class="items" *ngFor="let group of groups$ | async">
         <app-list-item *ngFor="let item of group" [item]="item" [storeName]="path"> </app-list-item>

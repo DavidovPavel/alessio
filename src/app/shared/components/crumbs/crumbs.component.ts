@@ -5,8 +5,8 @@ import { switchMap, tap } from 'rxjs/operators';
 import { IProduct } from 'src/app/core/models/product';
 import { IStoreItem } from 'src/app/core/models/store-item';
 import { ITitleId } from 'src/app/core/types';
+import { StoreService } from 'src/app/services/store.service';
 
-import { StoreService } from './../../services/store.service';
 
 @Component({
   selector: 'app-crumbs',

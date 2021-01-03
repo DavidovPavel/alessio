@@ -3,7 +3,7 @@
   <ng-container *ngIf="doc$ | async as doc">
     <div fxLayout fxLayoutAlign="space-between center" class="top-tools">
       <app-crumbs [current]="doc.current"></app-crumbs>
-      <app-lang-switch></app-lang-switch>
+      <app-lang-switch [isLight]="true"></app-lang-switch>
     </div>
     <div class="main" *ngIf="doc.current">
 
