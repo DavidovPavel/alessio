@@ -1,0 +1,23 @@
+<div fxLayout fxLayoutGap=".8vw">
+  <div class="current">
+    <ng-container *ngIf="current">
+      <h3>{{ current.section }} | {{ current.title }}</h3>
+      <div><img [src]="'video/' + current.id + '.png' | getDownloadURL" alt="" /></div>
+      <div fxLayout fxLayoutAlign="space-between">
+        <h3>{{ current.author }}</h3>
+        <button>SUBSCRIBE</button>
+      </div>
+    </ng-container>
+  </div>
+  <div fxLayout="column">
+    <h3>NEXT VIDEOS</h3>
+    <div fxFlex>
+      <app-preview
+        *ngFor="let video of videos"
+        [video]="video"
+        [routerLink]="['/video', video.id]"
+        [ngClass]="{ current: video.id === current.id }"
+      ></app-preview>
+    </div>
+  </div>
+</div>

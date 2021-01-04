@@ -9,32 +9,7 @@
 
     & span {
       display: inline-block;
-      margin-bottom: .6vw;
-    }
-
-    & div {
-      font-size: .78vw;
-
-      & div:first-child {
-        overflow: hidden;
-        width: 24.5vw;
-        height: 14vw;
-
-        & img {
-          width: 24.5vw;
-        }
-      }
-
-      & div:last-child {
-        box-sizing: border-box;
-        padding-top: .3vw;
-        height: 3.5vw;
-
-        & span {
-          white-space: nowrap;
-          margin: 0;
-        }
-      }
+      margin-bottom: 0.6vw;
     }
   }
 }

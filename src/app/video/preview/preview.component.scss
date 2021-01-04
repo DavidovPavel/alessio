@@ -1,0 +1,39 @@
+:host {
+  display: inline;
+  font-size: .78vw;
+  cursor: pointer;
+  line-height: 1.15vw;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.current {
+    & div:first-child {
+      border: solid 1px red;
+    }
+  }
+
+  & div:first-child {
+    overflow: hidden;
+    width: 24.5vw;
+    height: 14vw;
+
+    & img {
+      width: 24.5vw;
+    }
+  }
+
+  & div:last-child {
+    box-sizing: border-box;
+    padding-top: .3vw;
+    height: 3.5vw;
+
+    & span {
+      white-space: nowrap;
+      margin: 0;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}

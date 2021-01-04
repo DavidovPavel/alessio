@@ -15,4 +15,11 @@ export class FireService {
       .get()
       .pipe(map((a) => a.docs.map((b) => b.data())));
   }
+
+  getDocument<T>(path: string): Observable<T> {
+    return this.fs
+      .doc<T>(path)
+      .get()
+      .pipe(map((a) => a.data()));
+  }
 }

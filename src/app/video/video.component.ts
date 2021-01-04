@@ -20,8 +20,4 @@ export class VideoComponent implements OnInit {
     this.interviews = this.service.getInterviews();
     this.principles = this.service.getPrinciples();
   }
-
-  getPath(id: number): string {
-    return `video/${id}.png`;
-  }
 }

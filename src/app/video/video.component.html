@@ -1,24 +1,17 @@
 <div fxLayout fxLayoutGap=".7vw">
   <div class="section">
     <span>Projects</span>
-    <div *ngFor="let project of projects | async">
-      <div><img [src]="getPath(project.id) | getDownloadURL" alt=""></div>
-      <div><span>{{ project.title }}</span> | <span>{{ project.author }}</span></div>
-    </div>
+    <app-preview *ngFor="let project of projects | async" [routerLink]="project.id" [video]="project"></app-preview>
   </div>
   <div class="section">
     <span>Interviews</span>
-    <div *ngFor="let interview of interviews | async">
-      <div><img [src]="getPath(interview.id) | getDownloadURL" alt=""></div>
-      <div><span>Interviews</span> | <span>{{ interview.title }}</span> | <span>{{ interview.author }}</span></div>
-    </div>
+    <app-preview *ngFor="let interview of interviews | async" [routerLink]="interview.id" [video]="interview"
+      section="Interviews"></app-preview>
   </div>
   <div class="section">
     <span>The principles of decorating</span>
-    <div *ngFor="let princip of principles | async">
-      <div><img [src]="getPath(princip.id) | getDownloadURL" alt=""></div>
-      <div><span>THE PRICIPLES OF DECORATING</span> | <span>{{ princip.title }}</span></div>
-    </div>
+    <app-preview *ngFor="let princip of principles | async" [routerLink]="princip.id" [video]="princip"
+      section="THE PRICIPLES OF DECORATING"></app-preview>
   </div>
 </div>
 <app-social [bg]="'dark'"></app-social>

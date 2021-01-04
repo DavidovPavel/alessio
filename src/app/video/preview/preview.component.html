@@ -1,0 +1,6 @@
+<div><img [src]="getPath(video.id) | getDownloadURL" alt="" /></div>
+<div>
+  <span>{{ section }}</span
+  >{{ section ? '&nbsp;|&nbsp;' : '' }}<span>{{ video.title }}</span
+  >{{ video.author ? '&nbsp;|&nbsp;' : '' }}<span>{{ video.author }}</span>
+</div>

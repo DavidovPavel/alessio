@@ -1,3 +1,4 @@
+import { OneOfSectionComponent } from './one-of-section/one-of-section.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -8,7 +9,10 @@ const routes: Routes = [
   {
     path: '',
     component: ShellComponent,
-    children: [{ path: '', component: VideoComponent }],
+    children: [
+      { path: '', component: VideoComponent },
+      { path: ':id', component: OneOfSectionComponent },
+    ],
   },
 ];
 
