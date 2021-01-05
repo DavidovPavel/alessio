@@ -3,13 +3,15 @@ import { NgModule } from '@angular/core';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { SharedModule } from './../shared/shared.module';
+import { MiddleComponent } from './middle/middle.component';
+import { PathPipe } from './path.pipe';
+import { PreviewComponent } from './preview/preview.component';
+import { SectionComponent } from './section/section.component';
 import { VideoRoutingModule } from './video-routing.module';
 import { VideoComponent } from './video.component';
-import { OneOfSectionComponent } from './one-of-section/one-of-section.component';
-import { PreviewComponent } from './preview/preview.component';
 
 @NgModule({
-  declarations: [VideoComponent, OneOfSectionComponent, PreviewComponent],
+  declarations: [VideoComponent, SectionComponent, PreviewComponent, MiddleComponent, PathPipe],
   imports: [CommonModule, VideoRoutingModule, SharedModule, AngularFireStorageModule],
 })
 export class VideoModule {}

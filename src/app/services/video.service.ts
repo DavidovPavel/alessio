@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
 import { ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
-import { concatAll, filter, share, shareReplay, switchMap, take, toArray } from 'rxjs/operators';
+import { concatAll, filter, shareReplay, switchMap, take, toArray } from 'rxjs/operators';
 
 import { FireService } from './fire.service';
 
-export type videoSection = 'Projects' | 'Interviews' | 'The principles of decorating';
+// export type videoSection = 'Projects' | 'Interviews' | 'The principles of decorating';
 export interface Video {
   id: number;
-  section: videoSection;
+  section: VideoSections;
   title: string;
   author: string;
+}
+
+export enum VideoSections {
+  'project' = 'Projects',
+  'interviw' = 'Interviews',
+  'principle' = 'The principles of decorating',
 }
 
 @Injectable({
@@ -28,18 +34,18 @@ export class VideoService {
   }
 
   getProjects(): Observable<Video[]> {
-    return this.getVideoByFilter('Projects');
+    return this.getVideoByFilter(VideoSections.project);
   }
 
   getInterviews(): Observable<Video[]> {
-    return this.getVideoByFilter('Interviews');
+    return this.getVideoByFilter(VideoSections.interviw);
   }
 
   getPrinciples(): Observable<Video[]> {
-    return this.getVideoByFilter('The principles of decorating');
+    return this.getVideoByFilter(VideoSections.principle);
   }
 
-  getVideoByFilter(section: videoSection): Observable<Video[]> {
+  getVideoByFilter(section: VideoSections): Observable<Video[]> {
     return this.collection.pipe(
       concatAll(),
       filter((a) => a.section === section),

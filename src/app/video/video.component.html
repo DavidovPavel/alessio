@@ -1,16 +1,17 @@
 <div fxLayout fxLayoutGap=".7vw">
   <div class="section">
     <span>Projects</span>
-    <app-preview *ngFor="let project of projects | async" [routerLink]="project.id" [video]="project"></app-preview>
+    <app-preview *ngFor="let project of projects | async" [routerLink]="[getSection(0), project.id]" [video]="project">
+    </app-preview>
   </div>
   <div class="section">
     <span>Interviews</span>
-    <app-preview *ngFor="let interview of interviews | async" [routerLink]="interview.id" [video]="interview"
-      section="Interviews"></app-preview>
+    <app-preview *ngFor="let interview of interviews | async" [routerLink]="[getSection(1), interview.id]"
+      [video]="interview" section="Interviews"></app-preview>
   </div>
   <div class="section">
     <span>The principles of decorating</span>
-    <app-preview *ngFor="let princip of principles | async" [routerLink]="princip.id" [video]="princip"
+    <app-preview *ngFor="let princip of principles | async" [routerLink]="[getSection(2), princip.id]" [video]="princip"
       section="THE PRICIPLES OF DECORATING"></app-preview>
   </div>
 </div>

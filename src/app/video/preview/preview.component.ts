@@ -1,16 +1,17 @@
 import { Component, Input } from '@angular/core';
-import { Video, videoSection } from 'src/app/services/video.service';
+import { Video, VideoSections } from 'src/app/services/video.service';
 
 @Component({
   selector: 'app-preview',
-  templateUrl: './preview.component.html',
+  template: `<div><img [src]="video.id | path | getDownloadURL" alt="" /></div>
+    <div>
+      <span>{{ section }}</span
+      >{{ section ? '&nbsp;|&nbsp;' : '' }}<span>{{ video.title }}</span
+      >{{ video.author ? '&nbsp;|&nbsp;' : '' }}<span>{{ video.author }}</span>
+    </div>`,
   styleUrls: ['./preview.component.scss'],
 })
 export class PreviewComponent {
-  @Input() section: videoSection;
+  @Input() section: VideoSections;
   @Input() video: Video;
-
-  getPath(id: number): string {
-    return `video/${id}.png`;
-  }
 }

@@ -1,0 +1,8 @@
+<ng-container *ngIf="video$ | async as video">
+  <h3>{{ video.section }} | {{ video.title }}</h3>
+  <div><img [src]="video.id | path | getDownloadURL" alt="" /></div>
+  <div fxLayout fxLayoutAlign="space-between">
+    <h3>{{ video.author }}</h3>
+    <button>SUBSCRIBE</button>
+  </div>
+</ng-container>

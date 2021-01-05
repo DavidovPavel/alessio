@@ -1,0 +1,12 @@
+<div fxLayout fxLayoutGap=".8vw">
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+  <div fxLayout="column">
+    <h3>NEXT VIDEOS</h3>
+    <div fxFlex>
+      <app-preview *ngFor="let video of videos" [video]="video" [routerLink]="['/video', section, video.id]"
+        routerLinkActive="current"></app-preview>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
-import { OneOfSectionComponent } from './one-of-section/one-of-section.component';
+import { MiddleComponent } from './middle/middle.component';
+import { SectionComponent } from './section/section.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -11,7 +12,11 @@ const routes: Routes = [
     component: ShellComponent,
     children: [
       { path: '', component: VideoComponent },
-      { path: ':id', component: OneOfSectionComponent },
+      {
+        path: ':section',
+        component: SectionComponent,
+        children: [{ path: ':id', component: MiddleComponent }],
+      },
     ],
   },
 ];

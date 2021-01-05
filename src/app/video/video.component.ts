@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Video, VideoService } from './../services/video.service';
+import { Video, VideoSections, VideoService } from './../services/video.service';
 
 @Component({
   selector: 'app-video',
@@ -19,5 +19,9 @@ export class VideoComponent implements OnInit {
     this.projects = this.service.getProjects();
     this.interviews = this.service.getInterviews();
     this.principles = this.service.getPrinciples();
+  }
+
+  getSection(i: number) {
+    return Object.keys(VideoSections)[i];
   }
 }
