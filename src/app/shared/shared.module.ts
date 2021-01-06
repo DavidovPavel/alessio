@@ -9,6 +9,7 @@ import { ShellComponent } from './components/shell/shell.component';
 import { ScrollDirective } from './directives/scroll.directive';
 import { LangSwitchComponent } from './lang-switch.component';
 import { LeftComponent } from './left.component';
+import { PathPipe } from './path.pipe';
 import { SocialComponent } from './social.component';
 import { TitlePipe } from './title.pipe';
 
@@ -22,6 +23,7 @@ import { TitlePipe } from './title.pipe';
     CrumbsComponent,
     TitlePipe,
     ShellComponent,
+    PathPipe
   ],
   imports: [CommonModule, FlexLayoutModule, RouterModule],
   exports: [
@@ -34,6 +36,7 @@ import { TitlePipe } from './title.pipe';
     CrumbsComponent,
     TitlePipe,
     ShellComponent,
+    PathPipe
   ],
 })
 export class SharedModule {}

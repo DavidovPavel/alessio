@@ -1,0 +1,11 @@
+<div class="main-text">
+  <ng-container *ngFor="let pg of data$ | async" [ngSwitch]="pg.typeContent">
+    <p *ngSwitchCase="'image'" [class]="pg.className">
+      <app-carousel [folder]="pg.id"></app-carousel>
+    </p>
+    <p *ngSwitchDefault [class]="pg.className">
+      {{ pg.content }}
+    </p>
+  </ng-container>
+</div>
+<app-social [bg]="'dark'"></app-social>

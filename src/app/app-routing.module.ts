@@ -23,10 +23,13 @@ const routes: Routes = [
   },
   {
     path: 'cm',
-    loadChildren: () => import('./_cm/cm.module').then((m) => m.CmModule),
+    loadChildren: () => import('./private/admin/cm.module').then((m) => m.CmModule),
   },
 
-  { path: 'metadata', component: DriveComponent, data: { index: 0 } },
+  {
+    path: 'metadata',
+    loadChildren: () => import('./public/metadata/metadata.module').then((m) => m.MetadataModule),
+  },
   { path: 'exhibitions', component: DriveComponent, data: { index: 1 } },
   { path: 'projects', component: DriveComponent, data: { index: 2 } },
   { path: 'collaborations', component: DriveComponent, data: { index: 3 } },

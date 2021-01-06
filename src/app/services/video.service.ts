@@ -5,7 +5,6 @@ import { concatAll, filter, shareReplay, switchMap, take, toArray } from 'rxjs/o
 
 import { FireService } from './fire.service';
 
-// export type videoSection = 'Projects' | 'Interviews' | 'The principles of decorating';
 export interface Video {
   id: number;
   section: VideoSections;
@@ -20,7 +19,7 @@ export enum VideoSections {
 }
 
 @Injectable({
-  providedIn: 'any',
+  providedIn: 'root',
 })
 export class VideoService {
   collection: Observable<Video[]>;

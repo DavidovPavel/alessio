@@ -9,12 +9,10 @@ import { headOnScroll } from '../core/animations';
 import { BaseComponent, Driver } from '../core/types';
 import { ExhibitionsComponent } from '../exhibitions/exhibitions.component';
 import { LegaltermsComponent } from '../legalterms/legalterms.component';
-import { MetadataComponent } from '../metadata/metadata.component';
 import { ProjectsComponent } from '../projects/projects.component';
 import { PublicationsComponent } from '../publications/publications.component';
 
 export const kit = [
-  MetadataComponent,
   ExhibitionsComponent,
   ProjectsComponent,
   CollaborationsComponent,

@@ -4,7 +4,6 @@ import { IStoreItem } from '../core/models/store-item';
 
 @Pipe({
   name: 'title',
-  pure: true,
 })
 export class TitlePipe implements PipeTransform {
   transform(value: IStoreItem[], id: number): string {

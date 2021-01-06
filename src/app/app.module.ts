@@ -15,20 +15,18 @@ import { DriveModule } from './drive/drive.module';
 import { ExhibitionsComponent } from './exhibitions/exhibitions.component';
 import { LegaltermsComponent } from './legalterms/legalterms.component';
 import { LoginComponent } from './login/login.component';
-import { MetadataComponent } from './metadata/metadata.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { PublicationsComponent } from './publications/publications.component';
 import { SharedModule } from './shared/shared.module';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 
-const shouldUseEmulator = () => false;
+const shouldUseEmulator = () => true;
 @NgModule({
   declarations: [
     AppComponent,
     SubscribeComponent,
     LoginComponent,
-    MetadataComponent,
     ExhibitionsComponent,
     CollaborationsComponent,
     LegaltermsComponent,
