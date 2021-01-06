@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  opacity: 0;
+
+  div {
+    flex: 1 0 50%;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+
+    &:last-child {
+      justify-content: flex-end;
+    }
+
+    & img {
+      width: 1.9vw;
+
+      &[role='left'] {
+        margin-left: 8%;
+      }
+
+      &[role='right'] {
+        margin-right: 8%;
+      }
+    }
+  }
+}

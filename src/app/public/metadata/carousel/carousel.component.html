@@ -1,1 +1,4 @@
-<img [src]="1 | path:'metadata/' + folder | getDownloadURL" alt="" />
+<div>
+  <img [src]="current | path:'metadata/' + folder | getDownloadURL" alt="" />
+</div>
+<app-overlap [@opacity]="!hoverFlag" (direction)="move($event)"></app-overlap>

@@ -1,6 +1,6 @@
 :host {
   & div.main-text {
-    margin-top: -.6vw;
+    margin-top: -0.6vw;
 
     & p {
       margin-top: 0;
@@ -9,17 +9,17 @@
         padding-left: 1.5vw;
       }
 
-      &.full-width img {
+      &.full-width app-carousel {
         width: 100%;
       }
 
       &.vertical {
         margin: 0;
 
-        & img {
+        & app-carousel {
           float: left;
           margin-right: 1.5vw;
-          margin-top: .6vw;
+          margin-top: 0.6vw;
           width: 20vw;
         }
       }

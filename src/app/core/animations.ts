@@ -19,7 +19,7 @@ export const expand = (height = '0'): AnimationTriggerMetadata =>
 export const opacity = trigger('opacity', [
   state('true', style({ opacity: 0 })),
   state('false', style({ opacity: 1 })),
-  transition('true<=>false', animate(1000)),
+  transition('true<=>false', animate(200)),
 ]);
 
 export const show2left = trigger('show2left', [

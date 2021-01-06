@@ -6,6 +6,7 @@ export const FIRESTORE_EMULATOR_HOST = 'localhost:8080';
 
 export const environment = {
   production: false,
+  useEmulators: true,
   firebase: {
     apiKey: 'AIzaSyD8gPzXSujJYu_NKhsLHyZ2vBVLjjd94a0',
     authDomain: 'alessio-376fd.firebaseapp.com',
