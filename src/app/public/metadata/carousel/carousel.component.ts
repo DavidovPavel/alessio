@@ -1,7 +1,7 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { Observable, of } from 'rxjs';
-import { map, pluck, switchMap, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, pluck, switchMap } from 'rxjs/operators';
 
 import { opacity } from './../../../core/animations';
 
@@ -16,6 +16,7 @@ export type leftRight = -1 | 1;
 export class CarouselComponent implements OnInit {
   hoverFlag = false;
   current = 1;
+  next: number;
   total$: Observable<number>;
 
   @Input() folder: number;
@@ -28,30 +29,40 @@ export class CarouselComponent implements OnInit {
     this.hoverFlag = false;
   }
 
-  constructor(private storeage: AngularFireStorage) {}
+  constructor(private storage: AngularFireStorage) {}
 
   ngOnInit(): void {
-    const ref = this.storeage.ref(`metadata/${this.folder}`);
+    const ref = this.storage.ref(`metadata/${this.folder}`);
     this.total$ = ref.listAll().pipe(pluck('items'), pluck('length'));
   }
 
-  getNextPath(direction: leftRight, total: number): void {
-    const next = this.current + direction;
-    if (next === 0) {
-      this.current = total;
-    } else if (next > total) {
-      this.current = 1;
-    } else this.current = next;
-    // return `metadata/${this.folder}/${this.current}.png`;
+  getNextPath(direction: leftRight, total: number): Observable<any> {
+    this.next = this.current + direction;
+    if (this.next === 0) {
+      this.next = total;
+    } else if (this.next > total) {
+      this.next = 1;
+    }
+    const ref = this.storage.ref(`metadata/${this.folder}/${this.next}.png`);
+    return ref.getDownloadURL();
   }
 
   move(direction: leftRight): void {
-    this.total$.pipe(tap((total) => this.getNextPath(direction, total))).subscribe();
+    this.total$
+      .pipe(
+        switchMap((total) => this.getNextPath(direction, total)),
+        map((path: string) => {
+          if (direction > 0) {
+            // append img tag
+          }
+          if (direction < 0) {
+            // prepend img tag
+          }
+          // start animation
 
-    // add next imgage
-
-    // move block with animation
-
-    // remove previous image
+          // end animation -> remove previous image
+        })
+      )
+      .subscribe((_) => (this.current = this.next));
   }
 }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DriveComponent } from './drive/drive.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
@@ -11,7 +10,6 @@ const routes: Routes = [
     redirectTo: 'buy',
     pathMatch: 'full',
   },
-
   { path: 'login', component: LoginComponent },
   {
     path: 'account',
@@ -25,20 +23,41 @@ const routes: Routes = [
     path: 'cm',
     loadChildren: () => import('./private/admin/cm.module').then((m) => m.CmModule),
   },
-
   {
     path: 'metadata',
     loadChildren: () => import('./public/metadata/metadata.module').then((m) => m.MetadataModule),
   },
-  { path: 'exhibitions', component: DriveComponent, data: { index: 1 } },
-  { path: 'projects', component: DriveComponent, data: { index: 2 } },
-  { path: 'collaborations', component: DriveComponent, data: { index: 3 } },
-  { path: 'legalterms', component: DriveComponent, data: { index: 4 } },
-  { path: 'contacts', component: DriveComponent, data: { index: 5 } },
-  { path: 'publications', component: DriveComponent, data: { index: 6 } },
+  {
+    path: 'exhibitions',
+    loadChildren: () =>
+      import('./public/exhibitions/exhibitions.module').then((m) => m.ExhibitionsModule),
+  },
+  {
+    path: 'projects',
+    loadChildren: () => import('./public/projects/projects.module').then((m) => m.ProjectsModule),
+  },
+  {
+    path: 'collaborations',
+    loadChildren: () =>
+      import('./public/collaborations/collaborations.module').then((m) => m.CollaborationsModule),
+  },
+  {
+    path: 'legalterms',
+    loadChildren: () =>
+      import('./public/legalterms/legalterms.module').then((m) => m.LegaltermsModule),
+  },
+  {
+    path: 'contacts',
+    loadChildren: () => import('./public/contacts/contacts.module').then((m) => m.ContactsModule),
+  },
+  {
+    path: 'publications',
+    loadChildren: () =>
+      import('./public/publications/publications.module').then((m) => m.PublicationsModule),
+  },
   {
     path: 'video',
-    loadChildren: () => import('./video/video.module').then((m) => m.VideoModule),
+    loadChildren: () => import('./public/video/video.module').then((m) => m.VideoModule),
   },
 
   { path: '**', component: PageNotFoundComponent },

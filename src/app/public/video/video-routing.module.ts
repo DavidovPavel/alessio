@@ -1,9 +1,9 @@
-import { MiddleComponent } from './middle/middle.component';
-import { SectionComponent } from './section/section.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ShellComponent } from 'src/app/shared/components/shell/shell.component';
 
-import { ShellComponent } from './../shared/components/shell/shell.component';
+import { MiddleComponent } from './middle/middle.component';
+import { SectionComponent } from './section/section.component';
 import { VideoComponent } from './video.component';
 
 const routes: Routes = [

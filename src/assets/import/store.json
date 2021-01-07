@@ -1,0 +1,47 @@
+{
+  "size": [
+    { "id": 1, "pos": 1, "title": "180X180" },
+    { "id": 2, "pos": 2, "title": "150X150" },
+    { "id": 3, "pos": 3, "title": "100X100" },
+    { "id": 4, "pos": 4, "title": "50X50" },
+    { "id": 5, "pos": 5, "title": "131X131" }
+  ],
+  "color": [
+    { "id": 1, "pos": 1, "title": "black" },
+    { "id": 2, "pos": 2, "title": "oro" },
+    { "id": 3, "pos": 3, "title": "sacro" },
+    { "id": 4, "pos": 4, "title": "grigio" },
+    { "id": 5, "pos": 5, "title": "zaffiro" },
+    { "id": 6, "pos": 6, "title": "ametista" },
+    { "id": 7, "pos": 7, "title": "topazio" },
+    { "id": 8, "pos": 8, "title": "smeraldo" },
+    { "id": 9, "pos": 9, "title": "commedia dell’arte" },
+    { "id": 10, "pos": 10, "title": "sole" }
+  ],
+  "category": [
+    { "id": 1, "pos": 1, "title": "art" },
+    { "id": 2, "pos": 2, "title": "installation" },
+    { "id": 3, "pos": 3, "title": "print" },
+    { "id": 4, "pos": 4, "title": "collection 4 home" },
+    { "id": 5, "pos": 5, "title": "collection 4 man" },
+    { "id": 6, "pos": 6, "title": "souvenirs" },
+    { "id": 7, "pos": 7, "title": "accessory" },
+    { "id": 8, "pos": 8, "title": "collection 4 woman" }
+  ],
+  "project": [
+    { "id": 1, "pos": 1, "title": "Singularity Synchronicity Apophenia" },
+    { "id": 2, "pos": 2, "title": "Evasive Elusive Meaning" },
+    { "id": 3, "pos": 3, "title": "Gravitation Singularity" },
+    { "id": 4, "pos": 4, "title": "Dream Pressure" },
+    { "id": 5, "pos": 5, "title": "Hallucinatio" },
+    { "id": 6, "pos": 6, "title": "Sociale" }
+  ],
+  "collection": [
+    { "id": 1, "pos": 1, "title": "chaos", "size": [1, 2, 3, 4] },
+    { "id": 2, "pos": 2, "title": "chaos code" },
+    { "id": 3, "pos": 3, "title": "east" },
+    { "id": 4, "pos": 4, "title": "europe" },
+    { "id": 5, "pos": 5, "title": "indian" },
+    { "id": 6, "pos": 6, "title": "middle east" }
+  ]
+}

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Video } from 'src/app/services/video.service';
+import { Video, VideoService } from 'src/app/services/video.service';
 
-import { VideoService } from './../../services/video.service';
 
 @Component({
   selector: 'app-middle',

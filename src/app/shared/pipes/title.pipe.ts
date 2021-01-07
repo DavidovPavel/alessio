@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { IStoreItem } from '../core/models/store-item';
+import { IStoreItem } from '../../core/models/store-item';
 
 @Pipe({
   name: 'title',

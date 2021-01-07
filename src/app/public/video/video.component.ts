@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Video, VideoSections, VideoService } from './../services/video.service';
+import { Video, VideoSections, VideoService } from 'src/app/services/video.service';
 
 @Component({
   selector: 'app-video',

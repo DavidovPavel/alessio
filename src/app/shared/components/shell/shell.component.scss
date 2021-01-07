@@ -30,4 +30,11 @@
     background-color: #ffffff;
     color: #000000;
   }
+
+  main.contacts {
+    background-image: url('/assets/images/contacts_bg.png');
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
 }

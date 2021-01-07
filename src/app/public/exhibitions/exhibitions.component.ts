@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { expand } from '../core/animations';
-import { ApiService } from '../core/api.service';
-import { BaseComponent, IExhibition } from '../core/types';
+import { expand } from '../../core/animations';
+import { ApiService } from '../../core/api.service';
+import { BaseComponent, IExhibition } from '../../core/types';
 
 @Component({
   selector: 'app-exhibitions',

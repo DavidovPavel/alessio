@@ -1,3 +1,4 @@
+import { IProduct } from 'src/app/core/models/product';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
@@ -39,32 +40,35 @@ export class AdminComponent implements OnInit {
     //  .subscribe();
   }
 
-  import(): void {
+  importMetadata(): void {
     const coll = this.fs.collection('metadata');
     this.http.get('/assets/import/metadata.json').subscribe((data: Metadata[]) => {
       data.forEach((a) => {
         coll.add(a);
       });
     });
+  }
 
-    // Object.keys(store).forEach((k) => {
-    //   const c = this.fs.collection<IStoreItem>(k);
-    //   store[k].forEach((e: IStoreItem) => {
-    //     c.add(e);
-    //   });
-    // });
+  importStore(): void {
+    this.http.get('/assets/import/store.json').subscribe((store) => {
+      Object.keys(store).forEach((k) => {
+        const c = this.fs.collection<IStoreItem>(k);
+        store[k].forEach((e: IStoreItem) => {
+          c.add(e);
+        });
+      });
+    });
+  }
 
-    // const products = this.fs.collection<IBaseProduct>('products');
-    // Products.forEach((a) => {
-    //   const data = {
-    //     ...a,
-    //     position: a.id,
-    //     artist: 'Alessio Romano',
-    //     authorship: 'Signed by the artist',
-    //   };
-    //   products.add(data);
-    // });
-
-    // const catalog = this.fs.collection('catalog');
+  importProducts(): void {
+    const products = this.fs.collection('products');
+    this.http.get('/assets/import/products.json').subscribe((p: IProduct[]) => {
+      p.forEach((a) =>
+        products.add({
+          ...a,
+          position: a.id,
+        })
+      );
+    });
   }
 }

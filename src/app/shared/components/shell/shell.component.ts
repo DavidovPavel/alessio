@@ -16,5 +16,8 @@ export class ShellComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const { mainClass } = this.route.firstChild?.snapshot.data;
+    if (mainClass) this.mainClass = mainClass;
+  }
 }

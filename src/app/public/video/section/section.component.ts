@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
 
-import { Video, VideoSections, VideoService } from './../../services/video.service';
+import { Video, VideoSections, VideoService } from 'src/app/services/video.service';
 
 type keyTypeSecions = keyof typeof VideoSections;
 
