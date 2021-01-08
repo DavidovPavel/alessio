@@ -6,23 +6,17 @@
       margin-top: 0;
 
       &.pl-40 {
-        padding-left: 1.5vw;
-      }
-
-      &.full-width app-carousel {
-        width: 100%;
-      }
-
-      &.vertical {
-        margin: 0;
-
-        & app-carousel {
-          float: left;
-          margin-right: 1.5vw;
-          margin-top: 0.6vw;
-          width: 20vw;
-        }
+        padding-left: 1.5vw
       }
     }
   }
+}
+.vertical {
+  float: left;
+  margin-right: 1.5vw;
+  margin-top: 0.6vw;
+}
+
+.full-width {
+  width: 100%;
 }

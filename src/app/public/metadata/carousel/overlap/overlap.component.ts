@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { leftRight } from '../carousel.component';
 
 @Component({
   selector: 'app-overlap',
@@ -10,13 +9,13 @@ import { leftRight } from '../carousel.component';
   styleUrls: ['./overlap.component.scss'],
 })
 export class OverlapComponent {
-  @Output() direction = new EventEmitter<leftRight>();
+  @Output() direction = new EventEmitter<boolean>();
 
   toLeft(): void {
-    this.direction.emit(-1);
+    this.direction.emit(false);
   }
 
   toRight(): void {
-    this.direction.emit(1);
+    this.direction.emit(true);
   }
 }

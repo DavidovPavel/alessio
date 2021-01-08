@@ -1,14 +1,5 @@
 :host {
-  position: relative;
-  display: inline-block;
+  display: block;
   overflow: hidden;
-  width: inherit;
-
-  & > div {
-    width: inherit;
-
-    & > img {
-      width: inherit;
-    }
-  }
+  position: relative;
 }

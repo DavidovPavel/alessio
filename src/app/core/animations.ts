@@ -1,8 +1,12 @@
-import { animate, AnimationTriggerMetadata, state, style, transition, trigger } from '@angular/animations';
+import {
+  animate,
+  AnimationTriggerMetadata,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
-/**
- * height - expand height
- */
 export const expand = (height = '0'): AnimationTriggerMetadata =>
   trigger('expand', [
     state('true', style({ height: '*' })),

@@ -1,4 +1,5 @@
-<div>
-  <img [src]="current | path:'metadata/' + folder | getDownloadURL" alt="" />
-</div>
-<app-overlap [@opacity]="!hoverFlag" (direction)="move($event)"></app-overlap>
+<ng-container *ngIf="total$ | async as total">
+  <app-slider #sl [total]="total" [styles]="styles" [path]="'metadata/' + folder">
+  </app-slider>
+  <app-overlap [@opacity]="!hoverFlag" (direction)="sl.trigger($event)"></app-overlap>
+</ng-container>

@@ -6,9 +6,10 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { OverlapComponent } from './carousel/overlap/overlap.component';
 import { MetadataRoutingModule } from './metadata-routing.module';
 import { MetadataComponent } from './metadata.component';
+import { SliderComponent } from './carousel/slider/slider.component';
 
 @NgModule({
-  declarations: [MetadataComponent, CarouselComponent, OverlapComponent],
+  declarations: [MetadataComponent, CarouselComponent, OverlapComponent, SliderComponent],
   imports: [CommonModule, MetadataRoutingModule, AngularFireStorageModule],
 })
 export class MetadataModule {}

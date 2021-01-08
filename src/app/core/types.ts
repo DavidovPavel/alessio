@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 
 export abstract class BaseComponent {}
 
+export type units = 'px' | 'em' | 'rem' | '%' | 'vw' | 'vh';
+
 export interface ITitleId {
   title: string;
   id: number;

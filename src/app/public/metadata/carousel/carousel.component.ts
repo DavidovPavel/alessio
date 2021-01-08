@@ -1,11 +1,11 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, HostBinding, HostListener, Input, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
-import { map, pluck, switchMap } from 'rxjs/operators';
+import { pluck } from 'rxjs/operators';
+import { Styles } from 'src/app/services/metadata.service';
 
 import { opacity } from './../../../core/animations';
-
-export type leftRight = -1 | 1;
 
 @Component({
   selector: 'app-carousel',
@@ -15,11 +15,20 @@ export type leftRight = -1 | 1;
 })
 export class CarouselComponent implements OnInit {
   hoverFlag = false;
-  current = 1;
-  next: number;
   total$: Observable<number>;
 
   @Input() folder: number;
+  @Input() styles: Styles;
+
+  @HostBinding('style') get css(): SafeStyle {
+    if (!this.styles) return null;
+
+    const { width, height, units } = this.styles;
+
+    const css = `width: ${width}${units}; height: ${height}${units}`;
+
+    return this.sanitizer.bypassSecurityTrustStyle(css);
+  }
 
   @HostListener('mouseover') showArrows() {
     this.hoverFlag = true;
@@ -29,40 +38,10 @@ export class CarouselComponent implements OnInit {
     this.hoverFlag = false;
   }
 
-  constructor(private storage: AngularFireStorage) {}
+  constructor(private storage: AngularFireStorage, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     const ref = this.storage.ref(`metadata/${this.folder}`);
     this.total$ = ref.listAll().pipe(pluck('items'), pluck('length'));
-  }
-
-  getNextPath(direction: leftRight, total: number): Observable<any> {
-    this.next = this.current + direction;
-    if (this.next === 0) {
-      this.next = total;
-    } else if (this.next > total) {
-      this.next = 1;
-    }
-    const ref = this.storage.ref(`metadata/${this.folder}/${this.next}.png`);
-    return ref.getDownloadURL();
-  }
-
-  move(direction: leftRight): void {
-    this.total$
-      .pipe(
-        switchMap((total) => this.getNextPath(direction, total)),
-        map((path: string) => {
-          if (direction > 0) {
-            // append img tag
-          }
-          if (direction < 0) {
-            // prepend img tag
-          }
-          // start animation
-
-          // end animation -> remove previous image
-        })
-      )
-      .subscribe((_) => (this.current = this.next));
   }
 }
