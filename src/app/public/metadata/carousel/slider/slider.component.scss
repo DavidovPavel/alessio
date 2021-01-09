@@ -1,6 +1,10 @@
 :host {
-  // position: absolute;
-  display: flex;
+  position: relative;
+  display: block;
   overflow: hidden;
   width: inherit;
+
+  & img {
+    position: absolute;
+  }
 }

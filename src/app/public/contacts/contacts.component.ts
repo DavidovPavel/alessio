@@ -5,13 +5,14 @@ import { Component } from '@angular/core';
   template: `<div [style.marginTop.vw]="-3.4">
       <h2>general information</h2>
       <p>
-        info@alessioromano.com. All rights on this site and it’s contents reserved to Alessio Romano.<br />
+        nfo@alessioromano.com. All rights on this site and it’s contents reserved to Alessio
+        Romano.<br />
         Alessio Romano is the owner of the respective copyright or licenses. This does not apply<br />
         to any third party messages or observations.
       </p>
       <h2>contact</h2>
       <p>
-        If you have any questions, please contact us. Max Bauer, head of care.<br />
+        If you have any questions, please contact us, Max Bauer, head of care.<br />
         Phone number +7 (909) 159 9999 or send us an email.
       </p>
       <h2>art</h2>
