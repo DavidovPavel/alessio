@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import {
   animate,
   AnimationBuilder,
@@ -16,9 +17,7 @@ import { Styles } from 'src/app/services/metadata.service';
   styleUrls: ['./slider.component.scss'],
 })
 export class SliderComponent implements OnInit {
-  first = 0;
   current = 1;
-  last = 2;
 
   @Input() path: string;
   @Input() total: number;
@@ -48,7 +47,8 @@ export class SliderComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.total) {
-      this.first = this.total;
+      this.addFirst();
+      this.addLast();
     }
   }
 
@@ -57,63 +57,63 @@ export class SliderComponent implements OnInit {
   }
 
   toRight(): void {
-    this.addLast();
-    const player = this.playAnimation(this.getRightAnimation());
-    player.onDone(() => this.killFirst());
+    this.current++;
+    if (this.current > this.total) this.current = 1;
+
+    this.playAnimation(this.getRightAnimation()).onDone(() => {
+      this.removeImg('first');
+      this.addLast();
+    });
   }
 
   toLeft(): void {
-    this.addFirst();
-    const player = this.playAnimation(this.getLeftAnimation());
-    player.onDone(() => this.killLast());
+    this.current--;
+    if (this.current === 0) this.current = this.total;
+
+    this.playAnimation(this.getLeftAnimation()).onDone(() => {
+      this.removeImg('last');
+      this.addFirst();
+    });
   }
 
-  killFirst(): void {
+  removeImg(selector: 'last' | 'first'): void {
     const el = this.el.nativeElement;
-    const first = el.querySelector('img:first-child');
-    this.render.removeChild(el, first, true);
-    this.playAnimation([animate(0.1, style({ 'margin-left': '-' + this.width }))]);
-  }
-
-  killLast(): void {
-    const el = this.el.nativeElement;
-    const last = el.querySelector('img:last-child');
-    this.render.removeChild(el, last, true);
+    const img = el.querySelector(`img:${selector}-child`);
+    this.render.removeChild(el, img, true);
     this.playAnimation([animate(0.1, style({ 'margin-left': '-' + this.width }))]);
   }
 
   addFirst(): void {
-    const el = this.el.nativeElement;
-    const first = this.render.createElement('img') as HTMLImageElement;
-
-    const next = this.first - 1;
-    this.first = next === 0 ? this.total : next;
-
-    this.storage
-      .ref(`${this.path}/${this.first}.png`)
-      .getDownloadURL()
-      .subscribe((url) => {
-        this.render.setStyle(first, 'width', this.width);
-        this.render.setAttribute(first, 'src', url);
-        this.render.appendChild(el, first);
-      });
+    this.getFirstUrl().subscribe((url) => {
+      const el = this.el.nativeElement;
+      const img = this.render.createElement('img') as HTMLImageElement;
+      const first = this.el.nativeElement.querySelector('img:first-child');
+      this.render.setStyle(img, 'width', this.width);
+      this.render.insertBefore(el, img, first, true);
+      this.render.setAttribute(img, 'src', url);
+    });
   }
 
   addLast(): void {
-    const el = this.el.nativeElement;
-    const last = this.render.createElement('img') as HTMLImageElement;
+    this.getLastUrl().subscribe((url) => {
+      const el = this.el.nativeElement;
+      const img = this.render.createElement('img') as HTMLImageElement;
+      this.render.setStyle(img, 'width', this.width);
+      this.render.appendChild(el, img);
+      this.render.setAttribute(img, 'src', url);
+    });
+  }
 
-    const next = this.last + 1;
-    this.last = next > this.total ? 1 : next;
+  getFirstUrl(): Observable<string> {
+    const next = this.current - 1;
+    const id = next === 0 ? this.total : next;
+    return this.storage.ref(`${this.path}/${id}.png`).getDownloadURL();
+  }
 
-    this.storage
-      .ref(`${this.path}/${this.last}.png`)
-      .getDownloadURL()
-      .subscribe((url) => {
-        this.render.setStyle(last, 'width', this.width);
-        this.render.setAttribute(last, 'src', url);
-        this.render.appendChild(el, last);
-      });
+  getLastUrl(): Observable<string> {
+    const next = this.current + 1;
+    const id = next > this.total ? 1 : next;
+    return this.storage.ref(`${this.path}/${id}.png`).getDownloadURL();
   }
 
   private playAnimation(animationMetaData: AnimationMetadata[]): AnimationPlayer {
