@@ -1,8 +1,7 @@
 import { Component, ElementRef, HostBinding, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-import { Styles } from 'src/app/services/metadata.service';
 
-import { CarouselData, SliderService } from './../slider.service';
+import { CarouselData, SliderService, StyleSet } from './../slider.service';
 
 @Component({
   selector: 'app-slider',
@@ -13,7 +12,7 @@ import { CarouselData, SliderService } from './../slider.service';
 export class SliderComponent implements OnInit {
   @Input() path: string;
   @Input() total: number;
-  @Input() styles: Styles;
+  @Input() styles: StyleSet;
 
   @HostBinding('style') get css(): SafeStyle {
     if (!this.styles) return null;

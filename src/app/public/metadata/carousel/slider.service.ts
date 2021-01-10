@@ -2,11 +2,21 @@ import { animate, AnimationBuilder, style } from '@angular/animations';
 import { Injectable, Renderer2 } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
-import { Styles } from 'src/app/services/metadata.service';
 
+enum direction {
+  left = 1,
+  right = -1,
+}
+
+export type unitsType = 'px' | 'em' | 'rem' | '%' | 'vw' | 'vh';
+export interface StyleSet {
+  width: number;
+  height: number;
+  units: unitsType;
+}
 export interface CarouselData {
   el: HTMLElement;
-  styles: Styles;
+  styles: StyleSet;
   total: number;
   path: string;
 }
@@ -29,35 +39,26 @@ export class SliderService {
   }
 
   toLeft(): void {
-    this.current--;
-    if (this.current === 0) this.current = this.data.total;
-    this.playAnimation(1);
     this.removeImg('last');
     this.addFirst();
+    this.playAnimation(direction.left);
   }
 
   toRight(): void {
-    this.current++;
-    if (this.current > this.data.total) this.current = 1;
-    this.playAnimation(-1);
     this.removeImg('first');
     this.addLast();
+    this.playAnimation(direction.right);
   }
 
-  playAnimation(direction: 1 | -1): void {
+  playAnimation(d: direction): void {
     const imgs = this.data.el.querySelectorAll('img') as NodeList;
-
-    imgs.forEach((n, i) => {
-      const animation = this.builder.build([
-        animate(
-          '400ms ease-in',
-          style({
-            left: this.data.styles.width * (i + direction) + this.data.styles.units,
-          })
-        ),
-      ]);
-      const player = animation.create(n);
-      player.play();
+    const { width, units } = this.data.styles;
+    imgs.forEach((img, i) => {
+      const left = width * (i + d) + units;
+      this.builder
+        .build([animate('400ms ease-in', style({ left }))])
+        .create(img)
+        .play();
     });
   }
 
@@ -68,37 +69,45 @@ export class SliderService {
   }
 
   addFirst(): void {
-    this.getFirstUrl().subscribe((url) => {
-      const el = this.data.el;
-      const first = el.querySelector('img:first-child');
-      const img = this.createImg(url);
-      this.render.insertBefore(el, img, first, true);
-    });
+    this.getFirstUrl().subscribe((url) => this.insertFirst(url));
   }
 
   addLast(): void {
-    this.getLastUrl().subscribe((url) => {
-      const {
-        el,
-        styles: { width },
-      } = this.data;
-      const img = this.createImg(url, width * 2);
-      this.render.appendChild(el, img);
-    });
+    this.getLastUrl().subscribe((url) => this.appendLast(url));
   }
 
   getFirstUrl(): Observable<string> {
-    const next = this.current - 1;
     const { total, path } = this.data;
+    this.current--;
+    if (this.current === 0) this.current = this.data.total;
+    const next = this.current - 1;
     const id = next === 0 ? total : next;
     return this.storage.ref(`${path}/${id}.png`).getDownloadURL();
   }
 
+  insertFirst(url: string): void {
+    const el = this.data.el;
+    const first = el.querySelector('img:first-child');
+    const img = this.createImg(url);
+    this.render.insertBefore(el, img, first, true);
+  }
+
   getLastUrl(): Observable<string> {
-    const next = this.current + 1;
     const { total, path } = this.data;
+    this.current++;
+    if (this.current > this.data.total) this.current = 1;
+    const next = this.current + 1;
     const id = next > total ? 1 : next;
     return this.storage.ref(`${path}/${id}.png`).getDownloadURL();
+  }
+
+  appendLast(url: string): void {
+    const {
+      el,
+      styles: { width },
+    } = this.data;
+    const img = this.createImg(url, width * 2);
+    this.render.appendChild(el, img);
   }
 
   createImg(url: string, leftPosition = 0): HTMLImageElement {

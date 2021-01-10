@@ -3,9 +3,9 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
-import { Styles } from 'src/app/services/metadata.service';
 
 import { opacity } from './../../../core/animations';
+import { StyleSet } from './slider.service';
 
 @Component({
   selector: 'app-carousel',
@@ -18,7 +18,7 @@ export class CarouselComponent implements OnInit {
   total$: Observable<number>;
 
   @Input() folder: number;
-  @Input() styles: Styles;
+  @Input() styles: StyleSet;
 
   @HostBinding('style') get css(): SafeStyle {
     if (!this.styles) return null;
