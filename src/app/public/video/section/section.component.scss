@@ -1,3 +1,8 @@
+:host {
+  display: block;
+  margin-top: -3.2vw;
+}
+
 :host + div + div {
   width: 49.6vw;
 }

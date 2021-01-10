@@ -22,11 +22,8 @@ export class CarouselComponent implements OnInit {
 
   @HostBinding('style') get css(): SafeStyle {
     if (!this.styles) return null;
-
     const { width, height, units } = this.styles;
-
     const css = `width: ${width}${units}; height: ${height}${units}`;
-
     return this.sanitizer.bypassSecurityTrustStyle(css);
   }
 
