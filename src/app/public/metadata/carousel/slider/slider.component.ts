@@ -5,7 +5,7 @@ import { CarouselData, SliderService, StyleSet } from './../slider.service';
 
 @Component({
   selector: 'app-slider',
-  templateUrl: './slider.component.html',
+  template: '<img [src]="1 | path:path | getDownloadURL" [ngStyle]="{width: width, left: width}" alt="" />',
   styleUrls: ['./slider.component.scss'],
   providers: [SliderService],
 })
