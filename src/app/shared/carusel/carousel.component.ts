@@ -4,8 +4,8 @@ import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 
-import { opacity } from './../../../core/animations';
-import { StyleSet } from './slider.service';
+import { opacity, StyleSet } from './slider.service';
+
 
 @Component({
   selector: 'app-carousel',
@@ -17,7 +17,13 @@ export class CarouselComponent implements OnInit {
   hoverFlag = false;
   total$: Observable<number>;
 
-  @Input() folder: number;
+  @Input() path: string;
+
+  /**
+   * @field width: number;
+   * @field height: number;
+   * @field units: px | em | rem | vw | hw | %;
+   */
   @Input() styles: StyleSet;
 
   @HostBinding('style') get css(): SafeStyle {
@@ -38,7 +44,7 @@ export class CarouselComponent implements OnInit {
   constructor(private storage: AngularFireStorage, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
-    const ref = this.storage.ref(`metadata/${this.folder}`);
+    const ref = this.storage.ref(this.path);
     this.total$ = ref.listAll().pipe(pluck('items'), pluck('length'));
   }
 }

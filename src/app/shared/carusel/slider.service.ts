@@ -1,7 +1,13 @@
-import { animate, AnimationBuilder, style } from '@angular/animations';
+import { animate, AnimationBuilder, state, style, transition, trigger } from '@angular/animations';
 import { Injectable, Renderer2 } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
+
+export const opacity = trigger('opacity', [
+  state('true', style({ opacity: 0 })),
+  state('false', style({ opacity: 1 })),
+  transition('true<=>false', animate(200)),
+]);
 
 enum direction {
   left = 1,
@@ -26,11 +32,7 @@ export class SliderService {
   private data: CarouselData;
   private current = 1;
 
-  constructor(
-    private builder: AnimationBuilder,
-    private render: Renderer2,
-    private storage: AngularFireStorage
-  ) {}
+  constructor(private builder: AnimationBuilder, private render: Renderer2, private storage: AngularFireStorage) {}
 
   init(data: CarouselData): void {
     this.data = data;

@@ -1,11 +1,11 @@
-import { IProduct } from 'src/app/core/models/product';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { IProduct } from 'src/app/core/models/product';
 
 import { IStoreItem } from '../../core/models/store-item';
-import { Metadata } from '../../services/metadata.service';
+import { Medadata } from '../../services/metadata.service';
 
 @Component({
   selector: 'app-admin',
@@ -42,7 +42,7 @@ export class AdminComponent implements OnInit {
 
   importMetadata(): void {
     const coll = this.fs.collection('metadata');
-    this.http.get('/assets/import/metadata.json').subscribe((data: Metadata[]) => {
+    this.http.get('/assets/import/metadata.json').subscribe((data: Medadata[]) => {
       data.forEach((a) => {
         coll.add(a);
       });

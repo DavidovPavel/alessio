@@ -1,6 +1,6 @@
 <div class="main-text">
   <ng-container *ngFor="let pg of data$ | async" [ngSwitch]="pg.typeContent">
-    <app-carousel *ngSwitchCase="'image'" [ngClass]="pg.className" [folder]="pg.id" [styles]="pg.styles">
+    <app-carousel *ngSwitchCase="'image'" [ngClass]="pg.className" [path]="'metadata/' + pg.id" [styles]="pg.styles">
     </app-carousel>
     <p *ngSwitchDefault [class]="pg.className">
       {{ pg.content }}

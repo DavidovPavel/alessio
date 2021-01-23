@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
+import { ContentInfo } from '@app/core/types';
+import { StyleSet } from '@app/shared/carusel/slider.service';
 import { Observable } from 'rxjs';
 
-import { StyleSet } from '../public/metadata/carousel/slider.service';
 import { FireService } from './fire.service';
 
-export interface Metadata {
-  id: number;
-  content: string;
-  typeContent: 'text' | 'image';
-  className: string;
+export interface Medadata extends ContentInfo {
   styles: StyleSet;
 }
 
@@ -16,12 +13,12 @@ export interface Metadata {
   providedIn: 'root',
 })
 export class MetadataService {
-  collection: Observable<Metadata[]>;
+  collection: Observable<Medadata[]>;
   constructor(private fire: FireService) {
     this.collection = this.fire.getCollection('metadata', (ref) => ref.orderBy('id'));
   }
 
-  getAll(): Observable<Metadata[]> {
+  getAll(): Observable<Medadata[]> {
     return this.collection;
   }
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FireService } from '@app/services/fire.service';
 import { Observable } from 'rxjs';
 
 import { expand } from '../../core/animations';
-import { ApiService } from '../../core/api.service';
-import { BaseComponent, IExhibition } from '../../core/types';
+import { Exhibition } from '../../core/types';
 
 @Component({
   selector: 'app-exhibitions',
@@ -11,13 +11,11 @@ import { BaseComponent, IExhibition } from '../../core/types';
   styleUrls: ['./exhibitions.component.scss'],
   animations: [expand()],
 })
-export class ExhibitionsComponent extends BaseComponent implements OnInit {
-  items$: Observable<IExhibition[]>;
-  constructor(private api: ApiService) {
-    super();
-  }
+export class ExhibitionsComponent implements OnInit {
+  items$: Observable<Exhibition[]>;
+  constructor(private fire: FireService) {}
 
   ngOnInit(): void {
-    this.items$ = this.api.getExhibitions();
+    this.items$ = this.fire.getCollection<Exhibition>('exhibition', (ref) => ref.orderBy('id'));
   }
 }

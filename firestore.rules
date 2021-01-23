@@ -5,6 +5,10 @@ service cloud.firestore {
     	allow read, write: if false;
     }
 
+     match /exhibition/{document} {
+      allow read, write: if true
+    }
+
     match /metadata/{document} {
       allow read, write: if true
     }

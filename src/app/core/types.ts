@@ -3,7 +3,13 @@ import { DocumentChangeAction } from '@angular/fire/firestore';
 import { ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 
-export abstract class BaseComponent {}
+export type unitsType = 'px' | 'em' | 'rem' | '%' | 'vw' | 'vh';
+export interface ContentInfo {
+  id: number;
+  content: string;
+  typeContent: 'text' | 'image';
+  className: string;
+}
 
 export interface ITitleId {
   title: string;
@@ -50,8 +56,9 @@ export interface ICollaboration {
   expand?: boolean;
 }
 
-export interface IExhibition {
+export interface Exhibition {
   id: number;
+  title: string;
   text: string[];
   expand?: boolean;
   margin?: string;

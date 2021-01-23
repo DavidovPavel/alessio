@@ -33,9 +33,9 @@
   }
 
   main.contacts {
-    background-image: url('/assets/images/contact_bg.png');
-    background-position: bottom left;
-    background-repeat: no-repeat;
+    background-image:url('/assets/images/contact_face.png'), url('/assets/images/contact_bg.png');
+    background-position: top right, bottom left;
+    background-repeat: no-repeat, no-repeat;
     background-size: contain;
   }
 }

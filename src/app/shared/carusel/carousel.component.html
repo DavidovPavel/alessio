@@ -1,5 +1,5 @@
 <ng-container *ngIf="total$ | async as total">
-  <app-slider #sl [total]="total" [styles]="styles" [path]="'metadata/' + folder">
+  <app-slider #sl [total]="total" [styles]="styles" [path]="path">
   </app-slider>
   <app-overlap [@opacity]="!hoverFlag" (direction)="sl.trigger($event)"></app-overlap>
 </ng-container>
