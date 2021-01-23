@@ -2,10 +2,13 @@
   <div class="prev" [ngStyle]="{margin: item.margin}"><img [src]="item.id | path:'exhibition' | getDownloadURL"
       [alt]="item.title" (click)="item.expand=item.id===1"></div>
   <div [@expand]="!!item.expand">
-    <p>{{item.text[0]}}</p>
-    <app-carousel [ngClass]="'full-width'" [path]="'metadata/5'" [styles]="{width: 75, height: 34, units: 'vw'}">
-    </app-carousel>
-    <p>{{item.text[1]}}</p>
+    <ng-container *ngFor="let p of item.text">
+      <p *ngIf="p!=='image'; else img">{{ p }}</p>
+      <ng-template #img>
+        <app-carousel [ngClass]="'full-width'" [path]="'metadata/5'" [styles]="{width: 75, height: 34, units: 'vw'}">
+        </app-carousel>
+      </ng-template>
+    </ng-container>
   </div>
 </div>
 <app-social [bg]="'dark'"></app-social>
