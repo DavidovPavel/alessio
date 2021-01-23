@@ -11,6 +11,7 @@
     flex: 1;
     padding: 0 12% 0 13%;
     line-height: 2.2vw;
+    position: relative;
 
     & .title {
       display: flex;
@@ -33,7 +34,7 @@
 
   main.contacts {
     background-image: url('/assets/images/contacts_bg.png');
-    background-position: top right;
+    background-position: bottom left;
     background-repeat: no-repeat;
     background-size: contain;
   }

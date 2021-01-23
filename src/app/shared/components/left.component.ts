@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { expand, show2left } from '../../core/animations';
-import { ApiService, IMenu } from '../../core/api.service';
+import { expand, show2left } from '@app/core/animations';
+import { ApiService, IMenu } from '@app/core/api.service';
 
 @Component({
   selector: 'app-left',
