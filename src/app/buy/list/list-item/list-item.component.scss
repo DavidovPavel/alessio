@@ -12,34 +12,6 @@ div.black {
   border-style: solid;
 }
 
-
-i.under {
-  white-space: nowrap;
-  font-style: normal;
-  color: rgb(238, 28, 36);
-  padding-left: 1vw;
-  position: absolute;
-  background-color: transparent;
-  left: 4vw;
-  top: 2vw;
-  opacity: 0;
-  transition: opacity .2s;
-  z-index: 1;
-
-  &::before {
-    content: '';
-    position: absolute;
-    width: 0px;
-    height: 0px;
-    border: .27vw solid;
-    border-color:
-      transparent rgb(238, 28, 36) rgb(238, 28, 36) transparent;
-    transform: rotate(-45deg);
-    top: .1vw;
-    left: 0;
-  }
-}
-
 img {
   border-width: .14vw;
   border-color: transparent;

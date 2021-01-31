@@ -7,16 +7,14 @@ import { BuyRoutingModule } from './buy-routing.module';
 import { CollectionComponent } from './collection.component';
 import { ImgComponent } from './item/img/img.component';
 import { CheckComponent, ItemComponent, OpenBigImgComponent } from './item/item.component';
+import { LinkPipe } from './item/link.pipe';
 import { ListItemComponent } from './list/list-item/list-item.component';
 import { ListComponent } from './list/list.component';
-import { UnderDirective } from './under.directive';
-import { LinkPipe } from './item/link.pipe';
 
 @NgModule({
   declarations: [
     CollectionComponent,
     ItemComponent,
-    UnderDirective,
     ListComponent,
     ListItemComponent,
     ImgComponent,

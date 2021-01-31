@@ -1,32 +1,20 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat-core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
 $alessio-primary: mat-palette($mat-indigo);
 $alessio-accent: mat-palette($mat-pink, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
 $alessio-warn: mat-palette($mat-red);
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$alessio-theme: mat-light-theme((color: (primary: $alessio-primary,
+$alessio-theme: mat-light-theme(
+  (
+    color: (
+      primary: $alessio-primary,
       accent: $alessio-accent,
       warn: $alessio-warn,
-    )));
+    ),
+  )
+);
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include angular-material-theme($alessio-theme);
 
 html,
@@ -45,7 +33,7 @@ body {
   padding: 0;
   margin: 0;
   font-size: 0.95vw;
-  letter-spacing: -.008vw;
+  letter-spacing: -0.008vw;
   overflow: hidden;
 }
 
@@ -65,60 +53,86 @@ button:focus {
   outline-width: 0;
 }
 
-.big-img-dialog>mat-dialog-container {
+.big-img-dialog > mat-dialog-container {
   background-color: transparent;
   padding: 0;
   box-shadow: none;
 }
 
 .big-img-overlay {
-  background-color: rgba($color: #000000, $alpha: .95);
+  background-color: rgba($color: #000000, $alpha: 0.95);
 }
 
 .active {
-  color: #cc2229
+  color: #cc2229;
 }
 
 .arrow {
   position: relative;
   display: inline-block;
 
-  &.open>span {
+  &.open > span {
     transform: rotate(45deg);
-    top: -.7vw;
+    top: -0.7vw;
   }
 
   & span {
     position: absolute;
     width: 0px;
     height: 0px;
-    border: .27vw solid;
-    border-color:
-      transparent #ffffff #ffffff transparent;
+    border: 0.27vw solid;
+    border-color: transparent #ffffff #ffffff transparent;
     transform: rotate(-45deg);
-    left: .6vw;
-    top: -.5vw;
-    transition: all .5s;
+    left: 0.6vw;
+    top: -0.5vw;
+    transition: all 0.5s;
   }
 }
 
 .arrow.black span {
-  border-color:
-    transparent #000000 #000000 transparent;
+  border-color: transparent #000000 #000000 transparent;
+}
+
+i.under {
+  white-space: nowrap;
+  font-style: normal;
+  color: rgb(238, 28, 36);
+  padding-left: 1vw;
+  position: absolute;
+  background-color: transparent;
+  left: 2vw;
+  top: 1vw;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 1;
+  line-height: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border: 0.2vw solid;
+    border-color: transparent rgb(238, 28, 36) rgb(238, 28, 36) transparent;
+    transform: rotate(-45deg);
+    top: 0.17vw;
+    left: 0;
+  }
 }
 
 @font-face {
   font-family: 'Trajan Pro';
-  src: url("assets/Trajan Pro Regular.ttf");
-  src: local("assets/Trajan Pro Regular"), url("assets/Trajan Pro Regular.ttf") format("truetype"), url("assets/TrajanPro-Regular.otf") format("otf");
+  src: url('assets/Trajan Pro Regular.ttf');
+  src: local('assets/Trajan Pro Regular'), url('assets/Trajan Pro Regular.ttf') format('truetype'),
+    url('assets/TrajanPro-Regular.otf') format('otf');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'TrajanPro-Bold';
-  src: url("assets/TrajanPro-Regular.otf");
-  src: local("assets/TrajanPro-Regular.otf"), url("assets/TrajanPro-Regular.otf") format("otf");
+  src: url('assets/TrajanPro-Regular.otf');
+  src: local('assets/TrajanPro-Regular.otf'), url('assets/TrajanPro-Regular.otf') format('otf');
   font-weight: normal;
   font-style: normal;
 }
