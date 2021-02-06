@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Project } from '@app/core/types';
+import { FireService } from '@app/services/fire.service';
 import { Observable } from 'rxjs';
 
-import { expand } from '../../core/animations';
-import { ApiService } from '../../core/api.service';
-import { IProject } from '../../core/types';
+import { expand } from '@app/core/animations';
 
 @Component({
   selector: 'app-projects',
@@ -12,10 +12,10 @@ import { IProject } from '../../core/types';
   animations: [expand('12.5vw')],
 })
 export class ProjectsComponent implements OnInit {
-  items$: Observable<IProject[]>;
-  constructor(private api: ApiService) {}
+  items$: Observable<Project[]>;
+  constructor(private fire: FireService) {}
 
   ngOnInit(): void {
-    this.items$ = this.api.getProjects();
+    this.items$ = this.fire.getCollection('project', (ref) => ref.orderBy('id'));
   }
 }

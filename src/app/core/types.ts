@@ -50,10 +50,11 @@ export class Driver {
   crumbs: Observable<ParamMap>;
 }
 
-export interface ICollaboration {
+export interface Collaboration {
   name: string;
   text: string[];
   expand?: boolean;
+  height: string;
 }
 
 export interface Exhibition {
@@ -64,12 +65,12 @@ export interface Exhibition {
   margin?: string;
 }
 
-export interface IProject {
-  name: string;
+export interface Project {
+  id: number;
   title: string;
-  quote: string;
   text: string[];
   expand?: boolean;
+  height: string;
 }
 
 export interface IPublication {

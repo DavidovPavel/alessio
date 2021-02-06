@@ -1,6 +1,4 @@
 :host {
-  margin-top: -.6vw;
-  display: block;
 
   & div.item {
     position: relative;
@@ -13,9 +11,9 @@
       &.vertical {
         margin: 0;
         float: left;
-        
+
         & img {
-          display: block;         
+          display: block;
           width: 22vw;
           margin: .6vw 1.2vw 1.2vw 0;
           &:last-child {

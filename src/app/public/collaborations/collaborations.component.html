@@ -1,4 +1,4 @@
-<div *ngFor="let item of items$ | async" class="item" [@expand]="!!item.expand">
+<div *ngFor="let item of items$ | async" class="item" [@expand]="{value: !!item.expand, params: {height: item.height}}">
   <p class="vertical">
     <img src="assets/images/collaborations/{{item.name}}.png" alt="">
     <img src="assets/images/collaborations/{{item.name}}_.png" alt="">

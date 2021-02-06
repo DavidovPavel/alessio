@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { expand } from '@app/core/animations';
+import { ApiService } from '@app/core/api.service';
+import { Collaboration } from '@app/core/types';
 import { Observable } from 'rxjs';
-
-import { expand } from '../../core/animations';
-import { ApiService } from '../../core/api.service';
-import { ICollaboration } from '../../core/types';
 
 @Component({
   selector: 'app-collaborations',
@@ -12,7 +11,7 @@ import { ICollaboration } from '../../core/types';
   animations: [expand('10.5vw')],
 })
 export class CollaborationsComponent implements OnInit {
-  items$: Observable<ICollaboration[]>;
+  items$: Observable<Collaboration[]>;
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {

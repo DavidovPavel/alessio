@@ -1,9 +1,11 @@
-  <div *ngFor="let item of items$ | async" fxLayout class="item" [@expand]="!!item.expand">
-    <div class="left"><img src="assets/images/projects/{{item.name}}.png" alt=""></div>
-    <div class="text">
-      <p *ngFor="let p of item.text">{{p}}</p>
-    </div>
-    <span class="more" (click)="item.expand = !item.expand"><span
-        *ngIf="!item.expand">...&nbsp;&nbsp;&nbsp;</span>{{ item.expand ? 'see less' : 'see more' }}</span>
+  <div *ngFor="let item of items$ | async" class="item"
+    [@expand]="{value: item.id === 1 ? !!item.expand : false, params: {height: item.height}}" appUnder>
+    <img [src]="item.id | path:'project' | getDownloadURL" [alt]="item.title">
+    <i *ngIf="item.id!==1" class="under">UNDER CONSTRACTION</i>
+    <p *ngFor="let p of item.text">{{p}}</p>
+    <span class="more" (click)="item.expand = item.id === 1 ? !item.expand: false">
+      <span *ngIf="!item.expand">&nbsp;...&nbsp;&nbsp;</span>
+      <span>{{ item.expand ? 'see less' : 'see more' }}</span>
+    </span>
   </div>
   <app-social [bg]="'dark'"></app-social>
