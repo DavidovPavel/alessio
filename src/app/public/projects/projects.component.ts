@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from '@app/core/types';
+import { expand } from '@app/core/animations';
+import { Project } from '@app/core/models/project';
 import { FireService } from '@app/services/fire.service';
 import { Observable } from 'rxjs';
-
-import { expand } from '@app/core/animations';
 
 @Component({
   selector: 'app-projects',

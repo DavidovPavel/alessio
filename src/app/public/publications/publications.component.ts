@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Publication } from '@app/core/models/publication';
 import { Observable } from 'rxjs';
 
 import { expand } from '../../core/animations';
 import { ApiService } from '../../core/api.service';
-import { IPublication } from '../../core/types';
 
 @Component({
   selector: 'app-publications',
@@ -12,7 +12,7 @@ import { IPublication } from '../../core/types';
   animations: [expand('12.5vw')],
 })
 export class PublicationsComponent implements OnInit {
-  items$: Observable<IPublication[]>;
+  items$: Observable<Publication[]>;
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {

@@ -18,9 +18,9 @@
           <img src="assets/images/inlarg.png" alt="" />
         </div>
         <div class="prev-items" fxLayout="column" fxLayoutAlign="space-between center">
-          <app-img *ngFor="let prev of previews" path="{{ path }}/{{ prev }}" (click)="currentPrev=prev"
+          <app-picture *ngFor="let prev of previews" path="{{ path }}/{{ prev }}" (click)="currentPrev=prev"
             [ngClass]="{active: prev===currentPrev}">
-          </app-img>
+          </app-picture>
         </div>
         <div fxLayout="column" fxFlex fxLayoutAlign="space-between">
           <div [style.width.%]="100">
@@ -58,5 +58,4 @@
       </div>
     </div>
   </ng-container>
-  <app-social></app-social>
 </main>

@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { headOnScroll } from 'src/app/core/animations';
+import { groupByFour } from 'src/app/core/func';
 import { IStoreItem } from 'src/app/core/models/store-item';
-import { groupByFour } from 'src/app/core/types';
 
 import { StoreService } from './../../services/store.service';
 

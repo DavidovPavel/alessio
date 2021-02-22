@@ -3,7 +3,7 @@ import { FireService } from '@app/services/fire.service';
 import { Observable } from 'rxjs';
 
 import { expand } from '../../core/animations';
-import { Exhibition } from '../../core/types';
+import { Exhibition } from '../../core/models/exhibition';
 
 @Component({
   selector: 'app-exhibitions',

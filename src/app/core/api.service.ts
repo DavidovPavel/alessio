@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { Collaboration } from './models/collaboration';
+import { Publication } from './models/publication';
 
-import { Collaboration, IPublication } from './types';
 
 export interface IMenu {
   name: string;
@@ -59,7 +60,7 @@ export class ApiService {
     ]);
   }
 
-  getPublications(): Observable<IPublication[]> {
+  getPublications(): Observable<Publication[]> {
     return of([{ name: 'elle', text: textStub }]);
   }
 }

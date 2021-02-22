@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-img',
-  templateUrl: './img.component.html',
-  styleUrls: ['./img.component.scss'],
+  selector: 'app-picture',
+  templateUrl: './picture.component.html',
+  styleUrls: ['./picture.component.scss'],
 })
-export class ImgComponent implements OnInit {
+export class PictureComponent implements OnInit {
   @Input() path: string;
   @Input() currentId: number;
   @Input() isBig = false;

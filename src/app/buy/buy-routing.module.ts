@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { CollectionComponent } from './collection.component';
-import { ItemComponent } from './item/item.component';
 import { ListComponent } from './list/list.component';
+import { ProductComponent } from './product/product.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'project', pathMatch: 'full' },
@@ -36,7 +36,7 @@ const routes: Routes = [
 
   {
     path: 'project/:project/:category/:color/:collection/:size/:id',
-    component: ItemComponent,
+    component: ProductComponent,
   },
 ];
 

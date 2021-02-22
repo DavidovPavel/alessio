@@ -10,7 +10,7 @@
   </div>
 </ng-template>
 <ng-template #picture>
-  <img src="assets/store/{{ storeName }}/{{item.id}}.png" alt="{{ item.title }}" />
+  <img [src]="('product/' + item.id + '/' + size + '/1.png') | getDownloadURL" alt="{{ item.title }}" />
 </ng-template>
 <ng-template #black>
   <div>

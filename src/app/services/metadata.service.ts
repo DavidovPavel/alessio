@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ContentInfo } from '@app/core/types';
+import { ContentInfo } from '@app/core/models/content-info';
 import { StyleSet } from '@app/shared/carusel/slider.service';
 import { Observable } from 'rxjs';
 

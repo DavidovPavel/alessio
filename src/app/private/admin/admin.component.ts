@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { IProduct } from 'src/app/core/models/product';
+import { Product } from 'src/app/core/models/product';
 
 import { IStoreItem } from '../../core/models/store-item';
 import { Medadata } from '../../services/metadata.service';
@@ -62,7 +62,7 @@ export class AdminComponent implements OnInit {
 
   importProducts(): void {
     const products = this.fs.collection('products');
-    this.http.get('/assets/import/products.json').subscribe((p: IProduct[]) => {
+    this.http.get('/assets/import/products.json').subscribe((p: Product[]) => {
       p.forEach((a) =>
         products.add({
           ...a,

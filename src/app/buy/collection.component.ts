@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 
 import { headOnScroll } from '../core/animations';
-import { IProduct } from '../core/models/product';
-import { groupByFour } from './../core/types';
+import { Product } from '../core/models/product';
+import { groupByFour } from './../core/func';
 
 @Component({
   selector: 'app-collection',
@@ -17,8 +17,7 @@ import { groupByFour } from './../core/types';
         <app-lang-switch [isLight]="true"></app-lang-switch>
       </div>
       <div fxLayout fxLayoutAlign="space-between" class="items" *ngFor="let group of groups$ | async">
-        <app-list-item *ngFor="let item of group" [item]="item" [storeName]="path"> </app-list-item>
-        <app-social></app-social>
+        <app-list-item *ngFor="let item of group" [item]="item"></app-list-item>
       </div>
     </main>`,
   styles: [
@@ -37,8 +36,7 @@ import { groupByFour } from './../core/types';
   animations: [headOnScroll],
 })
 export class CollectionComponent implements OnInit {
-  groups$: Observable<IProduct[][]>;
-  path = 'product/1';
+  groups$: Observable<Product[][]>;
   isScroll = false;
 
   constructor(private route: ActivatedRoute, private fs: AngularFirestore) {}
@@ -56,9 +54,8 @@ export class CollectionComponent implements OnInit {
     };
 
     this.groups$ = this.route.paramMap.pipe(
-      tap((a) => (this.path = `product/${+a.get('size')}`)),
-      switchMap((a) => this.fs.collection<IProduct>('products', queryFn(a)).valueChanges()),
-      map((c) => c.map((a) => ({ ...a, link: a.id, isActive: true })).reduce(groupByFour, [] as IProduct[][]))
+      switchMap((a) => this.fs.collection<Product>('products', queryFn(a)).valueChanges()),
+      map((c) => c.map((a) => ({ ...a, link: a.id, isActive: true })).reduce(groupByFour, [] as Product[][]))
     );
   }
 }

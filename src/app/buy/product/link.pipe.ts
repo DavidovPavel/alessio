@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { ILinkParams } from './../../core/models/current-item';
+import { ILinkParams } from './../../core/models/ILinkParams';
 
 @Pipe({
   name: 'link',

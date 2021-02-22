@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { expand } from '@app/core/animations';
 import { ApiService } from '@app/core/api.service';
-import { Collaboration } from '@app/core/types';
+import { Collaboration } from '@app/core/models/Collaboration';
 import { Observable } from 'rxjs';
 
 @Component({

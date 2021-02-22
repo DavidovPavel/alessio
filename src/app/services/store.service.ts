@@ -4,10 +4,10 @@ import { ParamMap } from '@angular/router';
 import { forkJoin, Observable, of } from 'rxjs';
 import { concatMap, filter, map, mergeMap, tap } from 'rxjs/operators';
 
-import { IBaseProduct, IProduct } from '../core/models/product';
+import { Product } from '../core/models/product';
 import { IStoreItem } from '../core/models/store-item';
-import { ICurrentItem, ILinkParams } from './../core/models/current-item';
-import { Video } from './video.service';
+import { ICurrentItem } from './../core/models/ICurrentItem';
+import { ILinkParams } from './../core/models/ILinkParams';
 
 @Injectable({
   providedIn: 'root',
@@ -41,12 +41,12 @@ export class StoreService {
   getCurrentItem(param: ParamMap): Observable<ICurrentItem> {
     const cid = +param.get('id');
 
-    const linkFromProduct = (a: IBaseProduct): ILinkParams => {
+    const linkFromProduct = (a: Product): ILinkParams => {
       const { project, category, color, collection, size, id } = a;
       return { project, category, color, collection, size, id };
     };
 
-    const link = (id: number) => this.getItemById<IBaseProduct>(id, 'products').pipe(map((a) => linkFromProduct(a)));
+    const link = (id: number) => this.getItemById<Product>(id, 'products').pipe(map((a) => linkFromProduct(a)));
 
     return this.getCountProducts().pipe(
       map((count) => ({
@@ -66,26 +66,26 @@ export class StoreService {
       .pipe(map((a) => a.docs[0]?.data() as T));
   }
 
-  getProductById(id: number): Observable<IProduct> {
+  getProductById(id: number): Observable<Product> {
     const projects = (pid: number[]) =>
       this.getStoreByName('project').pipe(map((a) => a.filter((b) => pid.includes(b.id))));
     const sizes = (sid: number[]) => this.getStoreByName('size').pipe(map((a) => a.filter((b) => sid.includes(b.id))));
 
     const product = this.fs
-      .collection<IBaseProduct>('products', (ref) => ref.where('id', '==', id))
+      .collection<Product>('products', (ref) => ref.where('id', '==', id))
       .valueChanges()
       .pipe(
         map((a) => a[0]),
         filter((a) => !!a),
-        concatMap((a) => projects([a.project]).pipe(map((b) => ({ ...a, project: b[0] })))),
-        concatMap((a) =>
-          sizes(a.size).pipe(
-            map((size: IStoreItem[]) => ({
-              ...a,
-              size,
-            }))
-          )
-        )
+        // concatMap((a) => projects([a.project]).pipe(map((b) => ({ ...a, project: b[0] })))),
+        // concatMap((a) =>
+        //   sizes(a.size).pipe(
+        //     map((size) => ({
+        //       ...a,
+        //       size,
+        //     }))
+        //   )
+        // )
       );
 
     return product;

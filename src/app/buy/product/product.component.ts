@@ -1,40 +1,22 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { headOnScroll } from 'src/app/core/animations';
 
-import { ICurrentItem } from './../../core/models/current-item';
+import { BigPictureComponent } from '../big-picture.component';
+import { ICurrentItem } from './../../core/models/ICurrentItem';
 import { StoreService } from './../../services/store.service';
 
-export interface DialogData {
-  path: string;
-  currentId: number;
-}
-@Component({
-  selector: 'app-big-img',
-  template: '<app-img [path]="data.path" [currentId]="data.currentId" [isBig]="true"></app-img>',
-})
-export class OpenBigImgComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-}
 
 @Component({
-  selector: 'app-check',
-  template: 'check here',
-})
-export class CheckComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-}
-
-@Component({
-  selector: 'app-item',
-  templateUrl: './item.component.html',
-  styleUrls: ['./item.component.scss'],
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.scss'],
   animations: [headOnScroll],
 })
-export class ItemComponent implements OnInit {
+export class ProductComponent implements OnInit {
   doc$: Observable<ICurrentItem>;
   currentId: number;
   currentSize: number;
@@ -57,7 +39,7 @@ export class ItemComponent implements OnInit {
   }
 
   showBig() {
-    this.dialog.open(OpenBigImgComponent, {
+    this.dialog.open(BigPictureComponent, {
       height: '100%',
       panelClass: 'big-img-dialog',
       backdropClass: 'big-img-overlay',
@@ -69,6 +51,6 @@ export class ItemComponent implements OnInit {
   }
 
   showCheck() {
-    this.dialog.open(CheckComponent, {});
+    // this.dialog.open(CheckComponent, {});
   }
 }

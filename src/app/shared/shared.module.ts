@@ -1,6 +1,6 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 
 import { CrumbsComponent } from './components/crumbs/crumbs.component';
@@ -27,9 +27,8 @@ import { TitlePipe } from './pipes/title.pipe';
     PathPipe,
     UnderDirective
   ],
-  imports: [CommonModule, FlexLayoutModule, RouterModule],
+  imports: [CommonModule, RouterModule, FlexLayoutModule],
   exports: [
-    FlexLayoutModule,
     LangSwitchComponent,
     SocialComponent,
     ScrollDirective,

@@ -2,10 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, convertToParamMap, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { IProduct } from 'src/app/core/models/product';
+import { Product } from 'src/app/core/models/product';
 import { IStoreItem } from 'src/app/core/models/store-item';
-import { ITitleId } from 'src/app/core/types';
 import { StoreService } from 'src/app/services/store.service';
+
+import { IdTitle } from '@app/core/models/id-title';
 
 
 @Component({
@@ -15,14 +16,14 @@ import { StoreService } from 'src/app/services/store.service';
 })
 export class CrumbsComponent implements OnInit {
   points$: Observable<IStoreItem[]>;
-  sizes: ITitleId[];
+  sizes: IdTitle[];
   param: ParamMap;
 
-  @Input() set current(product: IProduct) {
+  @Input() set current(product: Product) {
     if (product) {
       const { project, category, color, collection, size } = product;
-      this.param = convertToParamMap({ project: project.id, category, color, collection, size: size[0].id });
-      this.sizes = size;
+      this.param = convertToParamMap({ project, category, color, collection, size: size[0] });
+      // this.sizes = size;
       this.points$ = this.getPoints(this.param);
     }
   }
@@ -33,7 +34,7 @@ export class CrumbsComponent implements OnInit {
     this.points$ = this.route.paramMap.pipe(
       tap((param) => (this.param = param)),
       switchMap((p) => this.getPoints(p)),
-      tap((a) => (this.sizes = a.find((b) => b?.size)?.size as ITitleId[]))
+      tap((a) => (this.sizes = a.find((b) => b?.size)?.size as IdTitle[]))
     );
   }
 
