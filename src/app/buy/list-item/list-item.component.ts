@@ -9,5 +9,5 @@ export class ListItemComponent {
   @Input() item: any;
   @Input() hideTitle: boolean;
   @Input() storeName: string;
-  size = 1;
+  @Input() size: number;
 }

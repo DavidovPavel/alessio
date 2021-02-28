@@ -17,7 +17,7 @@ import { groupByFour } from './../core/func';
         <app-lang-switch [isLight]="true"></app-lang-switch>
       </div>
       <div fxLayout fxLayoutAlign="space-between" class="items" *ngFor="let group of groups$ | async">
-        <app-list-item *ngFor="let item of group" [item]="item"></app-list-item>
+        <app-list-item *ngFor="let item of group" [item]="item" [size]="size"></app-list-item>
       </div>
     </main>`,
   styles: [
@@ -39,6 +39,8 @@ export class CollectionComponent implements OnInit {
   groups$: Observable<Product[][]>;
   isScroll = false;
 
+  size: number;
+
   constructor(private route: ActivatedRoute, private fs: AngularFirestore) {}
 
   ngOnInit(): void {
@@ -54,6 +56,7 @@ export class CollectionComponent implements OnInit {
     };
 
     this.groups$ = this.route.paramMap.pipe(
+      tap((a) => (this.size = +a.get('size'))),
       switchMap((a) => this.fs.collection<Product>('products', queryFn(a)).valueChanges()),
       map((c) => c.map((a) => ({ ...a, link: a.id, isActive: true })).reduce(groupByFour, [] as Product[][]))
     );
