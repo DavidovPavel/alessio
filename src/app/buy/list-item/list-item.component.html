@@ -1,21 +1,27 @@
-<a *ngIf="item.isActive; else dummy" [routerLink]="item.link">
+<a *ngIf="item.isActive; else dummy" [routerLink]="item.id">
   <ng-container *ngTemplateOutlet="picture"></ng-container>
-  <span *ngIf="!hideTitle">{{ item.title }}</span>
+  <span *ngIf="meta.showTitle">{{ item.title }}</span>
 </a>
 <ng-template #dummy>
   <div appUnder *ngIf="item.id; else black">
     <i class="under">UNDER CONSTRACTION</i>
     <ng-container *ngTemplateOutlet="picture"></ng-container>
-    <span *ngIf="!hideTitle">{{ item.title }}</span>
+    <span *ngIf="meta.showTitle">{{ item.title }}</span>
   </div>
 </ng-template>
 <ng-template #picture>
-  <img [src]="('product/' + item.title + '/' + size + '/'+  item.title  +'-1.png') | getDownloadURL"
-    alt="{{ item.title }}" />
+  <div *ngIf="imgUrl$ | async as url; else empty" class="black">
+    <img [src]="url" alt="{{ item.title }}" />
+  </div>
+</ng-template>
+<ng-template #empty>
+  <div>
+    <div class="black"></div>
+  </div>
 </ng-template>
 <ng-template #black>
   <div>
     <div class="black"></div>
-    <span *ngIf="!hideTitle">{{ item.title }}</span>
+    <span *ngIf="meta.showTitle">{{ item.title }}</span>
   </div>
 </ng-template>

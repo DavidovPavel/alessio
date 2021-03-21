@@ -1,11 +1,8 @@
-<app-header [@headOnScroll]="isScroll"></app-header>
-<main appScroll (read)="isScroll = $event.scrollTop > 1">
-  <div fxLayout fxLayoutAlign="space-between center" class="top-tools">
-    <app-crumbs></app-crumbs>
-    <app-lang-switch [isLight]="true"></app-lang-switch>
-  </div>
-  <div fxLayout fxLayoutAlign="space-between" class="items" *ngFor="let items of groups$ | async">
-    <app-list-item *ngFor="let item of items" [item]="item" [storeName]="storeName" [hideTitle]="hideTitle">
-    </app-list-item>
-  </div>
-</main>
+<div fxLayout fxLayoutAlign="space-between center" class="top-tools">
+  <app-crumbs></app-crumbs>
+  <app-lang-switch [isLight]="true"></app-lang-switch>
+</div>
+<div fxLayout fxLayoutAlign="space-between" class="items" *ngFor="let items of group">
+  <app-list-item *ngFor="let item of items" [item]="item" [meta]="point">
+  </app-list-item>
+</div>

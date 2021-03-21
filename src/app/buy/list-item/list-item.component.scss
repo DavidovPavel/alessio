@@ -7,23 +7,26 @@ div.black {
   width: 14.3vw;
   height: 14.3vw;
   background-color: #000000;
-  border-width: .14vw;
+  border-width: 0.14vw;
   border-color: transparent;
   border-style: solid;
 }
 
-img {
-  border-width: .14vw;
-  border-color: transparent;
-  border-style: solid;
-  width: 14.3vw;
-  display: block;
+a > div.black,
+div > div.black {
+  display: flex;
+  align-items: center;
+  // padding: 0.6vw;
+
+  & img {
+    width: 100%;
+  }
 }
 
-a>span,
-div>span {
+a > span,
+div > span {
   display: block;
   text-align: center;
-  font-size: .6vw;
-  margin-top: .4vw;
+  font-size: 0.6vw;
+  margin-top: 0.4vw;
 }

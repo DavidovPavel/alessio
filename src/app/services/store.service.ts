@@ -55,7 +55,7 @@ export class StoreService {
       })),
       concatMap((a) => link(a.next).pipe(map((b) => ({ next: b, prev: a.prev })))),
       concatMap((a) => link(a.prev).pipe(map((b) => ({ next: a.next, prev: b })))),
-      concatMap((a) => this.getProductById(cid).pipe(map((b) => ({ next: a.next, prev: a.prev, current: b })))),
+      concatMap((a) => this.getProductById(cid).pipe(map((b) => ({ next: a.next, prev: a.prev, current: b }))))
     );
   }
 
@@ -76,7 +76,7 @@ export class StoreService {
       .valueChanges()
       .pipe(
         map((a) => a[0]),
-        filter((a) => !!a),
+        filter((a) => !!a)
         // concatMap((a) => projects([a.project]).pipe(map((b) => ({ ...a, project: b[0] })))),
         // concatMap((a) =>
         //   sizes(a.size).pipe(
@@ -96,6 +96,7 @@ export class StoreService {
     const stores = param.keys
       .filter((k) => k !== 'id')
       .map((point) => this.getStoreByName(point).pipe(map((a) => a.find((b) => b.id === +param.get(point)))));
+
     const mutSize = (a: IStoreItem, s: IStoreItem[]): IStoreItem => ({
       ...a,
       size: a.size.map((b) => ({ ...s.find((e) => e.id === b) })),

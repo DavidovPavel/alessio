@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { headOnScroll } from 'src/app/core/animations';
+import { headOnScroll } from '@app/core/animations';
 
 import { BigPictureComponent } from '../big-picture.component';
 import { ICurrentItem } from './../../core/models/ICurrentItem';

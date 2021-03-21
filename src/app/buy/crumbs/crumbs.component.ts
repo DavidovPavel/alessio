@@ -1,13 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, convertToParamMap, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
-import { Product } from 'src/app/core/models/product';
-import { IStoreItem } from 'src/app/core/models/store-item';
-import { StoreService } from 'src/app/services/store.service';
-
+import {
+  ActivatedRoute,
+  ChildActivationEnd,
+  convertToParamMap,
+  NavigationEnd,
+  ParamMap,
+  Router,
+} from '@angular/router';
 import { IdTitle } from '@app/core/models/id-title';
-
+import { Product } from '@app/core/models/product';
+import { IStoreItem } from '@app/core/models/store-item';
+import { StoreService } from '@app/services/store.service';
+import { Observable } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-crumbs',

@@ -3,10 +3,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/auth';
 import { USE_EMULATOR as USE_DATABASE_EMULATOR } from '@angular/fire/database';
-import {
-  AngularFirestoreModule,
-  USE_EMULATOR as USE_FIRESTORE_EMULATOR,
-} from '@angular/fire/firestore';
+import { AngularFirestoreModule, USE_EMULATOR as USE_FIRESTORE_EMULATOR } from '@angular/fire/firestore';
 import { USE_EMULATOR as USE_FUNCTIONS_EMULATOR } from '@angular/fire/functions';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { BrowserModule } from '@angular/platform-browser';

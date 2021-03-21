@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, QueryFn } from '@angular/fire/firestore';
+import { ListItem } from '@app/buy/list-item';
+import { groupByFour } from '@app/core/func';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -21,5 +23,11 @@ export class FireService {
       .doc<T>(path)
       .get()
       .pipe(map((a) => a.data()));
+  }
+
+  getGroup(name: string, groupBy = 'id'): Observable<ListItem[][]> {
+    return this.getCollection<ListItem>(name, (ref) => ref.orderBy(groupBy)).pipe(
+      map((store) => store.reduce(groupByFour, []).map((a) => (a.length === 2 ? [{}, ...a, {}] : a)))
+    );
   }
 }

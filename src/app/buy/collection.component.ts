@@ -17,7 +17,7 @@ import { groupByFour } from './../core/func';
         <app-lang-switch [isLight]="true"></app-lang-switch>
       </div>
       <div fxLayout fxLayoutAlign="space-between" class="items" *ngFor="let group of groups$ | async">
-        <app-list-item *ngFor="let item of group" [item]="item" [size]="size"></app-list-item>
+        <app-list-item *ngFor="let item of group" [item]="item"></app-list-item>
       </div>
     </main>`,
   styles: [
