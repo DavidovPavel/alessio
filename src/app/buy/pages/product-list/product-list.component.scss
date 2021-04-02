@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.items {
+  margin-bottom: 1.4vw;
+  line-height: 1;
+}
+
+a,
+div {
+  position: relative;
+}
+
+div.black {
+  width: 14.3vw;
+  height: 14.3vw;
+  background-color: rgba($color: #000000, $alpha: .2);
+}
+
+a > div.black,
+div > div.black {
+  display: flex;
+  align-items: center;
+  // padding: 0.6vw;
+
+  & img {
+    width: 100%;
+  }
+}
+
+a > span,
+div > span {
+  display: block;
+  text-align: center;
+  font-size: 0.6vw;
+  margin-top: 0.4vw;
+}

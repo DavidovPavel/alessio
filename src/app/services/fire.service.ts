@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, QueryFn } from '@angular/fire/firestore';
+import { AngularFirestore, QueryFn, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { ListItem } from '@app/buy/list-item';
 import { groupByFour } from '@app/core/func';
 import { Observable } from 'rxjs';
@@ -10,6 +10,11 @@ import { map } from 'rxjs/operators';
 })
 export class FireService {
   constructor(private fs: AngularFirestore) {}
+
+
+  getCollectionRef(name: string): AngularFirestoreCollection {
+    return this.fs.collection(name);
+  }
 
   getCollection<T>(name: string, queryFn?: QueryFn): Observable<T[]> {
     return this.fs

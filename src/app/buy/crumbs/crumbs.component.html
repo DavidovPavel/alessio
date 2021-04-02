@@ -4,6 +4,7 @@
     <ng-container *ngFor="let point of points; let i = index; let la = last">
       <ng-container *ngIf="point">
         <span>&nbsp;|&nbsp;</span>
+
         <ng-container *ngIf="la && sizes?.length; else simple">
           <ng-container *ngFor="let size of sizes; let end = last">
             <ng-container *ngTemplateOutlet="arl; context: { index: i, dup: size.id, title: size?.title }">
@@ -11,9 +12,11 @@
             <ng-container *ngIf="!end"> | </ng-container>
           </ng-container>
         </ng-container>
+
         <ng-template #simple>
           <ng-container *ngTemplateOutlet="arl; context: { index: i, title: point?.title, goto: point.goto }"></ng-container>
         </ng-template>
+
       </ng-container>
     </ng-container>
   </ng-container>

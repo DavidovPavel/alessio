@@ -21,14 +21,18 @@ import { filter, switchMap, tap } from 'rxjs/operators';
 })
 export class CrumbsComponent implements OnInit {
   points$: Observable<IStoreItem[]>;
-  sizes: IdTitle[];
+  sizes: IdTitle[] = [
+    { id: 1, title: '180X180' },
+    { id: 2, title: '150X150' },
+    { id: 3, title: '100X100' },
+    { id: 4, title: '50X50' },
+  ];
   param: ParamMap;
 
   @Input() set current(product: Product) {
     if (product) {
       const { project, category, color, collection, size } = product;
       this.param = convertToParamMap({ project, category, color, collection, size: size[0] });
-      // this.sizes = size;
       this.points$ = this.getPoints(this.param);
     }
   }
@@ -39,7 +43,7 @@ export class CrumbsComponent implements OnInit {
     this.points$ = this.route.paramMap.pipe(
       tap((param) => (this.param = param)),
       switchMap((p) => this.getPoints(p)),
-      tap((a) => (this.sizes = a.find((b) => b?.size)?.size as IdTitle[]))
+      // tap((a) => (this.sizes = a.find((b) => b?.size)?.size as IdTitle[]))
     );
   }
 

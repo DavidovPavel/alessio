@@ -1,5 +1,23 @@
 <mat-toolbar>
-  <button mat-raised-button (click)="change()">change data</button>
-  <mat-divider [vertical]="true"></mat-divider>
-  <button mat-raised-button (click)="importMetadata()">import metadata</button>
+  <button mat-raised-button (click)="importProducts()">import products</button>
 </mat-toolbar>
+
+<div class="content">
+  <p fxLayout fxLayoutGap="20px">
+    <mat-select placeholder="Product Name" [formControl]="productName">
+      <mat-option *ngFor="let item of products$ | async" [value]="item.title"> {{ item.title }} </mat-option>
+    </mat-select>
+    <mat-select placeholder="Size" [formControl]="productSize">
+      <mat-option value="1"> 180 </mat-option>
+      <mat-option value="2"> 150 </mat-option>
+      <mat-option value="3"> 100 </mat-option>
+      <mat-option value="4"> 50 </mat-option>
+      <mat-option value="5"> 130 </mat-option>
+    </mat-select>
+    <mat-checkbox [formControl]="productFolder">Big</mat-checkbox>
+  </p>
+  <p>
+    <input mat-raised-button type="file" (change)="uploadFiles($event.target)" multiple>
+  </p>
+  <div>{{ uploadPercent | async }}</div>
+</div>
