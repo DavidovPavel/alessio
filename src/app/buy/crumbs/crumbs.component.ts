@@ -29,6 +29,8 @@ export class CrumbsComponent implements OnInit {
   ];
   param: ParamMap;
 
+  @Input() showSize = false;
+
   @Input() set current(product: Product) {
     if (product) {
       const { project, category, color, collection, size } = product;

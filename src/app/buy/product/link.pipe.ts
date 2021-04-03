@@ -14,7 +14,6 @@ export class LinkPipe implements PipeTransform {
       project.toString(),
       category.toString(),
       color.toString(),
-      collection.toString(),
       size.includes(currentSize) ? currentSize.toString() : size[0].toString(),
       id.toString(),
     ];

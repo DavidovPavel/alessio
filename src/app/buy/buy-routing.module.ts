@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CollectionComponent } from './collection.component';
 import { BuyComponent } from './pages/buy/buy.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { CollectionComponent as CollectionListComponent } from './pages/collection/collection.component';
@@ -43,13 +42,13 @@ const routes: Routes = [
         data: { name: 'collection' },
       },
 
-      {
-        path: 'project/:project/:category/:color/:collection/:size',
-        component: CollectionComponent,
-      },
+      // {
+      //   path: 'project/:project/:category/:color/:collection/:size',
+      //   component: CollectionComponent,
+      // },
 
       {
-        path: 'project/:project/:category/:color/:collection/:size/:id',
+        path: 'project/:project/:category/:color/:size/:id',
         component: ProductComponent,
       },
     ],

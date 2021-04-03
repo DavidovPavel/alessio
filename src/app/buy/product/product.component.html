@@ -1,61 +1,64 @@
-<app-header [@headOnScroll]="isScroll"></app-header>
-<main appScroll (read)="isScroll = $event.scrollTop > 1">
-  <ng-container *ngIf="doc$ | async as doc">
-    <div fxLayout fxLayoutAlign="space-between center" class="top-tools">
-      <app-crumbs [current]="doc.current"></app-crumbs>
-      <app-lang-switch [isLight]="true"></app-lang-switch>
-    </div>
-    <div class="main" *ngIf="doc.current">
+<div fxLayout fxLayoutAlign="space-between center" class="top-tools">
+  <app-crumbs></app-crumbs>
+  <app-lang-switch [isLight]="true"></app-lang-switch>
+</div>
+<ng-container *ngIf="doc$ | async as doc">
+  <div class="main" *ngIf="doc.current">
+    <a [routerLink]="doc.prev | link:currentSize" class="prev">
+      <img src="assets/images/left-arrow.png" alt="previous" /></a>
+    <a [routerLink]="doc.next | link:currentSize" class="next">
+      <img src="assets/images/right-arrow.png" alt="next" /></a>
 
-      <a [routerLink]="doc.prev | link:currentSize" class="prev">
-        <img src="assets/images/left-arrow.png" alt="previous" /></a>
-      <a [routerLink]="doc.next | link:currentSize" class="next">
-        <img src="assets/images/right-arrow.png" alt="next" /></a>
-
-      <div fxLayout>
-        <div class="medium" (click)="showBig()">
-          <img src="assets/store/product/{{ path }}/{{ currentPrev }}.png" alt="" />
-          <img src="assets/images/inlarg.png" alt="" />
-        </div>
-        <div class="prev-items" fxLayout="column" fxLayoutAlign="space-between center">
-          <app-picture *ngFor="let prev of previews" path="{{ path }}/{{ prev }}" (click)="currentPrev=prev"
-            [ngClass]="{active: prev===currentPrev}">
-          </app-picture>
-        </div>
-        <div fxLayout="column" fxFlex fxLayoutAlign="space-between">
-          <div [style.width.%]="100">
-            <b class="h-1">Project: {{ doc.current.project.title }}</b>
-            <b class="h-big">{{ doc.current.title }}</b>
-            <b class="h-2">{{ doc.current.artist }}</b>
-            <div class="info">
-              <div>{{ doc.current.rendering }}</div>
-              <div>{{ doc.current.authorship }}</div>
-              <div><span *ngFor="let size of doc.current.size" [ngClass]="{active: size.id === currentSize}">
-                  {{ size.title }}
-                </span> cm</div>
-              <div>{{ doc.current.edition }}</div>
-              <div>Roma code <b>{{ doc.current.roma_code }}</b></div>
+    <div fxLayout>
+      <div class="medium"
+        (click)="showBig('product/' + doc.current.title + '/' + currentSize + '/big/' + doc.current.title.replace(' ', '-'))">
+        <img
+          [src]="('product/' + doc.current.title + '/' + currentSize + '/' + doc.current.title.replace(' ', '-') + '-' + currentPrev + '.png') | getDownloadURL"
+          alt="" />
+        <img src="assets/images/inlarg.png" alt="" />
+      </div>
+      <div class="prev-items" fxLayout="column" fxLayoutAlign="space-between center">
+        <app-picture *ngFor="let prev of previews" [path]="path" [index]="prev" (click)="currentPrev=prev"
+          [ngClass]="{active: prev===currentPrev}">
+        </app-picture>
+      </div>
+      <div fxLayout="column" fxFlex fxLayoutAlign="space-between">
+        <div [style.width.%]="100">
+          <b class="h-1">Project: {{ doc.current.project.title }}</b>
+          <b class="h-big">{{ doc.current.title }}</b>
+          <b class="h-2">{{ doc.current.artist }}</b>
+          <div class="info">
+            <div>{{ doc.current.rendering }}</div>
+            <div>{{ doc.current.authorship }}</div>
+            <div>
+              <ng-container *ngFor="let size of sizes;let last=last">
+                <a [routerLink]="['../../', size.id, doc.current.id]" routerLinkActive="active">{{ size.title }}</a>
+                <span *ngIf="!last">&nbsp;|&nbsp;</span>
+              </ng-container>
+              <span> cm</span>
             </div>
-            <b class="h-2">Price {{ doc.current.price | currency : 'Euro ' : 'code'  }}</b>
-            <div class="h-3">plus VAT. import duties (if applicable)</div>
-            <div fxLayout fxLayoutAlign="space-between" class="info">
-              <span>estimated shipping cost</span>
-              <b>customized</b>
-            </div>
-            <div fxLayout fxLayoutAlign="space-between" class="info">
-              <span>art shipping insurance</span>
-              <b>customized</b>
-            </div>
+            <div>{{ doc.current.edition }}</div>
+            <div>Roma code <b>{{ doc.current.roma_code }}</b></div>
           </div>
-          <div class="control"><button type="button" (click)="showCheck()">own now</button></div>
+          <b class="h-2">Price {{ doc.current.price | currency : 'Euro ' : 'code'  }}</b>
+          <div class="h-3">plus VAT. import duties (if applicable)</div>
+          <div fxLayout fxLayoutAlign="space-between" class="info">
+            <span>estimated shipping cost</span>
+            <b>customized</b>
+          </div>
+          <div fxLayout fxLayoutAlign="space-between" class="info">
+            <span>art shipping insurance</span>
+            <b>customized</b>
+          </div>
         </div>
-      </div>
-      <div fxLayout fxLayoutAlign="space-between" class="bottom">
-        <span>price on request</span>
-        <span>roma code <span [style.lineHeight.vw]="1.1">{{ doc.current.roma_code }}</span></span>
-        <span>edition 8 out of 777</span>
-        <span>request the price</span>
+        <div class="control"><button type="button" (click)="showCheck()">own now</button></div>
       </div>
     </div>
-  </ng-container>
-</main>
+    <div fxLayout fxLayoutAlign="space-between" class="bottom">
+      <span>price on request</span>
+      <span>roma code <span [style.lineHeight.vw]="1.1">{{ doc.current.roma_code }}</span></span>
+      <span>edition 8 out of 777</span>
+      <span>request the price</span>
+    </div>
+  </div>
+</ng-container>
