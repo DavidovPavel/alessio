@@ -33,7 +33,7 @@ export class ProductComponent implements OnInit {
   title: string;
 
   get path() {
-    return `product/${this.title}/${this.currentSize}/${this.title.replace(' ', '-')}`;
+    return `product/${this.title}/${this.currentSize}/${this.title.replace(new RegExp(/\s/gi), '-')}`;
   }
 
   constructor(private route: ActivatedRoute, private service: StoreService, private dialog: MatDialog) {}
@@ -46,7 +46,8 @@ export class ProductComponent implements OnInit {
     );
   }
 
-  showBig(path: string) {
+  showBig() {
+    const path = `product/${this.title}/${this.currentSize}/big/${this.title.replace(new RegExp(/\s/gi), '-')}`;
     this.dialog.open(BigPictureComponent, {
       height: '100%',
       panelClass: 'big-img-dialog',

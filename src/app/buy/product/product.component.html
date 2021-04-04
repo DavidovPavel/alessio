@@ -11,9 +11,9 @@
 
     <div fxLayout>
       <div class="medium"
-        (click)="showBig('product/' + doc.current.title + '/' + currentSize + '/big/' + doc.current.title.replace(' ', '-'))">
+        (click)="showBig()">
         <img
-          [src]="('product/' + doc.current.title + '/' + currentSize + '/' + doc.current.title.replace(' ', '-') + '-' + currentPrev + '.png') | getDownloadURL"
+          [src]="(path + '-' + currentPrev + '.png') | getDownloadURL"
           alt="" />
         <img src="assets/images/inlarg.png" alt="" />
       </div>

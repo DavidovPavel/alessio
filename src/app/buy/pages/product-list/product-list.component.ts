@@ -29,7 +29,11 @@ export class ProductListComponent implements OnInit {
       switchMap((a) => this.fs.collection<Product>('products', queryFn(a)).valueChanges()),
       map((c) =>
         c
-          .map((a) => ({ url: `product/${a.title}/${this.size}/${a.title.replace(' ', '-')}-1.png`, title: a.title, id: a.id }))
+          .map((a) => ({
+            url: `product/${a.title}/${this.size}/${a.title.replace(new RegExp(/\s/gi), '-')}-1.png`,
+            title: a.title,
+            id: a.id,
+          }))
           .reduce(groupByFour, [])
       )
     );
