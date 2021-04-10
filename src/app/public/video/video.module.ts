@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { SharedModule } from './../../shared/shared.module';
 import { MiddleComponent } from './middle/middle.component';
@@ -11,6 +12,6 @@ import { VideoComponent } from './video.component';
 
 @NgModule({
   declarations: [VideoComponent, SectionComponent, PreviewComponent, MiddleComponent],
-  imports: [CommonModule, VideoRoutingModule, SharedModule, AngularFireStorageModule],
+  imports: [CommonModule, VideoRoutingModule, SharedModule, AngularFireStorageModule, FlexLayoutModule],
 })
 export class VideoModule {}

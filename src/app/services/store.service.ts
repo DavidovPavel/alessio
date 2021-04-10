@@ -35,7 +35,7 @@ export class StoreService {
     return this.fs
       .collection('products')
       .get()
-      .pipe(map((a) => a.docs.length));
+      .pipe(map((a) => a.docs.filter((b) => (b.data() as Product).id).length));
   }
 
   getCurrentItem(param: ParamMap): Observable<ICurrentItem> {
@@ -49,6 +49,7 @@ export class StoreService {
     const link = (id: number) => this.getItemById<Product>(id, 'products').pipe(map((a) => linkFromProduct(a)));
 
     return this.getCountProducts().pipe(
+      tap((a) => console.log(a)),
       map((count) => ({
         next: cid < count ? cid + 1 : 1,
         prev: cid > 1 ? cid - 1 : count,

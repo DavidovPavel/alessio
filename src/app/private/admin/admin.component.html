@@ -3,7 +3,7 @@
 </mat-toolbar>
 
 <div class="content">
-  <p fxLayout fxLayoutGap="20px">
+  <p fxLayout fxLayoutGap="20px" [style.maxWidth.px]="600">
     <mat-select placeholder="Product Name" [formControl]="productName">
       <mat-option *ngFor="let item of products$ | async" [value]="item.title"> {{ item.title }} </mat-option>
     </mat-select>
