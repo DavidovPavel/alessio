@@ -4,6 +4,7 @@ export interface Product {
   id: number;
   position: number;
   project: number;
+  projectName?: string;
   size: Size[];
   category: number;
   collection?: number;

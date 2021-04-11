@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { headOnScroll } from '@app/core/animations';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { headOnScroll } from '@app/core/animations';
 
 import { BigPictureComponent } from '../big-picture.component';
 import { ICurrentItem } from './../../core/models/ICurrentItem';
+import { Size } from './../../core/models/size';
 import { StoreService } from './../../services/store.service';
 
 @Component({
@@ -23,12 +24,8 @@ export class ProductComponent implements OnInit {
   previews = [1, 2, 3];
   isScroll = false;
 
-  sizes = [
-    { title: '180X180', id: 1 },
-    { title: '150X150', id: 2 },
-    { title: '100X100', id: 3 },
-    { title: '50X50', id: 4 },
-  ];
+  sizeEnum = Size;
+  sizes: number[] = [];
 
   title: string;
 
@@ -42,7 +39,14 @@ export class ProductComponent implements OnInit {
     this.doc$ = this.route.paramMap.pipe(
       tap((a) => (this.currentSize = +a.get('size'))),
       tap((a) => (this.currentId = +a.get('id'))),
-      switchMap((a) => this.service.getCurrentItem(a).pipe(tap((b) => (this.title = b.current.title))))
+      switchMap((a) =>
+        this.service.getCurrentItem(a).pipe(
+          tap((b) => {
+            this.title = b.current.title;
+            this.sizes = b.current.size;
+          })
+        )
+      )
     );
   }
 

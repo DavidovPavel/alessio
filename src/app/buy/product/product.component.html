@@ -24,7 +24,7 @@
       </div>
       <div fxLayout="column" fxFlex fxLayoutAlign="space-between">
         <div [style.width.%]="100">
-          <b class="h-1">Project: {{ doc.current.project.title }}</b>
+          <b class="h-1">Project: {{ doc.current.projectName }}</b>
           <b class="h-big">{{ doc.current.title }}</b>
           <b class="h-2">{{ doc.current.artist }}</b>
           <div class="info">
@@ -32,7 +32,7 @@
             <div>{{ doc.current.authorship }}</div>
             <div>
               <ng-container *ngFor="let size of sizes;let last=last">
-                <a [routerLink]="['../../', size.id, doc.current.id]" routerLinkActive="active">{{ size.title }}</a>
+                <a [routerLink]="['../../', size, doc.current.id]" routerLinkActive="active">{{ sizeEnum[size] }}</a>
                 <span *ngIf="!last">&nbsp;|&nbsp;</span>
               </ng-container>
               <span> cm</span>

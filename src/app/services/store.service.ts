@@ -49,7 +49,6 @@ export class StoreService {
     const link = (id: number) => this.getItemById<Product>(id, 'products').pipe(map((a) => linkFromProduct(a)));
 
     return this.getCountProducts().pipe(
-      tap((a) => console.log(a)),
       map((count) => ({
         next: cid < count ? cid + 1 : 1,
         prev: cid > 1 ? cid - 1 : count,
@@ -68,25 +67,15 @@ export class StoreService {
   }
 
   getProductById(id: number): Observable<Product> {
-    const projects = (pid: number[]) =>
-      this.getStoreByName('project').pipe(map((a) => a.filter((b) => pid.includes(b.id))));
-    const sizes = (sid: number[]) => this.getStoreByName('size').pipe(map((a) => a.filter((b) => sid.includes(b.id))));
+    const projects = (pid: number) => this.getStoreByName('project').pipe(map((a) => a.filter((b) => pid === b.id)));
 
     const product = this.fs
       .collection<Product>('products', (ref) => ref.where('id', '==', id))
       .valueChanges()
       .pipe(
         map((a) => a[0]),
-        filter((a) => !!a)
-        // concatMap((a) => projects([a.project]).pipe(map((b) => ({ ...a, project: b[0] })))),
-        // concatMap((a) =>
-        //   sizes(a.size).pipe(
-        //     map((size) => ({
-        //       ...a,
-        //       size,
-        //     }))
-        //   )
-        // )
+        filter((a) => !!a),
+        mergeMap((a) => projects(a.project).pipe(map((b) => ({ ...a, projectName: b[0].title }))))
       );
 
     return product;

@@ -1814,7 +1814,7 @@
     "edition": "Open Edition",
     "rendering": "Overprint on Paper",
     "roma_code": "ARSSABW131MSOPEN",
-    "title": "mindset"
+    "title": "Mindset"
   },
   {
     "id": 122,
@@ -1825,7 +1825,7 @@
     "edition": "Open Edition",
     "rendering": "Overprint on Paper",
     "roma_code": "ARSSABW131TOPEN",
-    "title": "time"
+    "title": "Time"
   },
   {
     "id": 123,
@@ -1836,7 +1836,7 @@
     "edition": "Open Edition",
     "rendering": "Overprint on Paper",
     "roma_code": "ARSSABW131HNOPEN",
-    "title": "hidden name"
+    "title": "Hidden Name"
   },
   {
     "id": 124,
@@ -1847,7 +1847,7 @@
     "edition": "Open Edition",
     "rendering": "Overprint on Paper",
     "roma_code": "ARSSABW131FLOPEN",
-    "title": "free light"
+    "title": "Free Light"
   },
   {
     "id": 125,
@@ -1858,7 +1858,7 @@
     "edition": "Open Edition",
     "rendering": "Overprint on Paper",
     "roma_code": "ARSSABW131FDOPEN",
-    "title": "free darck"
+    "title": "Free Darck"
   },
   {
     "id": 126,
@@ -1869,7 +1869,7 @@
     "edition": "Open Edition",
     "rendering": "Overprint on Paper",
     "roma_code": "ARSSABW131FMOPEN ",
-    "title": "free mind"
+    "title": "Free Mind"
   },
   {
     "id": 127,
@@ -1880,7 +1880,7 @@
     "edition": "Open Edition",
     "rendering": "Overprint on Paper",
     "roma_code": "ARSSABW131FTOPEN",
-    "title": "free time"
+    "title": "Free Time"
   },
   {
     "id": 128,
@@ -1891,7 +1891,7 @@
     "edition": "Open Edition",
     "rendering": "Overprint on Paper",
     "roma_code": "ARSSABW131YMOPEN",
-    "title": "your mind"
+    "title": "Your Mind"
   },
   {
     "id": 129,
@@ -1902,7 +1902,7 @@
     "edition": "Open Edition",
     "rendering": "Overprint on Paper",
     "roma_code": "ARSSABW131TDEOPEN",
-    "title": "time dos exist"
+    "title": "Time Dos Exist"
   },
   {
     "id": 130,
@@ -1913,6 +1913,6 @@
     "edition": "Open Edition",
     "rendering": "Overprint on Paper",
     "roma_code": "ARSSABW131TDNEOPEN",
-    "title": "time dos not  exist"
+    "title": "Time Dos Not Exist"
   }
 ]
