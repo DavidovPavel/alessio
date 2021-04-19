@@ -2,17 +2,16 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ParamMap } from '@angular/router';
 import { forkJoin, Observable, of } from 'rxjs';
-import { concatMap, filter, map, mergeMap, tap } from 'rxjs/operators';
+import { concatAll, first, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 
 import { Product } from '../core/models/product';
 import { IStoreItem } from '../core/models/store-item';
-import { ICurrentItem } from './../core/models/ICurrentItem';
-import { ILinkParams } from './../core/models/ILinkParams';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StoreService {
+  count: number;
   store = new Map<string, IStoreItem[]>();
 
   constructor(private fs: AngularFirestore) {}
@@ -32,50 +31,37 @@ export class StoreService {
   }
 
   getCountProducts(): Observable<number> {
-    return this.fs
-      .collection('products')
-      .get()
-      .pipe(map((a) => a.docs.filter((b) => (b.data() as Product).id).length));
+    return this.count
+      ? of(this.count)
+      : this.fs
+          .collection('products')
+          .snapshotChanges()
+          .pipe(
+            map((a) => a.length),
+            tap((a) => (this.count = a))
+          );
   }
 
-  getCurrentItem(param: ParamMap): Observable<ICurrentItem> {
-    const cid = +param.get('id');
-
-    const linkFromProduct = (a: Product): ILinkParams => {
-      const { project, category, color, collection, size, id } = a;
-      return { project, category, color, collection, size, id };
-    };
-
-    const link = (id: number) => this.getItemById<Product>(id, 'products').pipe(map((a) => linkFromProduct(a)));
-
-    return this.getCountProducts().pipe(
-      map((count) => ({
-        next: cid < count ? cid + 1 : 1,
-        prev: cid > 1 ? cid - 1 : count,
-      })),
-      concatMap((a) => link(a.next).pipe(map((b) => ({ next: b, prev: a.prev })))),
-      concatMap((a) => link(a.prev).pipe(map((b) => ({ next: a.next, prev: b })))),
-      concatMap((a) => this.getProductById(cid).pipe(map((b) => ({ next: a.next, prev: a.prev, current: b }))))
-    );
+  getCurrentItem(param: ParamMap): Observable<{ next: number; prev: number; current: Product }> {
+    const id = +param.get('id');
+    return this.getCountProducts().pipe(switchMap((a) => this.getProductById(a, id)));
   }
 
-  getItemById<T>(id: number, name: string): Observable<T> {
-    return this.fs
-      .collection<T>(name, (ref) => ref.where('id', '==', id))
-      .get()
-      .pipe(map((a) => a.docs[0]?.data() as T));
-  }
-
-  getProductById(id: number): Observable<Product> {
+  getProductById(count: number, id: number): Observable<{ next: number; prev: number; current: Product }> {
     const projects = (pid: number) => this.getStoreByName('project').pipe(map((a) => a.filter((b) => pid === b.id)));
+
+    const next = id + 1 > count ? 1 : id + 1;
+    const prev = id - 1 < 1 ? count : id - 1;
 
     const product = this.fs
       .collection<Product>('products', (ref) => ref.where('id', '==', id))
-      .valueChanges()
+      .get()
       .pipe(
-        map((a) => a[0]),
-        filter((a) => !!a),
-        mergeMap((a) => projects(a.project).pipe(map((b) => ({ ...a, projectName: b[0].title }))))
+        map((a) => a.docs.map((b) => b.data() as Product)),
+        concatAll(),
+        first(),
+        mergeMap((a) => projects(a.project).pipe(map((b) => ({ ...a, projectName: b[0].title })))),
+        map((a) => ({ prev, next, current: a }))
       );
 
     return product;

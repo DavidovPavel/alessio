@@ -1,0 +1,4 @@
+<cdk-virtual-scroll-viewport itemSize="" fxFlex>
+  <app-items-row *cdkVirtualFor="let row of all$ | async" class="items-row" [items]="row" fxLayout
+    fxLayoutAlign="space-between center"></app-items-row>
+</cdk-virtual-scroll-viewport>

@@ -20,6 +20,6 @@ export class ProjectsComponent implements OnInit {
   constructor(private fire: FireService) {}
 
   ngOnInit(): void {
-    this.group$ = this.fire.getGroup(this.pointInfo.name);
+    this.group$ = this.fire.getGroup(this.pointInfo.name, 'pos');
   }
 }

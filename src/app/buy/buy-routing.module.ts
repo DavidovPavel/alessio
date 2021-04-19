@@ -1,55 +1,64 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { BuyComponent } from './pages/buy/buy.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
 import { CategoryComponent } from './pages/category/category.component';
-import { CollectionComponent as CollectionListComponent } from './pages/collection/collection.component';
+import { CollectionComponent } from './pages/collection/collection.component';
+import { CollectionsComponent } from './pages/collections/collections.component';
 import { ColorComponent } from './pages/color/color.component';
-import { ProductListComponent } from './pages/product-list/product-list.component';
+import { ColorsComponent } from './pages/colors/colors.component';
+import { ProjectComponent } from './pages/project/project.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
+import { ShellComponent } from './pages/shell/shell.component';
+import { ShowcaseComponent } from './pages/showcase/showcase.component';
 import { ProductComponent } from './product/product.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: BuyComponent,
+    component: ShellComponent,
     children: [
-      { path: '', redirectTo: 'project', pathMatch: 'full' },
+      { path: '', component: ShowcaseComponent },
       {
-        path: 'project',
+        path: ':id/:size',
+        component: ProductComponent,
+      },
+      {
+        path: 'projects',
         component: ProjectsComponent,
       },
       {
-        path: 'project/:project',
+        path: 'projects/:id',
+        component: ProjectComponent,
+      },
+      {
+        path: 'projects/:id/categories',
+        component: CategoriesComponent,
+      },
+
+      {
+        path: 'project/:id/categories/:category',
         component: CategoryComponent,
-        data: { name: 'category' },
       },
+
       {
-        path: 'project/:project/:category',
+        path: 'project/:id/categories/:category/colors',
+        component: ColorsComponent,
+      },
+
+      {
+        path: 'project/:id/categories/:category/colors/:color',
         component: ColorComponent,
-        data: { name: 'color' },
       },
 
       {
-        path: 'project/:project/:category/:color',
-        component: CollectionListComponent,
-        data: { name: 'collection' },
+        path: 'project/:id/categories/:category/colors/:color/collectons',
+        component: CollectionsComponent,
       },
 
       {
-        path: 'project/:project/:category/:color/:size',
-        component: ProductListComponent,
-        data: { name: 'collection' },
-      },
-
-      // {
-      //   path: 'project/:project/:category/:color/:collection/:size',
-      //   component: CollectionComponent,
-      // },
-
-      {
-        path: 'project/:project/:category/:color/:size/:id',
-        component: ProductComponent,
+        path: 'project/:id/categories/:category/colors/:color/collectons/:collection',
+        component: CollectionComponent,
       },
     ],
   },

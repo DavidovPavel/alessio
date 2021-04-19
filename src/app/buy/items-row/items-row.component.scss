@@ -1,0 +1,21 @@
+a {
+  position: relative;
+  line-height: 1;
+
+  & > span {
+    display: block;
+    text-align: center;
+    font-size: 0.6vw;
+    margin-top: 0.4vw;
+  }
+
+  & > div {
+    width: 14.3vw;
+    height: 14.3vw;
+    background-color: rgba($color: #000000, $alpha: 0.2);
+
+    & img {
+      width: 100%;
+    }
+  }
+}

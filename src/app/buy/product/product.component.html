@@ -1,20 +1,15 @@
-<div fxLayout fxLayoutAlign="space-between center" class="top-tools">
-  <app-crumbs></app-crumbs>
-  <app-lang-switch [isLight]="true"></app-lang-switch>
-</div>
 <ng-container *ngIf="doc$ | async as doc">
   <div class="main" *ngIf="doc.current">
-    <a [routerLink]="doc.prev | link:currentSize" class="prev">
+
+    <a [routerLink]="['../../', doc.prev, currentSize]" class="prev">
       <img src="assets/images/left-arrow.png" alt="previous" /></a>
-    <a [routerLink]="doc.next | link:currentSize" class="next">
+
+    <a [routerLink]="['../../', doc.next, currentSize]" class="next">
       <img src="assets/images/right-arrow.png" alt="next" /></a>
 
     <div fxLayout>
-      <div class="medium"
-        (click)="showBig()">
-        <img
-          [src]="(path + '-' + currentPrev + '.png') | getDownloadURL"
-          alt="" />
+      <div class="medium" (click)="showBig()">
+        <img [src]="(path + '-' + currentPrev + '.png') | getDownloadURL" alt="" />
         <img src="assets/images/inlarg.png" alt="" />
       </div>
       <div class="prev-items" fxLayout="column" fxLayoutAlign="space-between center">
@@ -32,7 +27,7 @@
             <div>{{ doc.current.authorship }}</div>
             <div>
               <ng-container *ngFor="let size of sizes;let last=last">
-                <a [routerLink]="['../../', size, doc.current.id]" routerLinkActive="active">{{ sizeEnum[size] }}</a>
+                <a [routerLink]="['../../', doc.current.id, size]" routerLinkActive="active">{{ sizeEnum[size] }}</a>
                 <span *ngIf="!last">&nbsp;|&nbsp;</span>
               </ng-container>
               <span> cm</span>

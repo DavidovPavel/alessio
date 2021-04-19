@@ -11,7 +11,6 @@ import { map } from 'rxjs/operators';
 export class FireService {
   constructor(private fs: AngularFirestore) {}
 
-
   getCollectionRef(name: string): AngularFirestoreCollection {
     return this.fs.collection(name);
   }
@@ -30,9 +29,9 @@ export class FireService {
       .pipe(map((a) => a.data()));
   }
 
-  getGroup(name: string, groupBy = 'id'): Observable<ListItem[][]> {
-    return this.getCollection<ListItem>(name, (ref) => ref.orderBy(groupBy)).pipe(
-      map((store) => store.reduce(groupByFour, []).map((a) => (a.length === 2 ? [{}, ...a, {}] : a)))
+  getGroup<T>(name: string, groupBy = 'id'): Observable<T[][]> {
+    return this.getCollection<T>(name, (ref) => ref.orderBy(groupBy)).pipe(
+      map((store) => store.reduce(groupByFour, [])) // .map((a) => (a.length === 2 ? [{}, ...a, {}] : a)))
     );
   }
 }

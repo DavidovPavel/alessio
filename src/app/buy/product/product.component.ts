@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { headOnScroll } from '@app/core/animations';
+import { Product } from '@app/core/models/product';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 
@@ -17,7 +18,7 @@ import { StoreService } from './../../services/store.service';
   animations: [headOnScroll],
 })
 export class ProductComponent implements OnInit {
-  doc$: Observable<ICurrentItem>;
+  doc$: Observable<{ next: number; prev: number; current: Product }>;
   currentId: number;
   currentSize: number;
   currentPrev = 1;

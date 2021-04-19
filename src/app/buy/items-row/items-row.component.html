@@ -1,0 +1,8 @@
+<ng-container *ngFor="let item of items">
+  <a [routerLink]="[item.id, item.size[0]]">
+    <div>
+      <img [src]="item.url | getDownloadURL" />
+    </div>
+    <span>{{ item.title }}</span>
+  </a>
+</ng-container>
