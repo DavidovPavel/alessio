@@ -1,11 +1,16 @@
-
-<div fxLayout fxLayoutAlign="space-between" class="items" *ngFor="let group of groups$ | async">
-  <ng-container *ngFor="let item of group">
-    <a [routerLink]="item.id">
-      <div>
-        <img [src]="item.url | getDownloadURL" />
-      </div>
-      <span>{{ item.title }}</span>
-    </a>
-  </ng-container>
+<div style="margin: 0 13% 0 12%">
+  <div fxLayout fxLayoutAlign="space-between center" class="top-tools">
+    <app-crumbs></app-crumbs>
+    <app-lang-switch [isLight]="true"></app-lang-switch>
+  </div>
+  <div fxLayout fxLayoutAlign="space-between" class="items" *ngFor="let group of groups$ | async">
+    <ng-container *ngFor="let item of group">
+      <a [routerLink]="['/buy',item.id, size]">
+        <div>
+          <img [src]="item.url | getDownloadURL" />
+        </div>
+        <span>{{ item.title }}</span>
+      </a>
+    </ng-container>
+  </div>
 </div>

@@ -17,16 +17,29 @@ export class ProductListComponent implements OnInit {
   constructor(private route: ActivatedRoute, private fs: AngularFirestore) {}
 
   ngOnInit(): void {
-    const queryFn = (a: ParamMap) => (ref: CollectionReference) => {
+    const queryFnByCategory = (a: ParamMap) => (ref: CollectionReference) => {
+      return ref
+        .where('project', '==', +a.get('id'))
+        .where('category', '==', +a.get('category'))
+        .where('collection', '==', +a.get('collection'))
+        .orderBy('id');
+    };
+
+    const queryFnByCollection = (a: ParamMap) => (ref: CollectionReference) => {
       return ref
         .where('project', '==', +a.get('project'))
         .where('category', '==', +a.get('category'))
+        .where('collection', '==', +a.get('collection'))
         .orderBy('id');
     };
 
     this.groups$ = this.route.paramMap.pipe(
       tap((a) => (this.size = +a.get('size'))),
-      switchMap((a) => this.fs.collection<Product>('products', queryFn(a)).valueChanges()),
+      switchMap((a) =>
+        this.fs
+          .collection<Product>('products', queryFnByCategory(a))
+          .valueChanges()
+      ),
       map((c) =>
         c
           .map((a) => ({

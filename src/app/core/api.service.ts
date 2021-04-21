@@ -34,6 +34,7 @@ export class ApiService {
       {
         id: 0,
         name: 'buy',
+        link: 'buy/projects',
         children: [
           { id: 1, name: 'art' },
           { id: 2, name: 'instalation' },

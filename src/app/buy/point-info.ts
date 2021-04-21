@@ -1,4 +1,4 @@
 export interface PointInfo {
-  name: 'project' | 'category' | 'color' | 'collection';
+  name: 'projects' | 'category' | 'color' | 'collection';
   showTitle: boolean;
 }

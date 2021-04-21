@@ -29,9 +29,11 @@ export class FireService {
       .pipe(map((a) => a.data()));
   }
 
-  getGroup<T>(name: string, groupBy = 'id'): Observable<T[][]> {
+  getGroup<T>(name: string, groupBy = 'pos'): Observable<T[][]> {
     return this.getCollection<T>(name, (ref) => ref.orderBy(groupBy)).pipe(
-      map((store) => store.reduce(groupByFour, [])) // .map((a) => (a.length === 2 ? [{}, ...a, {}] : a)))
+      map((store) =>
+        store.reduce(groupByFour, []).map((a) => (a.length === 2 ? [{}, ...a, {}] : a.length === 3 ? [...a, {}] : a))
+      )
     );
   }
 }

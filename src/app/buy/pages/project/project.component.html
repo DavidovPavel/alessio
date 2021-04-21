@@ -1,1 +1,7 @@
-<p>project works!</p>
+<div style="margin: 0 13% 0 12%">
+  <div fxLayout fxLayoutAlign="space-between center" class="top-tools">
+    <app-crumbs></app-crumbs>
+    <app-lang-switch [isLight]="true"></app-lang-switch>
+  </div>
+  <app-list [point]="pointInfo" [group]="group$ | async"></app-list>
+</div>

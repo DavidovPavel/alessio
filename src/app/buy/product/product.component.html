@@ -1,4 +1,10 @@
 <ng-container *ngIf="doc$ | async as doc">
+
+  <div fxLayout fxLayoutAlign="space-between center" class="top-tools">
+    <app-crumbs [current]="doc.current"></app-crumbs>
+    <app-lang-switch [isLight]="true"></app-lang-switch>
+  </div>
+
   <div class="main" *ngIf="doc.current">
 
     <a [routerLink]="['../../', doc.prev, currentSize]" class="prev">
@@ -35,7 +41,7 @@
             <div>{{ doc.current.edition }}</div>
             <div>Roma code <b>{{ doc.current.roma_code }}</b></div>
           </div>
-          <b class="h-2">Price {{ doc.current.price | currency : 'Euro ' : 'code'  }}</b>
+          <b class="h-2">Price {{ doc.current.price | currency : 'Euro ': 'code': '0.0'  }}</b>
           <div class="h-3">plus VAT. import duties (if applicable)</div>
           <div fxLayout fxLayoutAlign="space-between" class="info">
             <span>estimated shipping cost</span>

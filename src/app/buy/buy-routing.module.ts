@@ -1,3 +1,4 @@
+import { ProductListComponent } from './pages/product-list/product-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -19,46 +20,45 @@ const routes: Routes = [
     component: ShellComponent,
     children: [
       { path: '', component: ShowcaseComponent },
-      {
-        path: ':id/:size',
-        component: ProductComponent,
-      },
+
       {
         path: 'projects',
         component: ProjectsComponent,
       },
       {
         path: 'projects/:id',
+        pathMatch: 'full',
         component: ProjectComponent,
-      },
-      {
-        path: 'projects/:id/categories',
-        component: CategoriesComponent,
       },
 
       {
-        path: 'project/:id/categories/:category',
+        path: 'projects/:id/:category',
         component: CategoryComponent,
       },
 
-      {
-        path: 'project/:id/categories/:category/colors',
-        component: ColorsComponent,
-      },
+      // {
+      //   path: 'project/:id/3/5',
+      //   component: ProductListComponent,
+      // },
 
       {
-        path: 'project/:id/categories/:category/colors/:color',
+        path: 'projects/:id/:category/:color',
         component: ColorComponent,
       },
 
       {
-        path: 'project/:id/categories/:category/colors/:color/collectons',
-        component: CollectionsComponent,
+        path: 'projects/:id/:category/:color/:collection',
+        component: CollectionComponent,
       },
 
       {
-        path: 'project/:id/categories/:category/colors/:color/collectons/:collection',
-        component: CollectionComponent,
+        path: 'projects/:id/:category/:color/:collection/:size',
+        component: ProductListComponent,
+      },
+
+      {
+        path: ':id/:size',
+        component: ProductComponent,
       },
     ],
   },

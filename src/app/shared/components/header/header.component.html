@@ -15,7 +15,7 @@
   <ng-container *ngIf="!lopped">
     <div class="logo"><a routerLink="/"><img src="assets/logo.png" alt="Alessio Romano"></a></div>
     <div class="menu" fxLayout fxLayoutAlign="space-between">
-      <a *ngFor="let item of menu" [routerLink]="['/', item.name]">{{ item.name }}</a>
+      <a *ngFor="let item of menu" [routerLink]="'/' + (item.link || item.name)">{{ item.name }}</a>
     </div>
   </ng-container>
 </div>

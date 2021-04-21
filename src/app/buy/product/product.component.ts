@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { headOnScroll } from '@app/core/animations';
 import { Product } from '@app/core/models/product';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 
 import { BigPictureComponent } from '../big-picture.component';
-import { ICurrentItem } from './../../core/models/ICurrentItem';
 import { Size } from './../../core/models/size';
 import { StoreService } from './../../services/store.service';
 
@@ -34,7 +33,12 @@ export class ProductComponent implements OnInit {
     return `product/${this.title}/${this.currentSize}/${this.title.replace(new RegExp(/\s/gi), '-')}`;
   }
 
-  constructor(private route: ActivatedRoute, private service: StoreService, private dialog: MatDialog) {}
+  constructor(
+    private route: ActivatedRoute,
+    private service: StoreService,
+    private dialog: MatDialog,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.doc$ = this.route.paramMap.pipe(
@@ -43,6 +47,9 @@ export class ProductComponent implements OnInit {
       switchMap((a) =>
         this.service.getCurrentItem(a).pipe(
           tap((b) => {
+            if (!b.current.size.includes(this.currentSize)) {
+              this.router.navigate(['../', b.current.size[0]], { relativeTo: this.route });
+            }
             this.title = b.current.title;
             this.sizes = b.current.size;
           })

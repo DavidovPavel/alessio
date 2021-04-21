@@ -7,7 +7,6 @@
 
         <ng-container *ngIf="last && showSize; else simple">
 
-
           <ng-container *ngFor="let size of sizes; let end = last">
             <ng-container *ngTemplateOutlet="arl; context: { index: i, dup: size.id, title: size?.title }">
             </ng-container>

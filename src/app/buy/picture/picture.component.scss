@@ -1,9 +1,17 @@
-:host.active {
-  border: solid .02vw #e48179;
+:host {
+  &.active {
+    & .picture {
+      border: solid 0.02vw #ff1100;
+    }
+  }
+}
+
+.picture {
+  border: solid 0.02vw transparent;
 }
 
 .big {
-  &>div {
+  & > div {
     &:first-child {
       padding-right: 2.9vw;
     }
@@ -12,17 +20,17 @@
       padding-left: 2.9vw;
     }
 
-    &>img {
+    & > img {
       width: 1.9vw;
       cursor: pointer;
     }
   }
 
-  &>.pic {
+  & > .pic {
     overflow: hidden;
     width: 100vh;
 
-    &>img {
+    & > img {
       width: auto;
       height: 100vh;
       cursor: default;

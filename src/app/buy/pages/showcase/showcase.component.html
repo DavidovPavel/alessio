@@ -1,4 +1,8 @@
-<cdk-virtual-scroll-viewport itemSize="" fxFlex>
+<div fxLayout fxLayoutAlign="space-between center" class="top-tools">
+  <h1>BUY</h1>
+  <app-lang-switch [isLight]="true"></app-lang-switch>
+</div>
+<cdk-virtual-scroll-viewport itemSize="null" fxFlex>
   <app-items-row *cdkVirtualFor="let row of all$ | async" class="items-row" [items]="row" fxLayout
     fxLayoutAlign="space-between center"></app-items-row>
 </cdk-virtual-scroll-viewport>
