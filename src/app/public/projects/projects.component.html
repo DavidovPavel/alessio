@@ -1,6 +1,6 @@
   <div *ngFor="let item of items$ | async" class="item"
     [@expand]="{value: item.id === 1 ? !!item.expand : false, params: {height: item.height}}" appUnder>
-    <img [src]="item.id | path:'project' | getDownloadURL" [alt]="item.title">
+    <img [src]="item.id | path:'project' | getDownloadURL" alt="">
     <i *ngIf="item.id!==1" class="under">UNDER CONSTRACTION</i>
     <p *ngFor="let p of item.text">{{p}}</p>
     <span class="more" (click)="item.expand = item.id === 1 ? !item.expand: false">

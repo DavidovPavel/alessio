@@ -19,7 +19,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     const queryFnByCategory = (a: ParamMap) => (ref: CollectionReference) => {
       return ref
-        .where('project', '==', +a.get('id'))
+        .where('project', '==', +a.get('projects'))
         .where('category', '==', +a.get('category'))
         .where('collection', '==', +a.get('collection'))
         .orderBy('id');
@@ -27,7 +27,7 @@ export class ProductListComponent implements OnInit {
 
     const queryFnByCollection = (a: ParamMap) => (ref: CollectionReference) => {
       return ref
-        .where('project', '==', +a.get('project'))
+        .where('project', '==', +a.get('projects'))
         .where('category', '==', +a.get('category'))
         .where('collection', '==', +a.get('collection'))
         .orderBy('id');

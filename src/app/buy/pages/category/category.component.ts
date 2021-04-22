@@ -28,7 +28,7 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.group$ = this.route.paramMap.pipe(
-      switchMap((p) => this.fire.getGroup<ListItem>(`projects/${p.get('id')}/category/${p.get('category')}/color`, 'pos'))
+      switchMap((p) => this.fire.getGroup<ListItem>(`projects/${p.get('projects')}/category/${p.get('category')}/color`, 'pos'))
     );
   }
 }

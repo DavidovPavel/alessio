@@ -30,7 +30,7 @@ export class ColorComponent implements OnInit {
     this.group$ = this.route.paramMap.pipe(
       switchMap((p) =>
         this.fire.getGroup<ListItem>(
-          `projects/${p.get('id')}/category/${p.get('category')}/color/${p.get('color')}/collection`,
+          `projects/${p.get('projects')}/category/${p.get('category')}/color/${p.get('color')}/collection`,
           'pos'
         )
       )

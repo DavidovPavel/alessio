@@ -5,6 +5,7 @@ import { Product } from '@app/core/models/product';
 import { IStoreItem } from '@app/core/models/store-item';
 import { StoreService } from '@app/services/store.service';
 import { Observable } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-crumbs',
@@ -27,24 +28,21 @@ export class CrumbsComponent implements OnInit {
 
   @Input() set current(product: Product) {
     if (product) {
-      const { project, category, color, collection } = product;
-      this.param = convertToParamMap({ project, category, color, collection, size: this.currentSize });
-      this.points$ = this.getPoints(this.param);
+      const { project: projects, category, color, collection } = product;
+      this.param = convertToParamMap({ projects, category, color, collection, size: this.currentSize });
+      this.points$ = this.service.getPoints(this.param);
     }
   }
 
   constructor(private service: StoreService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    // this.points$ = this.route.paramMap.pipe(
-    //   tap((param) => (this.param = param)),
-    //   switchMap((p) => this.getPoints(p)),
-    //   // tap((a) => (this.sizes = a.find((b) => b?.size)?.size as IdTitle[]))
-    // );
-  }
-
-  getPoints(param: ParamMap): Observable<IStoreItem[]> {
-    return this.service.getPoints(param);
+    if (!this.param) {
+      this.points$ = this.route.paramMap.pipe(
+        tap((param) => (this.param = param)),
+        switchMap((p) => this.service.getPoints(p))
+      );
+    }
   }
 
   link(n: number, d: number = null, goto: string[] = []) {

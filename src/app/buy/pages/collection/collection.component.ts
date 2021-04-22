@@ -25,7 +25,7 @@ export class CollectionComponent implements OnInit {
       switchMap((p) =>
         this.fire
           .getDocument<ListItem>(
-            `projects/${p.get('id')}/category/${p.get('category')}/color/${p.get('color')}/collection/${p.get(
+            `projects/${p.get('projects')}/category/${p.get('category')}/color/${p.get('color')}/collection/${p.get(
               'collection'
             )}`
           )

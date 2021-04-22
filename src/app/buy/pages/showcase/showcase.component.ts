@@ -36,7 +36,7 @@ export class ShowcaseComponent implements OnInit {
               url: `product/${a.title}/${a.size[0]}/${a.title.replace(new RegExp(/\s/gi), '-')}-1.png`,
               title: a.title,
               id: a.id,
-              size: a.size
+              size: a.size,
             }))
             .reduce(groupByFour, [])
         )

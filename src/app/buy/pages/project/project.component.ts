@@ -22,6 +22,6 @@ export class ProjectComponent implements OnInit {
   constructor(private fire: FireService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.group$ = this.route.paramMap.pipe(switchMap((p) => this.fire.getGroup<ListItem>(`projects/${p.get('id')}/category`, 'pos')));
+    this.group$ = this.route.paramMap.pipe(switchMap((p) => this.fire.getGroup<ListItem>(`projects/${p.get('projects')}/category`, 'pos')));
   }
 }

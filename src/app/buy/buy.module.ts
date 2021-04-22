@@ -10,14 +10,12 @@ import { BigPictureComponent } from './big-picture.component';
 import { BuyRoutingModule } from './buy-routing.module';
 import { CollectionComponent } from './collection.component';
 import { CrumbsComponent } from './crumbs/crumbs.component';
+import { ItemsRowComponent } from './items-row/items-row.component';
 import { ListItemComponent } from './list-item/list-item.component';
 import { ListComponent } from './list/list.component';
-import { CategoriesComponent } from './pages/categories/categories.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { CollectionComponent as CollectionListComponent } from './pages/collection/collection.component';
-import { CollectionsComponent } from './pages/collections/collections.component';
 import { ColorComponent } from './pages/color/color.component';
-import { ColorsComponent } from './pages/colors/colors.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { ProjectComponent } from './pages/project/project.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
@@ -26,7 +24,6 @@ import { ShowcaseComponent } from './pages/showcase/showcase.component';
 import { PictureComponent } from './picture/picture.component';
 import { LinkPipe } from './product/link.pipe';
 import { ProductComponent } from './product/product.component';
-import { ItemsRowComponent } from './items-row/items-row.component';
 
 @NgModule({
   declarations: [
@@ -46,9 +43,6 @@ import { ItemsRowComponent } from './items-row/items-row.component';
     ProductListComponent,
     ShowcaseComponent,
     ProjectComponent,
-    CategoriesComponent,
-    ColorsComponent,
-    CollectionsComponent,
     ItemsRowComponent,
   ],
   imports: [
